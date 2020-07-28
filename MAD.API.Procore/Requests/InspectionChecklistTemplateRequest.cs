@@ -9,9 +9,22 @@ namespace MAD.API.Procore.Requests
     {
         public override string Resource
         {
-            get => $"companies/{this.CompanyId}/checklist/list_templates";
+            get
+            {
+                if (this.CompanyId.HasValue)
+                {
+                    return $"companies/{this.CompanyId}/checklist/list_templates";
+                }
+                else
+                {
+                    return "checklist/list_templates";
+                }
+            }
         }
 
-        public long CompanyId { get; set; }
+        public long? CompanyId { get; set; }
+
+        [RequestParameter("project_id")]
+        public long? ProjectId { get; set; }
     }
 }
