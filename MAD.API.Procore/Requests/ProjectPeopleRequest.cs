@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MAD.API.Procore.Requests
 {
-    public class ProjectPeopleRequest : ProcoreRequest<ProjectPeople>
+    public class ProjectPeopleRequest : ProcoreRequest<ProjectPerson>
     {
         public override string Resource => $"projects/{ProjectId}/people";
 

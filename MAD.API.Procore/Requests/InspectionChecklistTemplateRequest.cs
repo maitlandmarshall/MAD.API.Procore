@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MAD.API.Procore.Requests
 {
-    public class InspectionChecklistTemplateRequest : ProcoreFilterableRequest<InspectionChecklistTemplate>
+    public class InspectionChecklistTemplateRequest : ProcoreFilterableRequest<ChecklistTemplate>
     {
         public override string Resource
         {

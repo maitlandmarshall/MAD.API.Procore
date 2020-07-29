@@ -2,7 +2,7 @@
 
 namespace MAD.API.Procore.Requests
 {
-    public class CompanyUserRequest : ProcoreFilterableRequest<CompanyUser>
+    public class CompanyUserRequest : ProcoreFilterableRequest<User>
     {
         public override string Resource { get => $"companies/{this.CompanyId}/users"; }
 

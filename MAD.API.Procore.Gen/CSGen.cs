@@ -6,25 +6,17 @@ using System.Text;
 
 namespace MAD.API.Procore.Gen
 {
-    public class CSGen
+    public static class CSGen
     {
-        public string Generate(EndpointResponseSchemaModel schema, string ns)
+        private static void SerializeObject(EndpointResponseSchemaModel schema, StringBuilder codeBuilder)
         {
-            string className = schema.Title.Pascalize();
+            codeBuilder.AppendLine(" {");
 
-            StringBuilder codeBuilder = new StringBuilder();
-            codeBuilder
-                .AppendLine("using System;")
-                .AppendLine("using System.Text;")
-                .AppendLine("using Newtonsoft.Json;")
-                .AppendLine($"namespace {ns} {{")
-                .AppendLine($"\tpublic class {className} {{");
+            if (schema.Properties is null)
+                return;
 
             foreach (var p in schema.Properties)
             {
-                codeBuilder.AppendLine($"\t\t[JsonProperty(\"{p.Field}\")]");
-                codeBuilder.Append($"\t\tpublic ");
-
                 string type;
                 bool isNullable;
 
@@ -39,9 +31,13 @@ namespace MAD.API.Procore.Gen
                     isNullable = false;
                 }
 
-                if (string.IsNullOrEmpty(type))
+                if (string.IsNullOrEmpty(type)
+                    || type == "null")
                     continue;
-               
+
+                codeBuilder.AppendLine($"\t\t[JsonProperty(\"{p.Field}\")]");
+                codeBuilder.Append($"\t\tpublic ");
+
                 switch (type)
                 {
                     case "integer":
@@ -60,7 +56,7 @@ namespace MAD.API.Procore.Gen
                         {
                             codeBuilder.Append("string");
                         }
-                        
+
                         break;
                     case "object":
                         if (string.IsNullOrEmpty(p.Title))
@@ -69,14 +65,14 @@ namespace MAD.API.Procore.Gen
                         }
                         else
                         {
-                            codeBuilder.Append(p.Title.Pascalize());
+                            codeBuilder.Append(p.Title.CleanForCode());
                         }
                         break;
                     case "array":
                         if (!string.IsNullOrEmpty(p.Items.Title))
                         {
                             codeBuilder
-                                .Append(p.Items.Title.Pascalize())
+                                .Append(p.Items.Title.CleanForCode())
                                 .Append("[]");
                         }
                         else
@@ -95,7 +91,43 @@ namespace MAD.API.Procore.Gen
                 if (isNullable)
                     codeBuilder.Append("?");
 
-                codeBuilder.AppendLine($" {p.Field.Pascalize()} {{ get; set; }}");
+                codeBuilder.AppendLine($" {p.Field.CleanForCode()} {{ get; set; }}");
+            }
+        }
+
+        public static string Generate(EndpointResponseSchemaModel schema, string ns, string className)
+        {
+            StringBuilder codeBuilder = new StringBuilder();
+            codeBuilder
+                .AppendLine("using System;")
+                .AppendLine("using System.Text;")
+                .AppendLine("using Newtonsoft.Json;")
+                .AppendLine("using Newtonsoft.Json.Linq;")
+                .AppendLine("using System.Collections.Generic;")
+                .AppendLine($"namespace {ns} {{")
+                .Append($"\tpublic class {className}");
+
+            if (schema.Items is null)
+            {
+                SerializeObject(schema, codeBuilder);
+            }
+            else
+            {
+                if (schema.Items.Properties != null
+                    && schema.Items.Title is null)
+                {
+                    SerializeObject(schema.Items, codeBuilder);
+                }
+                else
+                {
+                    string arrayItemClass = ClassNameFactory.Create(schema.Items)
+                        ?? schema.Items.Type?.ToString().CleanForCode();
+
+                    if (arrayItemClass.Contains("null"))
+                        return null;
+
+                    codeBuilder.AppendLine($" : List<{arrayItemClass}> {{");
+                }
             }
 
             codeBuilder.AppendLine("\t}");

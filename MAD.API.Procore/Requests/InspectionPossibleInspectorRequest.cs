@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MAD.API.Procore.Requests
 {
-    public class InspectionPossibleInspectorRequest : ProcoreRequest<InspectionPossibleInspector>
+    public class InspectionPossibleInspectorRequest : ProcoreRequest<Inspector>
     {
         public override string Resource => "checklist/possible_inspectors";
 

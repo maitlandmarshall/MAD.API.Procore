@@ -2,7 +2,7 @@
 
 namespace MAD.API.Procore.Requests
 {
-    public class InspectionChecklistSignatureRequestRequest : ProcoreRequest<InspectionChecklistSignatureRequest>
+    public class InspectionChecklistSignatureRequestRequest : ProcoreRequest<ChecklistSignatureRequest>
     {
         public override string Resource
         {

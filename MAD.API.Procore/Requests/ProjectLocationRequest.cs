@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MAD.API.Procore.Requests
 {
-    public class ProjectLocationRequest : ProcoreRequest<ProjectLocation>
+    public class ProjectLocationRequest : ProcoreRequest<Location>
     {
         public override string Resource => "locations";
 
