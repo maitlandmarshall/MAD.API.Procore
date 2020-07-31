@@ -16,7 +16,7 @@ namespace MAD.API.Procore
         }
 
         public ProcoreRequest<TModel> Request { get; internal set; }
-        public IEnumerable<TModel> Items { get; internal set; }
+        public TModel Result { get; internal set; }
 
         public Task<ProcoreResponse<TModel>> GetNextPageAsync()
         {

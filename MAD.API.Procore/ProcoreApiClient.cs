@@ -38,11 +38,11 @@ namespace MAD.API.Procore
             using JsonTextReader jr = new JsonTextReader(sr);
 
             JsonSerializer jsonSerializer = new JsonSerializer();
-            IEnumerable<TModel> items = jsonSerializer.Deserialize<IEnumerable<TModel>>(jr);
+            TModel result = jsonSerializer.Deserialize<TModel>(jr);
 
             ProcoreResponse<TModel> procoreResponse = new ProcoreResponse<TModel>(this)
             {
-                Items = items,
+                Result = result,
                 Request = request
             };
 

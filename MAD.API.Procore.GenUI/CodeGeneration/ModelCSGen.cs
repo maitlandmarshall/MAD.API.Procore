@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MAD.API.Procore.Gen
 {
-    internal static class CSGen
+    internal static class ModelCSGen
     {
         private static void SerializeObject(Schema schema, StringBuilder codeBuilder)
         {
@@ -20,7 +20,12 @@ namespace MAD.API.Procore.Gen
                     || p.Type.Name == "null")
                     continue;
 
-                codeBuilder.AppendLine($"\t\t[JsonProperty(\"{p.Field}\")]");
+                codeBuilder.AppendLine();
+                codeBuilder.AppendLine("\t\t/// <summary>");
+                codeBuilder.AppendLine($"\t\t/// {p.Description}");
+                codeBuilder.AppendLine("\t\t/// </summary>");
+                codeBuilder.Append($"\t\t[JsonProperty(\"{p.Field}\")]");
+
                 codeBuilder.Append($"\t\tpublic ");
 
                 switch (p.Type.Name)
@@ -49,9 +54,16 @@ namespace MAD.API.Procore.Gen
                     case "array":
                         if (p.Items != null)
                         {
+                            string arrayItemName = ClassNameFactory.Create(p.Items as Schema);
+
+                            if (string.IsNullOrEmpty(arrayItemName))
+                            {
+                                arrayItemName = ClassNameFactory.Create(p);
+                            }
+
                             codeBuilder
-                            .Append(ClassNameFactory.Create(p.Items as Schema))
-                            .Append("[]");
+                                .Append(arrayItemName)
+                                .Append("[]");
                         }
                         else
                         {
@@ -66,7 +78,10 @@ namespace MAD.API.Procore.Gen
                         throw new NotImplementedException();
                 }
 
-                if (p.Type.IsNullable)
+                if (p.Type.IsNullable
+                    || p.Type.Name == "number"
+                    || (p.Type.Name == "integer" && p.Field != "id")
+                    || (p.Format == "date-time" && (!p.Field.StartsWith("created") && !p.Field.StartsWith("updated"))))
                     codeBuilder.Append("?");
 
                 codeBuilder.AppendLine($" {p.Field.CleanForCode()} {{ get; set; }}");
@@ -99,7 +114,10 @@ namespace MAD.API.Procore.Gen
                 else
                 {
                     string arrayItemClass = ClassNameFactory.Create(schema.Items as Schema)
-                        ?? (schema.Items as Schema).Type?.ToString().CleanForCode();
+                        ?? (schema.Items as Schema).Type?.Name.ToString().CleanForCode();
+
+                    if (arrayItemClass == "Integer")
+                        arrayItemClass = "long";
 
                     if (arrayItemClass.Contains("null"))
                         return null;

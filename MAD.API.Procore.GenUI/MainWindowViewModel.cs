@@ -13,14 +13,35 @@ namespace MAD.API.Procore.GenUI
         private IEnumerable<EndpointGroup> endpoints;
         private string code;
         private string searchText;
+        private Func<EndpointGroup, bool> endpointFilter;
 
         public IEnumerable<EndpointGroup> Endpoints
         {
-            get => endpoints;
+            get
+            {
+                if (this.EndpointFilter != null)
+                {
+                    return this.endpoints.Where(this.EndpointFilter);
+                }    
+                else
+                {
+                    return this.endpoints;
+                }
+            }
             set
             {
                 this.endpoints = value;
                 this.OnPropertyChanged();
+            }
+        }
+
+        public Func<EndpointGroup, bool> EndpointFilter
+        {
+            get => endpointFilter;
+            set
+            {
+                this.endpointFilter = value;
+                this.OnPropertyChanged(nameof(this.Endpoints));
             }
         }
 
@@ -39,7 +60,7 @@ namespace MAD.API.Procore.GenUI
             get => searchText;
             set
             {
-                this.SearchText = value;
+                this.searchText = value;
                 this.OnPropertyChanged();
             }
         }

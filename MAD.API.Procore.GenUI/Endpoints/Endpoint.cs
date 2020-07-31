@@ -27,6 +27,13 @@ namespace MAD.API.Procore.GenUI.Endpoints
 
         public string Path { get; set; }
         public string Summary { get; set; }
+        public string Description { get; set; }
+
+        [JsonProperty("path_params")]
+        public List<BaseParam> PathParams { get; set; }
+
+        [JsonProperty("query_params")]
+        public List<BaseParam> QueryParams { get; set; }
 
         public List<EndpointResponse> Responses { get; set; }
     }

@@ -12,43 +12,47 @@
             <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
         <TextBox Text="{Binding Code}"
-                 Grid.Column="1"/>
+                 Grid.Column="1"
+                 Grid.Row="1"/>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <Button Content="Export"
+                Grid.Column="1"
+                Grid.Row="0"
+                Click="Button_Click"/>
 
-            <TextBox Text="{Binding SearchText}"/>
+        <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <TreeView ItemsSource="{Binding Endpoints}" 
-                      SelectedItemChanged="TreeView_SelectedItemChanged"
-                      Grid.Row="1">
-                <TreeView.Resources>
-                    <HierarchicalDataTemplate DataType="{x:Type local:EndpointGroup}"
+        <TreeView ItemsSource="{Binding Endpoints}" 
+                  SelectedItemChanged="TreeView_SelectedItemChanged"
+                  Grid.Row="1"
+                  x:Name="tv">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type local:EndpointGroup}"
                                           ItemsSource="{Binding Endpoints}">
 
-                        <Label Content="{Binding Group}"/>
+                    <Label Content="{Binding Group}"/>
 
-                    </HierarchicalDataTemplate>
+                </HierarchicalDataTemplate>
 
-                    <DataTemplate DataType="{x:Type endpoints:Endpoint}">
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Verb}"/>
-                            <Label Content=" - "/>
-                            <Label Content="{Binding Path}"/>
-                        </StackPanel>
+                <DataTemplate DataType="{x:Type endpoints:Endpoint}">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Verb}"/>
+                        <Label Content=" - "/>
+                        <Label Content="{Binding Path}"/>
+                    </StackPanel>
 
-                    </DataTemplate>
+                </DataTemplate>
 
-                </TreeView.Resources>
-            </TreeView>
-        </Grid>
+            </TreeView.Resources>
+        </TreeView>
 
-        
+
 
     </Grid>
 </Window>

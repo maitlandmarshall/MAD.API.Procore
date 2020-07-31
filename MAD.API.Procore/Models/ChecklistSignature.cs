@@ -5,13 +5,25 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
 	public class ChecklistSignature {
-		[JsonProperty("id")]
-		public int Id { get; set; }
-		[JsonProperty("captured_by")]
-		public JToken CapturedBy { get; set; }
-		[JsonProperty("captured_at")]
-		public DateTimeOffset CapturedAt { get; set; }
-		[JsonProperty("attachment")]
-		public JToken Attachment { get; set; }
+
+		/// <summary>
+		/// ID
+		/// </summary>
+		[JsonProperty("id")]		public int Id { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[JsonProperty("captured_by")]		public CapturedBy CapturedBy { get; set; }
+
+		/// <summary>
+		/// Timestamp of creation
+		/// </summary>
+		[JsonProperty("captured_at")]		public DateTimeOffset? CapturedAt { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[JsonProperty("attachment")]		public Attachment Attachment { get; set; }
 	}
 }

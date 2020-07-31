@@ -1,11 +1,14 @@
 ﻿using MAD.API.Procore.Gen;
+using MAD.API.Procore.GenUI.CodeGeneration;
 using MAD.API.Procore.GenUI.Endpoints;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace MAD.API.Procore.GenUI
 {
@@ -30,7 +33,19 @@ namespace MAD.API.Procore.GenUI
 
         private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            
+            var vm = sender as MainWindowViewModel;
+
+            if (e.PropertyName == nameof(MainWindowViewModel.SearchText))
+            {
+                if (string.IsNullOrEmpty(vm.SearchText))
+                {
+                    vm.EndpointFilter = null;
+                }
+                else
+                {
+                    vm.EndpointFilter = y => y.Group.ToLower().Contains(vm.SearchText.ToLower());
+                }
+            }
         }
 
         protected override async void OnInitialized(EventArgs e)
@@ -71,48 +86,41 @@ namespace MAD.API.Procore.GenUI
             if (endpoint is null)
                 return;
 
-            EndpointResponse okResponse = endpoint.Responses.FirstOrDefault(y => y.Status == 200);
-            IEnumerable<Schema> schemas = this.GetNestedSchemas(okResponse.Schema);
-
-            var classes = new Dictionary<string, string>();
-
-            foreach (Schema s in schemas)
-            {
-                string className = ClassNameFactory.Create(s);
-
-                if (className is null)
-                    continue;
-
-                string code = CSGen.Generate(s, "MAD.API.Procore.Models", className);
-
-                if (code is null)
-                    continue;
-
-                classes.TryAdd(className, code);
-            }
-
-            this.ViewModel.Code = string.Join(Environment.NewLine, classes.Values);
+            this.ViewModel.Code = string.Join(Environment.NewLine, RequestCSGen.Generate(endpoint).Values);
         }
 
-        private IEnumerable<Schema> GetNestedSchemas(Schema schemaModel)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (schemaModel.Type.Name == "object"
-                || schemaModel.Type.Name == "array")
-                yield return schemaModel;
+            var endpoint = this.tv.SelectedItem as Endpoint;
 
-            if (schemaModel.Properties != null)
+            if (endpoint is null)
+                return;
+
+            var filesToGenerate = RequestCSGen.Generate(endpoint);
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                foreach (ISchemaProperty s in schemaModel.Properties)
+                string baseDirectory = dialog.SelectedPath;
+
+                for (int i = 0; i < filesToGenerate.Keys.Count; i++)
                 {
-                    foreach (Schema ns in this.GetNestedSchemas(s as Schema))
-                        yield return ns;
-                }
-            }
+                    string subDir;
+                    string file = filesToGenerate.Keys.ElementAt(i);
 
-            if (schemaModel.Items != null)
-            {
-                foreach (Schema s in this.GetNestedSchemas(schemaModel.Items as Schema))
-                    yield return s;
+                    if (i == filesToGenerate.Keys.Count - 1)
+                    {
+                        subDir = "Requests";
+                    }
+                    else
+                    {
+                        subDir = "Models";
+                    }
+
+                    string fullFilePath = Path.Combine(baseDirectory, subDir, $"{file}.cs");
+
+                    await File.WriteAllTextAsync(fullFilePath, filesToGenerate[file]);
+                }
             }
         }
     }

@@ -10,6 +10,7 @@ namespace MAD.API.Procore.Gen
         public static string CleanForCode(this string name)
         {
             return name.Replace("/", "")
+                .Replace("filters[", "")
                 .Replace("(", "")
                 .Replace(")", "")
                 .Replace(",", "")

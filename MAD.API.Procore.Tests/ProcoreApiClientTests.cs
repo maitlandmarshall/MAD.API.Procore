@@ -9,7 +9,7 @@ namespace MAD.API.Procore.Tests
     [TestClass]
     public class ProcoreApiClientTests
     {
-        private const string SandboxAccessToken = "eyJhbGciOiJFUzUxMiJ9.eyJhaWQiOiJkODkwOTI4MDUxMjMyNmIwMGE2YjBlNTcwMzU3YjAzOWQyNzY5MDI4OTQ5ZDRhMzAwZDAwYjBmOGVkZWY2M2JkIiwiZXhwIjoxNTk1OTM5NTE3LCJ1aWQiOjIxMjEyLCJ1dWlkIjoiZTlmY2IwOTktZDdmMi00YTJlLTg5OWEtMzAxZDNkY2JmYWMwIn0.ATpmI3vtzHsBSf0Zfw7icIf8PRdrVqqYsb9F0ESS_Q5sWh_na0AfjImAKwN3xzOmF4EXcSuHDhxbWsY4XZNHVTawAc6221Vw3VCYzMe_3V-KeZ_eSE7Y5ikjMA8UWUriOXjnG1xxMo3Hh_buWQjjTT2lh-sBR7TrcjiBO2Pj2qXmef86";
+        private const string SandboxAccessToken = "eyJhbGciOiJFUzUxMiJ9.eyJhaWQiOiJkODkwOTI4MDUxMjMyNmIwMGE2YjBlNTcwMzU3YjAzOWQyNzY5MDI4OTQ5ZDRhMzAwZDAwYjBmOGVkZWY2M2JkIiwiZXhwIjoxNTk2MTY3NTAwLCJ1aWQiOjIxMjEyLCJ1dWlkIjoiZTlmY2IwOTktZDdmMi00YTJlLTg5OWEtMzAxZDNkY2JmYWMwIn0.AcYBUYmOS2L-f4C2F05kOwVvMetqI9A2sudejqyTk3T2GVN-k_7n7QpxpY5_qky8gcTf2VbJHRT0l2tBIyB4aptaAWqedTZcLKoIWOhYH_seNCi2PV14RbHaLa5_507cdSzTdQGh4attiLtbrMde_Rrchhy4_fTlqE-VDVkjtJ4owZLr";
 
         private ProcoreApiClient GetApiClient()
         {
@@ -25,7 +25,7 @@ namespace MAD.API.Procore.Tests
         {
             ProcoreApiClient apiClient = this.GetApiClient();
 
-            ProcoreResponse<Company> companies = await apiClient.GetResponseAsync(new CompanyRequest());
+            var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
         }
 
         [TestMethod]
@@ -33,11 +33,11 @@ namespace MAD.API.Procore.Tests
         {
             ProcoreApiClient apiClient = this.GetApiClient();
 
-            ProcoreResponse<Company> companies = await apiClient.GetResponseAsync(new CompanyRequest());
+            var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
 
-            foreach (var c in companies.Items)
+            foreach (var c in companies.Result)
             {
-                var projectResponse = await apiClient.GetResponseAsync(new ProjectsRequest { CompanyId = c.Id });
+                var projectResponse = await apiClient.GetResponseAsync(new ListProjectsRequest { CompanyId = c.Id });
             }
         }
 
@@ -46,11 +46,11 @@ namespace MAD.API.Procore.Tests
         {
             ProcoreApiClient apiClient = this.GetApiClient();
 
-            ProcoreResponse<Company> companies = await apiClient.GetResponseAsync(new CompanyRequest());
+            var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
 
-            foreach (var c in companies.Items)
+            foreach (var c in companies.Result)
             {
-                var usersResponse = await apiClient.GetResponseAsync(new CompanyUserRequest { CompanyId = c.Id });
+                var usersResponse = await apiClient.GetResponseAsync(new ListCompanyUsersRequest { CompanyId = c.Id });
             }
         }
 
@@ -59,15 +59,15 @@ namespace MAD.API.Procore.Tests
         {
             ProcoreApiClient apiClient = this.GetApiClient();
 
-            ProcoreResponse<Company> companies = await apiClient.GetResponseAsync(new CompanyRequest());
+            var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
 
-            foreach (var c in companies.Items)
+            foreach (var c in companies.Result)
             {
-                var projectResponse = await apiClient.GetResponseAsync(new ProjectsRequest { CompanyId = c.Id });
+                var projectResponse = await apiClient.GetResponseAsync(new ListProjectsRequest { CompanyId = c.Id });
 
-                foreach (var p in projectResponse.Items)
+                foreach (var p in projectResponse.Result)
                 {
-                    var inspectionChecklistResponse = await apiClient.GetResponseAsync(new InspectionChecklistRequest
+                    var inspectionChecklistResponse = await apiClient.GetResponseAsync(new ListChecklistsRequest
                     {
                         ProjectId = p.Id
                     });
@@ -79,15 +79,16 @@ namespace MAD.API.Procore.Tests
         public async Task InspectionChecklistTemplateTest()
         {
             ProcoreApiClient apiClient = this.GetApiClient();
-            ProcoreResponse<Company> companies = await apiClient.GetResponseAsync(new CompanyRequest());
 
-            foreach (var c in companies.Items)
+            var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
+
+            foreach (var c in companies.Result)
             {
-                var projectResponse = await apiClient.GetResponseAsync(new ProjectsRequest { CompanyId = c.Id });
+                var projectResponse = await apiClient.GetResponseAsync(new ListProjectsRequest { CompanyId = c.Id });
 
-                foreach (var p in projectResponse.Items)
+                foreach (var p in projectResponse.Result)
                 {
-                    var response = await apiClient.GetResponseAsync(new InspectionChecklistTemplateRequest
+                    var inspectionChecklistResponse = await apiClient.GetResponseAsync(new ListChecklistTemplatesRequest
                     {
                         ProjectId = p.Id
                     });
