@@ -1,4 +1,5 @@
-﻿using MAD.API.Procore.Gen;
+﻿using CSCodeGen;
+using MAD.API.Procore.Gen;
 using MAD.API.Procore.GenUI.CodeGeneration;
 using MAD.API.Procore.GenUI.Endpoints;
 using System;
@@ -53,8 +54,6 @@ namespace MAD.API.Procore.GenUI
             base.OnInitialized(e);
 
             IEnumerable<GroupModel> groups = await RemoteJsonFile.GetJsonFile<IEnumerable<GroupModel>>("groups");
-            IDictionary<string, Schema> allSchemas = new Dictionary<string, Schema>();
-
             List<EndpointGroup> result = new List<EndpointGroup>();
 
             foreach (GroupModel grp in groups)
@@ -66,6 +65,15 @@ namespace MAD.API.Procore.GenUI
                     grp.Name.Replace(" ", "-").ToLower();
 
                 IEnumerable<Endpoint> endpoints = await RemoteJsonFile.GetJsonFile<IEnumerable<Endpoint>>(gelatoGroup);
+
+                foreach (var ep in endpoints)
+                {
+                    foreach (var r in ep.Responses)
+                    {
+                        this.SetSchemaReferences(r.Schema, ep);
+                    }
+                }
+
 
                 result.AddRange(endpoints
                     .GroupBy(y => y.Group)
@@ -79,6 +87,29 @@ namespace MAD.API.Procore.GenUI
             this.ViewModel.Endpoints = result.OrderBy(y => y.Group);
         }
 
+        private void SetSchemaReferences(Schema schema, Endpoint ep)
+        {
+            if (schema is null)
+                return;
+
+            schema.Endpoint = ep;
+
+            if (schema.Properties != null)
+            {
+                foreach (var s in schema.Properties)
+                {
+                    (s as Schema).Parent = schema;
+                    this.SetSchemaReferences(s as Schema, ep);
+                }
+            }
+
+            if (schema.Items != null)
+            {
+                (schema.Items as Schema).Parent = schema;
+                this.SetSchemaReferences(schema.Items as Schema, ep);
+            }
+        }
+
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             Endpoint endpoint = e.NewValue as Endpoint;
@@ -86,7 +117,9 @@ namespace MAD.API.Procore.GenUI
             if (endpoint is null)
                 return;
 
-            this.ViewModel.Code = string.Join(Environment.NewLine, RequestCSGen.Generate(endpoint).Values);
+            var gen = RequestCSGen.Generate(endpoint);
+
+            this.ViewModel.Code = string.Join(Environment.NewLine, gen.Select(z => ClassSerialization.Serialize(z)));
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -103,12 +136,11 @@ namespace MAD.API.Procore.GenUI
             {
                 string baseDirectory = dialog.SelectedPath;
 
-                for (int i = 0; i < filesToGenerate.Keys.Count; i++)
+                foreach (var f in filesToGenerate)
                 {
                     string subDir;
-                    string file = filesToGenerate.Keys.ElementAt(i);
 
-                    if (i == filesToGenerate.Keys.Count - 1)
+                    if (f.BaseClass?.Name == "ProcoreRequest")
                     {
                         subDir = "Requests";
                     }
@@ -117,9 +149,9 @@ namespace MAD.API.Procore.GenUI
                         subDir = "Models";
                     }
 
-                    string fullFilePath = Path.Combine(baseDirectory, subDir, $"{file}.cs");
+                    string fullFilePath = Path.Combine(baseDirectory, subDir, $"{f.Name}.cs");
 
-                    await File.WriteAllTextAsync(fullFilePath, filesToGenerate[file]);
+                    await File.WriteAllTextAsync(fullFilePath, ClassSerialization.Serialize(f));
                 }
             }
         }

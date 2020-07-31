@@ -18,6 +18,10 @@ namespace MAD.API.Procore.Gen
                 name = schemaModel.Field;
             else if (!string.IsNullOrEmpty(schemaModel.Description))
                 name = schemaModel.Description;
+            else if (schemaModel.Parent != null)
+                return Create(schemaModel.Parent as Schema);
+            else if (schemaModel.Endpoint != null)
+                name = schemaModel.Endpoint.Summary + "RequestResult";
             else
                 return null;
 

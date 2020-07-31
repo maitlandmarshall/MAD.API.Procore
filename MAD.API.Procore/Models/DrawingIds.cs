@@ -1,9 +1,9 @@
-using System;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
-	public class DrawingIds : List<long> {
+	public class DrawingIds : List<DrawingIds> {
 	}
 }

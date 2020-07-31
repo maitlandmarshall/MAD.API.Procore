@@ -1,4 +1,5 @@
-﻿using MAD.API.Procore.GenUI.Endpoints;
+﻿using CSCodeGen;
+using MAD.API.Procore.GenUI.Endpoints;
 using System;
 using System.Linq;
 using System.Text;
@@ -7,10 +8,8 @@ namespace MAD.API.Procore.Gen
 {
     internal static class ModelCSGen
     {
-        private static void SerializeObject(Schema schema, StringBuilder codeBuilder)
+        private static void SerializeObject(Schema schema, ClassModel classModel)
         {
-            codeBuilder.AppendLine(" {");
-
             if (schema.Properties is null)
                 return;
 
@@ -20,36 +19,37 @@ namespace MAD.API.Procore.Gen
                     || p.Type.Name == "null")
                     continue;
 
-                codeBuilder.AppendLine();
-                codeBuilder.AppendLine("\t\t/// <summary>");
-                codeBuilder.AppendLine($"\t\t/// {p.Description}");
-                codeBuilder.AppendLine("\t\t/// </summary>");
-                codeBuilder.Append($"\t\t[JsonProperty(\"{p.Field}\")]");
-
-                codeBuilder.Append($"\t\tpublic ");
+                PropertyModel pm = new PropertyModel
+                {
+                    Name = p.Field.CleanForCode(),
+                    Attributes =
+                    {
+                        $"JsonProperty(\"{p.Field}\")"
+                    },
+                    Comment = p.Description
+                };
 
                 switch (p.Type.Name)
                 {
                     case "integer":
-                        codeBuilder.Append("int");
+                        pm.Type = "int";
                         break;
                     case "boolean":
-                        codeBuilder.Append("bool");
+                        pm.Type = "bool";
                         break;
                     case "string":
-
                         if (p.Format == "date-time")
                         {
-                            codeBuilder.Append("DateTimeOffset");
+                            pm.Type = "DateTimeOffset";
                         }
                         else
                         {
-                            codeBuilder.Append("string");
+                            pm.Type = "string";
                         }
 
                         break;
                     case "object":
-                        codeBuilder.Append(ClassNameFactory.Create(p));
+                        pm.Type = ClassNameFactory.Create(p);
                         break;
                     case "array":
                         if (p.Items != null)
@@ -61,9 +61,7 @@ namespace MAD.API.Procore.Gen
                                 arrayItemName = ClassNameFactory.Create(p);
                             }
 
-                            codeBuilder
-                                .Append(arrayItemName)
-                                .Append("[]");
+                            pm.Type = arrayItemName + "[]";
                         }
                         else
                         {
@@ -72,7 +70,7 @@ namespace MAD.API.Procore.Gen
 
                         break;
                     case "number":
-                        codeBuilder.Append("decimal");
+                        pm.Type = "decimal";
                         break;
                     default:
                         throw new NotImplementedException();
@@ -82,34 +80,38 @@ namespace MAD.API.Procore.Gen
                     || p.Type.Name == "number"
                     || (p.Type.Name == "integer" && p.Field != "id")
                     || (p.Format == "date-time" && (!p.Field.StartsWith("created") && !p.Field.StartsWith("updated"))))
-                    codeBuilder.Append("?");
+                    pm.IsNullable = true;
 
-                codeBuilder.AppendLine($" {p.Field.CleanForCode()} {{ get; set; }}");
+                classModel.Properties.Add(pm);
             }
         }
 
-        public static string Generate(Schema schema, string ns, string className)
+        public static ClassModel Generate(Schema schema, string ns, string className)
         {
-            StringBuilder codeBuilder = new StringBuilder();
-            codeBuilder
-                .AppendLine("using System;")
-                .AppendLine("using System.Text;")
-                .AppendLine("using Newtonsoft.Json;")
-                .AppendLine("using Newtonsoft.Json.Linq;")
-                .AppendLine("using System.Collections.Generic;")
-                .AppendLine($"namespace {ns} {{")
-                .Append($"\tpublic class {className}");
+            ClassModel classModel = new ClassModel
+            {
+                Usings =
+                {
+                    "System.Text",
+                    "Newtonsoft.Json",
+                    "Newtonsoft.Json.Linq",
+                    "System",
+                    "System.Collections.Generic"
+                },
+                Name = className,
+                Namespace = ns
+            };
 
             if (schema.Items is null)
             {
-                SerializeObject(schema, codeBuilder);
+                SerializeObject(schema, classModel);
             }
             else
             {
                 if (schema.Items.Properties != null
                     && schema.Items.Title is null)
                 {
-                    SerializeObject(schema.Items as Schema, codeBuilder);
+                    SerializeObject(schema.Items as Schema, classModel);
                 }
                 else
                 {
@@ -122,14 +124,17 @@ namespace MAD.API.Procore.Gen
                     if (arrayItemClass.Contains("null"))
                         return null;
 
-                    codeBuilder.AppendLine($" : List<{arrayItemClass}> {{");
+                    classModel.BaseClass = new ClassModel
+                    {
+                        Name = "List",
+                        Generics = {
+                            arrayItemClass
+                        }
+                    };
                 }
             }
 
-            codeBuilder.AppendLine("\t}");
-            codeBuilder.AppendLine("}");
-
-            return codeBuilder.ToString();
+            return classModel;
         }
     }
 }

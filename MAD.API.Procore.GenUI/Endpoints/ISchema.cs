@@ -11,5 +11,7 @@ namespace MAD.API.Procore.GenUI.Endpoints
         string Description { get; }
 
         JToken TypeToken { get; }
+
+        ISchema Parent { get; }
     }
 }

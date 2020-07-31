@@ -1,97 +1,102 @@
-﻿using Humanizer;
+﻿using CSCodeGen;
 using MAD.API.Procore.Gen;
 using MAD.API.Procore.GenUI.Endpoints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MAD.API.Procore.GenUI.CodeGeneration
 {
     internal static class RequestCSGen
     {
-        public static Dictionary<string, string> Generate(Endpoint endpoint)
+        public static IEnumerable<ClassModel> Generate(Endpoint endpoint)
         {
-            StringBuilder codeGen = new StringBuilder();
-
             EndpointResponse okResponse = endpoint.Responses.FirstOrDefault(y => y.Status == 200);
             IEnumerable<Schema> schemas = GetNestedSchemas(okResponse.Schema);
 
-            Dictionary<string, string> classes = new Dictionary<string, string>();
-
-            int i = 0;
-            foreach (Schema s in schemas)
-            {
-                try
-                {
-                    string className = ClassNameFactory.Create(s);
-
-                    if (className is null)
-                    {
-                        if (i == 0)
-                        {
-                            if (s.Type.Name == "array")
-                                continue;
-
-                            className = ClassNameFactory.Create(s.Items as Schema ?? s.Properties.First() as Schema) ?? endpoint.Group.Singularize().CleanForCode();
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-
-                    if (className.ToLower().Contains("customfield"))
-                        continue;
-
-                    string code = ModelCSGen.Generate(s, "MAD.API.Procore.Models", className);
-
-                    if (code is null)
-                        continue;
-
-                    classes.TryAdd(className, code);
-                } 
-                finally
-                {
-                    i++;
-                }
-            }
-
-            string requestName = $"{endpoint.Summary.CleanForCode()}Request";
+            IEnumerable<ClassModel> schemaClassModels = GenerateModels(schemas)
+                .OrderByDescending(y => y.Properties.Count)
+                .GroupBy(y => y.Name)
+                .Select(y => y.First());
 
             Schema responseType = schemas.First();
             string requestResponseType = ClassNameFactory.Create(responseType);
 
-            if (string.IsNullOrEmpty(requestResponseType))
-                requestResponseType = ClassNameFactory.Create(responseType.Items as Schema ?? responseType.Properties.First() as Schema) ?? endpoint.Group.Singularize().CleanForCode();
-
-            if (responseType.Type.Name == "array")
+            ClassModel responseTypeClassModel = schemaClassModels.First(y => y.Name == requestResponseType);
+            
+            if (responseTypeClassModel.BaseClass is null
+                && responseType.Type.Name == "array")
             {
-                if (classes.TryGetValue(requestResponseType, out string requestResponseTypeCode))
-                {
-                    if (!requestResponseTypeCode.Contains("List<")
-                        || requestResponseType == "ManpowerLog")
-                    {
-                        requestResponseType = $"IEnumerable<{requestResponseType}>";
-                    }
-                }
-
-                
+                requestResponseType = $"IEnumerable<{requestResponseType}>";
             }
 
-            codeGen
-                .AppendLine("using System;")
-                .AppendLine("using System.Text;")
-                .AppendLine("using Newtonsoft.Json;")
-                .AppendLine("using Newtonsoft.Json.Linq;")
-                .AppendLine("using System.Collections.Generic;")
-                .AppendLine("using MAD.API.Procore.Models;")
-                .AppendLine($"namespace MAD.API.Procore.Requests {{");
+            ClassModel procoreRequestModel = new ClassModel
+            {
+                Name = "ProcoreRequest",
+                Generics =
+                {
+                    requestResponseType
+                }
+            };
 
-            codeGen.AppendLine($"\tpublic class {requestName} : ProcoreRequest<{requestResponseType}> {{");
+            ClassModel endpointRequestModel = new ClassModel
+            {
+                Name = $"{endpoint.Summary.CleanForCode()}Request",
+                BaseClass = procoreRequestModel,
+                AccessModifier = "public",
+                Usings =
+                {
+                    "System",
+                    "System.Text",
+                    "Newtonsoft.Json",
+                    "Newtonsoft.Json.Linq",
+                    "System.Collections.Generic",
+                    "MAD.API.Procore.Models"
+                },
+                Namespace = "MAD.API.Procore.Requests"
+            };
 
-            string[] endpointPathSegments = endpoint.Path.Split("/");
+            endpointRequestModel.Properties.Add(new PropertyModel
+            {
+                Name = "Resource",
+                Getter = $"$\"{FormatResourceStringForCSharpStringInterop(endpoint.Path)}\";",
+                Type = "string",
+                Override = true
+            });
+
+            foreach (BaseParam pp in endpoint.PathParams)
+            {
+                if (string.IsNullOrEmpty(pp.Name))
+                    continue;
+
+                endpointRequestModel.Properties.Add(GeneratePropertyModel(pp, false));
+            }
+
+            foreach (BaseParam qp in endpoint.QueryParams)
+            {
+                if (string.IsNullOrEmpty(qp.Name))
+                    continue;
+
+                if (qp.Name == "page"
+                    || qp.Name == "per_page")
+                    continue;
+
+                endpointRequestModel.Properties.Add(GeneratePropertyModel(qp, true));
+            }
+
+            yield return endpointRequestModel;
+
+            foreach (ClassModel i in schemaClassModels)
+            {
+                yield return i;
+            }
+        }
+
+        private static string FormatResourceStringForCSharpStringInterop(string resource)
+        {
+            string[] endpointPathSegments = resource.Split("/");
             List<string> newPathSegments = new List<string>();
+
             foreach (string eps in endpointPathSegments)
             {
                 if (eps.StartsWith("{"))
@@ -107,51 +112,46 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                 }
             }
 
-            codeGen.AppendLine($"\t\tpublic override string Resource {{ get => $\"{string.Join("/", newPathSegments)}\"; }}");
-
-            foreach (BaseParam pp in endpoint.PathParams)
-            {
-                if (string.IsNullOrEmpty(pp.Name))
-                    continue;
-
-                string code = GenerateParamString(pp, false);
-
-                codeGen.AppendLine();
-                codeGen.AppendLine(code);
-            }
-
-            foreach (BaseParam qp in endpoint.QueryParams)
-            {
-                if (string.IsNullOrEmpty(qp.Name))
-                    continue;
-
-                if (qp.Name == "page"
-                    || qp.Name == "per_page")
-                    continue;
-
-                codeGen.AppendLine();
-                codeGen.AppendLine(GenerateParamString(qp, true));
-            }
-
-
-            codeGen.AppendLine("\t}");
-            codeGen.AppendLine("}");
-
-            classes[requestName] = codeGen.ToString();
-
-            return classes;
+            return string.Join("/", newPathSegments);
         }
 
-        private static string GenerateParamString(BaseParam param, bool isQueryParam)
+        private static IEnumerable<ClassModel> GenerateModels(IEnumerable<Schema> schemas)
         {
-            StringBuilder codeGen = new StringBuilder();
+            int i = 0;
+            foreach (Schema s in schemas)
+            {
+                try
+                {
+                    string className = ClassNameFactory.Create(s);
 
-            codeGen.AppendLine("\t\t/// <summary>");
-            codeGen.AppendLine($"\t\t/// {param.Description}");
-            codeGen.AppendLine("\t\t/// </summary>");
+                    if (className is null)
+                        continue;
 
-            if (isQueryParam)
-                codeGen.AppendLine($"\t\t[RequestParameter(\"{param.Name}\")]");
+                    if (className.ToLower().Contains("customfield"))
+                        continue;
+
+                    ClassModel gen = ModelCSGen.Generate(s, "MAD.API.Procore.Models", className); ;
+
+                    if (gen is null)
+                        continue;
+
+                    yield return gen;
+                }
+                finally
+                {
+                    i++;
+                }
+            }
+        }
+
+        private static PropertyModel GeneratePropertyModel(BaseParam param, bool isQueryParam)
+        {
+            PropertyModel result = new PropertyModel
+            {
+                Comment = param.Description
+            };
+
+            result.Attributes.Add($"RequestParameter(\"{param.Name}\")");
 
             string type;
 
@@ -173,9 +173,11 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                     throw new NotImplementedException();
             }
 
-            codeGen.AppendLine($"\t\tpublic {type}{(param.Required == false ? "?" : "")} {param.Name.CleanForCode()} {{ get; set; }}");
+            result.Type = type;
+            result.IsNullable = param.Required;
+            result.Name = param.Name.CleanForCode();
 
-            return codeGen.ToString();
+            return result;
         }
 
         private static IEnumerable<Schema> GetNestedSchemas(Schema schemaModel)

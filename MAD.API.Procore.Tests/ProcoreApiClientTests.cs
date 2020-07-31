@@ -9,7 +9,7 @@ namespace MAD.API.Procore.Tests
     [TestClass]
     public class ProcoreApiClientTests
     {
-        private const string SandboxAccessToken = "eyJhbGciOiJFUzUxMiJ9.eyJhaWQiOiJkODkwOTI4MDUxMjMyNmIwMGE2YjBlNTcwMzU3YjAzOWQyNzY5MDI4OTQ5ZDRhMzAwZDAwYjBmOGVkZWY2M2JkIiwiZXhwIjoxNTk2MTY3NTAwLCJ1aWQiOjIxMjEyLCJ1dWlkIjoiZTlmY2IwOTktZDdmMi00YTJlLTg5OWEtMzAxZDNkY2JmYWMwIn0.AcYBUYmOS2L-f4C2F05kOwVvMetqI9A2sudejqyTk3T2GVN-k_7n7QpxpY5_qky8gcTf2VbJHRT0l2tBIyB4aptaAWqedTZcLKoIWOhYH_seNCi2PV14RbHaLa5_507cdSzTdQGh4attiLtbrMde_Rrchhy4_fTlqE-VDVkjtJ4owZLr";
+        private const string SandboxAccessToken = "eyJhbGciOiJFUzUxMiJ9.eyJhaWQiOiJkODkwOTI4MDUxMjMyNmIwMGE2YjBlNTcwMzU3YjAzOWQyNzY5MDI4OTQ5ZDRhMzAwZDAwYjBmOGVkZWY2M2JkIiwiZXhwIjoxNTk2MTgzODEzLCJ1aWQiOjIxMjEyLCJ1dWlkIjoiZTlmY2IwOTktZDdmMi00YTJlLTg5OWEtMzAxZDNkY2JmYWMwIn0.AWsb3BXtb3vGE_I4iAD1RXN9O2kzUMv5qkAE502pS_H6AZUlKmg1gHSCwCNPGMScTgBIiGT7coQFT1ULT58-0SStAVmeT7n_tByeh5nIngIvzXnsJs4in4qMs2dk65GkZRH_200Sx8N2bXC0gPeIHb_cVXXCH9v5EEg9Dm3kNZGYpRw8";
 
         private ProcoreApiClient GetApiClient()
         {

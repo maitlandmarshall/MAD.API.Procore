@@ -1,29 +1,24 @@
-using System;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
 	public class Attachments {
 
 		/// <summary>
-		/// 
+		/// ID
 		/// </summary>
-		[JsonProperty("id")]		public int Id { get; set; }
+		[JsonProperty("id")]	public  int Id { get ; set; }
 
 		/// <summary>
-		/// Use :name, :filename to be deprecated
+		/// URL
 		/// </summary>
-		[JsonProperty("name")]		public string Name { get; set; }
+		[JsonProperty("url")]	public  string Url { get ; set; }
 
 		/// <summary>
-		/// 
+		/// Filename
 		/// </summary>
-		[JsonProperty("url")]		public string Url { get; set; }
-
-		/// <summary>
-		/// :filename to be deprecated, use :name
-		/// </summary>
-		[JsonProperty("filename")]		public string Filename { get; set; }
+		[JsonProperty("filename")]	public  string Filename { get ; set; }
 	}
 }

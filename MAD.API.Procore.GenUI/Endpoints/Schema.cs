@@ -34,6 +34,8 @@ namespace MAD.API.Procore.GenUI.Endpoints
             }
         }
 
+        public Endpoint Endpoint { get; set; }
+
         public string Field { get; set; }
         public string Format { get; set; }
 
@@ -42,5 +44,7 @@ namespace MAD.API.Procore.GenUI.Endpoints
 
         [JsonConverter(typeof(ConcreteTypeConverter<Schema>))]
         public ISchemaObject Items { get; set; }
+
+        public ISchema Parent { get; set; }
     }
 }

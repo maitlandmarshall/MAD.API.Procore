@@ -1,7 +1,7 @@
-using System;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
 	public class SpecificationSection {
@@ -9,16 +9,16 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// ID
 		/// </summary>
-		[JsonProperty("id")]		public int Id { get; set; }
+		[JsonProperty("id")]	public  int Id { get ; set; }
 
 		/// <summary>
 		/// Description
 		/// </summary>
-		[JsonProperty("description")]		public string Description { get; set; }
+		[JsonProperty("description")]	public  string Description { get ; set; }
 
 		/// <summary>
 		/// Number
 		/// </summary>
-		[JsonProperty("section")]		public string Section { get; set; }
+		[JsonProperty("section")]	public  string Section { get ; set; }
 	}
 }
