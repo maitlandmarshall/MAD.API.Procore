@@ -42,6 +42,28 @@ namespace MAD.API.Procore.Tests
         }
 
         [TestMethod]
+        public async Task IncidentsTest()
+        {
+            ProcoreApiClient apiClient = this.GetApiClient();
+
+            var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
+
+            foreach (var c in companies.Result)
+            {
+                var projectResponse = await apiClient.GetResponseAsync(new ListProjectsRequest { CompanyId = c.Id });
+
+                foreach (var p in projectResponse.Result)
+                {
+                    var incidents = await apiClient.GetResponseAsync(new ListIncidentsRequest
+                    {
+                        ProjectId = p.Id
+                    });
+                }
+            }
+        }
+
+
+        [TestMethod]
         public async Task CompanyUsersTest()
         {
             ProcoreApiClient apiClient = this.GetApiClient();

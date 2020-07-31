@@ -4,21 +4,16 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
-	public class User {
+	public class Value {
 
 		/// <summary>
-		/// User ID
+		/// ID of the LOV Entry
 		/// </summary>
 		[JsonProperty("id")]		public int Id { get; set; }
 
 		/// <summary>
-		/// User Login
+		/// Label of the LOV Entry
 		/// </summary>
-		[JsonProperty("login")]		public string Login { get; set; }
-
-		/// <summary>
-		/// User Name
-		/// </summary>
-		[JsonProperty("name")]		public string Name { get; set; }
+		[JsonProperty("label")]		public string Label { get; set; }
 	}
 }

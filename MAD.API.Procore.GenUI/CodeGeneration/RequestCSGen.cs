@@ -1,4 +1,5 @@
-﻿using MAD.API.Procore.Gen;
+﻿using Humanizer;
+using MAD.API.Procore.Gen;
 using MAD.API.Procore.GenUI.Endpoints;
 using System;
 using System.Collections.Generic;
@@ -18,19 +19,42 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
 
             Dictionary<string, string> classes = new Dictionary<string, string>();
 
+            int i = 0;
             foreach (Schema s in schemas)
             {
-                string className = ClassNameFactory.Create(s);
+                try
+                {
+                    string className = ClassNameFactory.Create(s);
 
-                if (className is null)
-                    continue;
+                    if (className is null)
+                    {
+                        if (i == 0)
+                        {
+                            if (s.Type.Name == "array")
+                                continue;
 
-                string code = ModelCSGen.Generate(s, "MAD.API.Procore.Models", className);
+                            className = ClassNameFactory.Create(s.Items as Schema ?? s.Properties.First() as Schema) ?? endpoint.Group.Singularize().CleanForCode();
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
 
-                if (code is null)
-                    continue;
+                    if (className.ToLower().Contains("customfield"))
+                        continue;
 
-                classes.TryAdd(className, code);
+                    string code = ModelCSGen.Generate(s, "MAD.API.Procore.Models", className);
+
+                    if (code is null)
+                        continue;
+
+                    classes.TryAdd(className, code);
+                } 
+                finally
+                {
+                    i++;
+                }
             }
 
             string requestName = $"{endpoint.Summary.CleanForCode()}Request";
@@ -39,14 +63,20 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
             string requestResponseType = ClassNameFactory.Create(responseType);
 
             if (string.IsNullOrEmpty(requestResponseType))
-                requestResponseType = ClassNameFactory.Create(responseType.Properties.First() as Schema);
+                requestResponseType = ClassNameFactory.Create(responseType.Items as Schema ?? responseType.Properties.First() as Schema) ?? endpoint.Group.Singularize().CleanForCode();
 
             if (responseType.Type.Name == "array")
             {
-                if (!classes[requestResponseType].Contains("List<"))
+                if (classes.TryGetValue(requestResponseType, out string requestResponseTypeCode))
                 {
-                    requestResponseType = $"IEnumerable<{requestResponseType}>";
+                    if (!requestResponseTypeCode.Contains("List<")
+                        || requestResponseType == "ManpowerLog")
+                    {
+                        requestResponseType = $"IEnumerable<{requestResponseType}>";
+                    }
                 }
+
+                
             }
 
             codeGen

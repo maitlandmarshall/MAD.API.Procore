@@ -7,17 +7,22 @@ namespace MAD.API.Procore.Models {
 	public class Attachments {
 
 		/// <summary>
-		/// ID
+		/// 
 		/// </summary>
 		[JsonProperty("id")]		public int Id { get; set; }
 
 		/// <summary>
-		/// URL
+		/// Use :name, :filename to be deprecated
+		/// </summary>
+		[JsonProperty("name")]		public string Name { get; set; }
+
+		/// <summary>
+		/// 
 		/// </summary>
 		[JsonProperty("url")]		public string Url { get; set; }
 
 		/// <summary>
-		/// Filename
+		/// :filename to be deprecated, use :name
 		/// </summary>
 		[JsonProperty("filename")]		public string Filename { get; set; }
 	}
