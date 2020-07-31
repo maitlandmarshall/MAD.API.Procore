@@ -20,5 +20,10 @@ namespace MAD.API.Procore.Models {
 		/// Number
 		/// </summary>
 		[JsonProperty("section")]	public  string Section { get ; set; }
+
+		/// <summary>
+		/// Url to PDF view
+		/// </summary>
+		[JsonProperty("latest_revision_url")]	public  string LatestRevisionUrl { get ; set; }
 	}
 }

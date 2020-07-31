@@ -49,7 +49,12 @@ namespace MAD.API.Procore.Gen
 
                         break;
                     case "object":
-                        pm.Type = ClassNameFactory.Create(p);
+                        string objClassName = ClassNameFactory.Create(p);
+
+                        if (objClassName.ToLower() == "customfields")
+                            continue;
+
+                        pm.Type = objClassName;
                         break;
                     case "array":
                         if (p.Items != null)

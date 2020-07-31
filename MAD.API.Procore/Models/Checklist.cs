@@ -12,34 +12,19 @@ namespace MAD.API.Procore.Models {
 		[JsonProperty("id")]	public  int Id { get ; set; }
 
 		/// <summary>
-		/// Checklist Template ID
-		/// </summary>
-		[JsonProperty("list_template_id")]	public  int? ListTemplateId { get ; set; }
-
-		/// <summary>
 		/// Name
 		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
 
 		/// <summary>
-		/// Name of the Template the Inspection was created from
+		/// Checklist Template ID from which this Checklist was created
 		/// </summary>
-		[JsonProperty("list_template_name")]	public  string ListTemplateName { get ; set; }
+		[JsonProperty("list_template_id")]	public  int? ListTemplateId { get ; set; }
 
 		/// <summary>
-		/// Description
+		/// Current name of the Checklist Template from which this Checklist was created
 		/// </summary>
-		[JsonProperty("description")]	public  string Description { get ; set; }
-
-		/// <summary>
-		/// Users on the Inspection distribution list
-		/// </summary>
-		[JsonProperty("distribution_members")]	public  DistributionMembers[] DistributionMembers { get ; set; }
-
-		/// <summary>
-		/// Timestamp indicating when the Inspection is due
-		/// </summary>
-		[JsonProperty("due_at")]	public  DateTimeOffset? DueAt { get ; set; }
+		[JsonProperty("list_template_name")]	public  int? ListTemplateName { get ; set; }
 
 		/// <summary>
 		/// Number
@@ -51,13 +36,10 @@ namespace MAD.API.Procore.Models {
 		/// </summary>
 		[JsonProperty("status")]	public  string Status { get ; set; }
 
-		/// <summary>
-		/// Date that the inspection was performed
-		/// </summary>
-		[JsonProperty("inspection_date")]	public  string InspectionDate { get ; set; }
+		[JsonProperty("location")]	public  Location Location { get ; set; }
 
 		/// <summary>
-		/// Timestamp of inspection creation
+		/// Timestamp of creation
 		/// </summary>
 		[JsonProperty("created_at")]	public  DateTimeOffset CreatedAt { get ; set; }
 
@@ -72,70 +54,64 @@ namespace MAD.API.Procore.Models {
 		[JsonProperty("closed_at")]	public  DateTimeOffset? ClosedAt { get ; set; }
 
 		/// <summary>
-		/// Checklist Item count
+		/// Description
 		/// </summary>
-		[JsonProperty("item_count")]	public  int? ItemCount { get ; set; }
+		[JsonProperty("description")]	public  string Description { get ; set; }
 
 		/// <summary>
-		/// (Deprecated) Use `conforming_item_count`
+		/// Indicates whether this Checklist has been deleted
 		/// </summary>
-		[JsonProperty("yes_item_count")]	public  int? YesItemCount { get ; set; }
+		[JsonProperty("deleted")]	public  bool Deleted { get ; set; }
 
 		/// <summary>
-		/// Checklist personal status
+		/// Timestamp indicating when the Inspection is due
 		/// </summary>
-		[JsonProperty("personal")]	public  bool Personal { get ; set; }
+		[JsonProperty("due_at")]	public  DateTimeOffset? DueAt { get ; set; }
 
 		/// <summary>
-		/// (Deprecated) Use `item_count`
+		/// Date that the inspection was performed
 		/// </summary>
-		[JsonProperty("item_total")]	public  int? ItemTotal { get ; set; }
+		[JsonProperty("inspection_date")]	public  string InspectionDate { get ; set; }
+
+		[JsonProperty("inspection_type")]	public  InspectionType InspectionType { get ; set; }
 
 		/// <summary>
-		/// Count of Checklist Items with a status of `yes`
+		/// Indicates whether this Checklist is private
 		/// </summary>
-		[JsonProperty("conforming_item_count")]	public  int? ConformingItemCount { get ; set; }
-
-		/// <summary>
-		/// Count of Checklist Items with a status of `no`
-		/// </summary>
-		[JsonProperty("deficient_item_count")]	public  int? DeficientItemCount { get ; set; }
-
-		/// <summary>
-		/// Count of Checklist Items with a status of `n/a`
-		/// </summary>
-		[JsonProperty("na_item_count")]	public  int? NaItemCount { get ; set; }
-
-		/// <summary>
-		/// Number of Checklist Items with a status of `neutral`
-		/// </summary>
-		[JsonProperty("neutral_item_count")]	public  int? NeutralItemCount { get ; set; }
-
-		/// <summary>
-		/// Count of Checklist Items that have not been inspected
-		/// </summary>
-		[JsonProperty("not_inspected_item_count")]	public  int? NotInspectedItemCount { get ; set; }
-
-		/// <summary>
-		/// Array of Drawing IDs
-		/// </summary>
-		[JsonProperty("drawing_ids")]	public  DrawingIds[] DrawingIds { get ; set; }
-
-		/// <summary>
-		/// Array of Current Drawing Revision IDs
-		/// </summary>
-		[JsonProperty("current_drawing_revision_ids")]	public  CurrentDrawingRevisionIds[] CurrentDrawingRevisionIds { get ; set; }
-
-		/// <summary>
-		/// Checklist attachments
-		/// </summary>
-		[JsonProperty("attachments")]	public  Attachments[] Attachments { get ; set; }
+		[JsonProperty("private")]	public  bool Private { get ; set; }
 
 		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
 
 		[JsonProperty("closed_by")]	public  ClosedBy ClosedBy { get ; set; }
 
-		[JsonProperty("location")]	public  Location Location { get ; set; }
+		/// <summary>
+		/// Vendor responsible for the work being inspected
+		/// </summary>
+		[JsonProperty("responsible_contractor")]	public  ResponsibleContractor ResponsibleContractor { get ; set; }
+
+		[JsonProperty("point_of_contact")]	public  PointOfContact PointOfContact { get ; set; }
+
+		[JsonProperty("trade")]	public  Trade Trade { get ; set; }
+
+		/// <summary>
+		/// Inspectors
+		/// </summary>
+		[JsonProperty("inspectors")]	public  Inspectors[] Inspectors { get ; set; }
+
+		/// <summary>
+		/// Distribution Members
+		/// </summary>
+		[JsonProperty("distribution_members")]	public  DistributionMembers[] DistributionMembers { get ; set; }
+
+		/// <summary>
+		/// Checklist Signature Requests
+		/// </summary>
+		[JsonProperty("signature_requests")]	public  ChecklistSignatureRequest[] SignatureRequests { get ; set; }
+
+		/// <summary>
+		/// Managed Equipment ID
+		/// </summary>
+		[JsonProperty("managed_equipment_id")]	public  int? ManagedEquipmentId { get ; set; }
 
 		/// <summary>
 		/// Specification Section
@@ -143,22 +119,48 @@ namespace MAD.API.Procore.Models {
 		[JsonProperty("specification_section")]	public  SpecificationSection SpecificationSection { get ; set; }
 
 		/// <summary>
-		/// Checklist signature requests
+		/// Attachments
 		/// </summary>
-		[JsonProperty("signature_requests")]	public  ChecklistSignatureRequest[] SignatureRequests { get ; set; }
-
-		[JsonProperty("trade")]	public  Trade Trade { get ; set; }
+		[JsonProperty("attachments")]	public  ChecklistInspectionAttachment[] Attachments { get ; set; }
 
 		/// <summary>
-		/// Users that will be performing the inspection
+		/// Number of Checklist Items with a status of `yes`
 		/// </summary>
-		[JsonProperty("inspectors")]	public  Inspectors[] Inspectors { get ; set; }
+		[JsonProperty("conforming_item_count")]	public  int? ConformingItemCount { get ; set; }
 
 		/// <summary>
-		/// Vendor responsible for the work being inspected
+		/// Number of Checklist Items with a status of `no`
 		/// </summary>
-		[JsonProperty("responsible_contractor")]	public  ResponsibleContractor ResponsibleContractor { get ; set; }
+		[JsonProperty("deficient_item_count")]	public  int? DeficientItemCount { get ; set; }
 
-		[JsonProperty("responsible_party")]	public  ResponsibleParty ResponsibleParty { get ; set; }
+		/// <summary>
+		/// Number of Checklist Items with a status of `n/a`
+		/// </summary>
+		[JsonProperty("not_applicable_item_count")]	public  int? NotApplicableItemCount { get ; set; }
+
+		/// <summary>
+		/// Number of Checklist Items with a status of `neutral`
+		/// </summary>
+		[JsonProperty("neutral_item_count")]	public  int? NeutralItemCount { get ; set; }
+
+		/// <summary>
+		/// Number of Checklist Items that have been inspected
+		/// </summary>
+		[JsonProperty("inspected_item_count")]	public  int? InspectedItemCount { get ; set; }
+
+		/// <summary>
+		/// Number of Observations from this Checklist
+		/// </summary>
+		[JsonProperty("observations_count")]	public  int? ObservationsCount { get ; set; }
+
+		/// <summary>
+		/// Number of closed Observations pertaining to the Checklist
+		/// </summary>
+		[JsonProperty("closed_observations_count")]	public  int? ClosedObservationsCount { get ; set; }
+
+		/// <summary>
+		/// Number of Checklist Items within the Checklist
+		/// </summary>
+		[JsonProperty("item_count")]	public  int? ItemCount { get ; set; }
 	}
 }
