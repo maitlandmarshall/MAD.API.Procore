@@ -4,11 +4,51 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MAD.API.Procore.GenUI"
+        xmlns:endpoints="clr-namespace:MAD.API.Procore.GenUI.Endpoints"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Button Width="400" Height="30" Click="Button_Click">Generate</Button>
+        <TextBox Text="{Binding Code}"
+                 Grid.Column="1"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Text="{Binding SearchText}"/>
+
+            <TreeView ItemsSource="{Binding Endpoints}" 
+                      SelectedItemChanged="TreeView_SelectedItemChanged"
+                      Grid.Row="1">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type local:EndpointGroup}"
+                                          ItemsSource="{Binding Endpoints}">
+
+                        <Label Content="{Binding Group}"/>
+
+                    </HierarchicalDataTemplate>
+
+                    <DataTemplate DataType="{x:Type endpoints:Endpoint}">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Verb}"/>
+                            <Label Content=" - "/>
+                            <Label Content="{Binding Path}"/>
+                        </StackPanel>
+
+                    </DataTemplate>
+
+                </TreeView.Resources>
+            </TreeView>
+        </Grid>
+
+        
 
     </Grid>
 </Window>
