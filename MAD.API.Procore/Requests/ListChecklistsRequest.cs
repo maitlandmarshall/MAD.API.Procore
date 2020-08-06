@@ -12,7 +12,7 @@ namespace MAD.API.Procore.Requests {
 		/// <summary>
 		/// Project ID
 		/// </summary>
-		[RequestParameter("project_id")]	public  long? ProjectId { get ; set; }
+		[RequestParameter("project_id")]	public  long ProjectId { get ; set; }
 
 		/// <summary>
 		/// If 'recycle' show deleted Checklists.
@@ -42,7 +42,7 @@ namespace MAD.API.Procore.Requests {
 		/// <summary>
 		/// Filters by specific location (Note: Use *either* this or location_id_with_sublocations, but not both)
 		/// </summary>
-		[RequestParameter("filters[location_id]")]	public  long LocationId { get ; set; }
+		[RequestParameter("filters[location_id]")]	public  long? LocationId { get ; set; }
 
 		/// <summary>
 		/// Array of Specification Section IDs. Return item(s) associated to the specified Specification Section IDs.
@@ -57,12 +57,12 @@ namespace MAD.API.Procore.Requests {
 		/// <summary>
 		/// Return item(s) with the specified statuses
 		/// </summary>
-		[RequestParameter("filters[status]")]	public  long Status { get ; set; }
+		[RequestParameter("filters[status]")]	public  long? Status { get ; set; }
 
 		/// <summary>
 		/// Trade ID
 		/// </summary>
-		[RequestParameter("filters[trade_id]")]	public  long TradeId { get ; set; }
+		[RequestParameter("filters[trade_id]")]	public  long? TradeId { get ; set; }
 
 		/// <summary>
 		/// Search query

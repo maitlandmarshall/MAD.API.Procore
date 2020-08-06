@@ -15,5 +15,7 @@ namespace MAD.API.Procore.Models {
 		/// Company name
 		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
+
+		[JsonProperty("is_active")] public bool IsActive { get; set; }
 	}
 }

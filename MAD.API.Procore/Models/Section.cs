@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
-	public class Items {
+	public class Section {
 
 		/// <summary>
 		/// ID
@@ -17,18 +17,13 @@ namespace MAD.API.Procore.Models {
 		[JsonProperty("name")]	public  string Name { get ; set; }
 
 		/// <summary>
-		/// Status
-		/// </summary>
-		[JsonProperty("status")]	public  string Status { get ; set; }
-
-		/// <summary>
-		/// Checklist Section ID
-		/// </summary>
-		[JsonProperty("section_id")]	public  int? SectionId { get ; set; }
-
-		/// <summary>
 		/// Position
 		/// </summary>
 		[JsonProperty("position")]	public  int? Position { get ; set; }
+
+		/// <summary>
+		/// Checklist Items
+		/// </summary>
+		[JsonProperty("items")]	public  List<Item> Items { get ; set; }
 	}
 }

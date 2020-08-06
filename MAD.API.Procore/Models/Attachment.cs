@@ -5,20 +5,18 @@ using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
 	public class Attachment {
+		[JsonProperty("id")] public int Id { get; set; }
 
 		/// <summary>
-		/// ID
+		/// Use :name, :filename to be deprecated
 		/// </summary>
-		[JsonProperty("id")]	public  int Id { get ; set; }
+		[JsonProperty("name")] public string Name { get; set; }
+
+		[JsonProperty("url")] public string Url { get; set; }
 
 		/// <summary>
-		/// URL
+		/// :filename to be deprecated, use :name
 		/// </summary>
-		[JsonProperty("url")]	public  string Url { get ; set; }
-
-		/// <summary>
-		/// Filename
-		/// </summary>
-		[JsonProperty("filename")]	public  string Filename { get ; set; }
+		[JsonProperty("filename")] public string Filename { get; set; }
 	}
 }

@@ -1,9 +1,11 @@
 ﻿using MAD.API.Procore.Requests;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MAD.API.Procore
@@ -13,13 +15,18 @@ namespace MAD.API.Procore
         private readonly HttpClient httpClient;
         private readonly ProcoreApiClientOptions options;
         private readonly ProcoreRequestUriQuerySegmentFactory querySegmentFactory;
+        private readonly OAuthTokenExchange tokenExchange;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1);
 
-        internal ProcoreApiClient(HttpClient httpClient, ProcoreApiClientOptions options, ProcoreRequestUriQuerySegmentFactory querySegmentFactory)
+        internal ProcoreApiClient(HttpClient httpClient, ProcoreApiClientOptions options, ProcoreRequestUriQuerySegmentFactory querySegmentFactory, OAuthTokenExchange tokenExchange)
         {
             this.httpClient = httpClient;
             this.options = options;
             this.querySegmentFactory = querySegmentFactory;
+            this.tokenExchange = tokenExchange;
         }
+
+        public event EventHandler<ApiClientOptionsChangedEventArgs> OptionsChanged;
 
         public async Task<ProcoreResponse<TModel>> GetResponseAsync<TModel>(ProcoreRequest<TModel> request)
         {
@@ -28,16 +35,28 @@ namespace MAD.API.Procore
 
             HttpResponseMessage httpResponse = await this.httpClient.GetAsync(query);
 
-            if (!httpResponse.IsSuccessStatusCode)
-            {
-                throw new HttpRequestException(httpResponse.ReasonPhrase);
-            }
-
             using Stream stream = await httpResponse.Content.ReadAsStreamAsync();
             using StreamReader sr = new StreamReader(stream);
             using JsonTextReader jr = new JsonTextReader(sr);
 
             JsonSerializer jsonSerializer = new JsonSerializer();
+
+            if (!httpResponse.IsSuccessStatusCode)
+            {
+                string error = await sr.ReadToEndAsync();
+
+                if (httpResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized
+                    && error.Contains("refresh token")
+                    && !string.IsNullOrEmpty(this.options.RefreshToken))
+                {
+                    await this.UseRefreshToken();
+
+                    return await this.GetResponseAsync<TModel>(request);
+                }
+
+                throw new ProcoreApiException(httpResponse.ReasonPhrase, error);
+            }
+
             TModel result = jsonSerializer.Deserialize<TModel>(jr);
 
             ProcoreResponse<TModel> procoreResponse = new ProcoreResponse<TModel>(this)
@@ -47,6 +66,31 @@ namespace MAD.API.Procore
             };
 
             return procoreResponse;
+        }
+
+        private async Task UseRefreshToken()
+        {
+            bool isRefreshing = semaphore.CurrentCount == 0;
+            await semaphore.WaitAsync();
+
+            try
+            {
+                if (isRefreshing)
+                    return;
+
+                OAuthTokenExchange.OAuthTokenResponse newToken = await this.tokenExchange.ExchangeRefreshToken(this.options, this.httpClient);
+
+                this.options.AccessToken = newToken.AccessToken;
+                this.options.RefreshToken = newToken.RefreshToken;
+
+                this.httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", this.options.AccessToken);
+
+                this.OptionsChanged?.Invoke(this, new ApiClientOptionsChangedEventArgs(this.options));
+            }
+            finally
+            {
+                semaphore.Release();
+            }
         }
     }
 }

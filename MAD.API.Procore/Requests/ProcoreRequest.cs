@@ -7,7 +7,7 @@ namespace MAD.API.Procore.Requests
         public abstract string Resource { get; }
 
         [RequestParameter("per_page")]
-        public int PerPage { get; } = Constants.MaxResultsPerPage;
+        public int PerPage { get; set; } = Constants.MaxResultsPerPage;
 
         [RequestParameter("page")]
         public int Page { get; set; } = 1;

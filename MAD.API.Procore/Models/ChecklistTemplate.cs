@@ -55,11 +55,11 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// Attachments
 		/// </summary>
-		[JsonProperty("attachments")]	public  Attachments[] Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
 
 		/// <summary>
 		/// Checklist Sections
 		/// </summary>
-		[JsonProperty("sections")]	public  Sections[] Sections { get ; set; }
+		[JsonProperty("sections")]	public  List<Section> Sections { get ; set; }
 	}
 }

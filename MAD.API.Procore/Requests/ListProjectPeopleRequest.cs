@@ -17,17 +17,17 @@ namespace MAD.API.Procore.Requests {
 		/// <summary>
 		/// Filter by is_employee value.
 		/// </summary>
-		[RequestParameter("filters[is_employee]")]	public  bool IsEmployee { get ; set; }
+		[RequestParameter("filters[is_employee]")]	public  bool? IsEmployee { get ; set; }
 
 		/// <summary>
 		/// Only return people who are reference users.
 		/// </summary>
-		[RequestParameter("filters[reference_users_only]")]	public  bool ReferenceUsersOnly { get ; set; }
+		[RequestParameter("filters[reference_users_only]")]	public  bool? ReferenceUsersOnly { get ; set; }
 
 		/// <summary>
 		/// Return people on the company not just the project. This option only works if the user has permission to create people in the project directory or permission to read from the company directory.
 		/// </summary>
-		[RequestParameter("filters[include_company_people]")]	public  bool IncludeCompanyPeople { get ; set; }
+		[RequestParameter("filters[include_company_people]")]	public  bool? IncludeCompanyPeople { get ; set; }
 
 		/// <summary>
 		/// Search query

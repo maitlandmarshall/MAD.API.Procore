@@ -82,7 +82,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// :filename to be deprecated, use :name
 		/// </summary>
-		[JsonProperty("attachments")]	public  Attachments[] Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  Attachment[] Attachments { get ; set; }
 
 		[JsonProperty("trade")]	public  Trade Trade { get ; set; }
 	}

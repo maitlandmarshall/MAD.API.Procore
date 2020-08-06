@@ -13,7 +13,7 @@ namespace MAD.API.Procore
             if (isSandbox)
                 return new Uri("https://sandbox.procore.com/vapid/");
             else
-                throw new NotImplementedException();
+                return new Uri("https://api.procore.com/vapid/");
         }
 
         public ProcoreApiClient Create(ProcoreApiClientOptions options)
@@ -30,7 +30,8 @@ namespace MAD.API.Procore
             return new ProcoreApiClient(
                 httpClient: httpClient,
                 options: options,
-                querySegmentFactory: new ProcoreRequestUriQuerySegmentFactory());
+                querySegmentFactory: new ProcoreRequestUriQuerySegmentFactory(),
+                tokenExchange: new OAuthTokenExchange());
         }
     }
 }
