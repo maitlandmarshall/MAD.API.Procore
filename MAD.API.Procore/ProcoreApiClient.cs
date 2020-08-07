@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -53,8 +54,19 @@ namespace MAD.API.Procore
 
                     return await this.GetResponseAsync<TModel>(request);
                 }
+                else if (httpResponse.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
+                {
+                    int unixTimeUntilRefresh = int.Parse(httpResponse.Headers.GetValues("X-Rate-Limit-Reset".ToLower()).First());
+                    var refreshDate = DateTimeOffset.FromUnixTimeSeconds(unixTimeUntilRefresh);
+                    var currentDate = DateTimeOffset.UtcNow;
 
-                throw new ProcoreApiException(httpResponse.ReasonPhrase, error);
+                    var waitSeconds = refreshDate - currentDate;
+                    await Task.Delay(waitSeconds);
+
+                    return await this.GetResponseAsync<TModel>(request);
+                }
+
+                throw new ProcoreApiException(httpResponse.ReasonPhrase, error, httpResponse.StatusCode);
             }
 
             TModel result = jsonSerializer.Deserialize<TModel>(jr);

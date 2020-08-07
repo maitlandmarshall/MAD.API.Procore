@@ -40,7 +40,7 @@ namespace MAD.API.Procore
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new ProcoreApiException(response.ReasonPhrase, accessTokenJson);
+                throw new ProcoreApiException(response.ReasonPhrase, accessTokenJson, response.StatusCode);
             }
 
             OAuthTokenResponse tokenResponse = JsonConvert.DeserializeObject<OAuthTokenResponse>(accessTokenJson);
