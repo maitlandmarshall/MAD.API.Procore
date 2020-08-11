@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
-	public class ListCompanyUsersRequest : ProcoreRequest<ArrayOfCompanyUsers> {
+	public class ListCompanyUsersRequest : ProcoreRequest<ArrayOfCompanyUser> {
 
 		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/users";}
 

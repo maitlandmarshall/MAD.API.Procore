@@ -66,7 +66,7 @@ namespace MAD.API.Procore.Gen
                                 arrayItemName = ClassNameFactory.Create(p);
                             }
 
-                            pm.Type = arrayItemName + "[]";
+                            pm.Type = $"List<{arrayItemName}>";
                         }
                         else
                         {

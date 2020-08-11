@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
-	public class DistributionMembers {
+	public class DistributionMember {
 
 		/// <summary>
 		/// ID

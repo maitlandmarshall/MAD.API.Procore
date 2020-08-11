@@ -57,10 +57,10 @@ namespace MAD.API.Procore
                 else if (httpResponse.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
                 {
                     int unixTimeUntilRefresh = int.Parse(httpResponse.Headers.GetValues("X-Rate-Limit-Reset".ToLower()).First());
-                    var refreshDate = DateTimeOffset.FromUnixTimeSeconds(unixTimeUntilRefresh);
-                    var currentDate = DateTimeOffset.UtcNow;
+                    DateTimeOffset refreshDate = DateTimeOffset.FromUnixTimeSeconds(unixTimeUntilRefresh);
+                    DateTimeOffset currentDate = DateTimeOffset.UtcNow;
 
-                    var waitSeconds = refreshDate - currentDate;
+                    TimeSpan waitSeconds = refreshDate - currentDate;
                     await Task.Delay(waitSeconds);
 
                     return await this.GetResponseAsync<TModel>(request);

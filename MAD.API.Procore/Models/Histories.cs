@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
-	public class Histories {
+	public class History {
 
 		/// <summary>
 		/// ID

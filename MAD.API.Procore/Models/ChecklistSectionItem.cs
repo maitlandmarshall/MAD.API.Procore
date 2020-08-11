@@ -49,17 +49,17 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// Observations created from the Checklist Item
 		/// </summary>
-		[JsonProperty("observations")]	public  Observations[] Observations { get ; set; }
+		[JsonProperty("observations")]	public  List<Observation> Observations { get ; set; }
 
 		/// <summary>
 		/// Item attachment histories
 		/// </summary>
-		[JsonProperty("attachment_histories")]	public  AttachmentHistories[] AttachmentHistories { get ; set; }
+		[JsonProperty("attachment_histories")]	public  List<AttachmentHistory> AttachmentHistories { get ; set; }
 
 		/// <summary>
 		/// Item histories
 		/// </summary>
-		[JsonProperty("histories")]	public  Histories[] Histories { get ; set; }
+		[JsonProperty("histories")]	public  List<History> Histories { get ; set; }
 
 		/// <summary>
 		/// Item Response
@@ -69,7 +69,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// Item comments
 		/// </summary>
-		[JsonProperty("comments")]	public  Comments[] Comments { get ; set; }
+		[JsonProperty("comments")]	public  List<Comment> Comments { get ; set; }
 
 		[JsonProperty("response")]	public  ChecklistResponse Response { get ; set; }
 

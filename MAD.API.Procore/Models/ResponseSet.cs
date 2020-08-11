@@ -16,6 +16,6 @@ namespace MAD.API.Procore.Models {
 		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
 
-		[JsonProperty("responses")]	public  ChecklistResponse[] Responses { get ; set; }
+		[JsonProperty("responses")]	public  List<ChecklistResponse> Responses { get ; set; }
 	}
 }

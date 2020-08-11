@@ -102,5 +102,42 @@ namespace MAD.API.Procore.Models {
 		/// Number of Attachments attached to the Incident
 		/// </summary>
 		[JsonProperty("attachments_count")]	public  int? AttachmentsCount { get ; set; }
+
+		/// <summary>
+		/// Attachments
+		/// </summary>
+		[JsonProperty("attachments")]	public  List<IncidentAttachment> Attachments { get ; set; }
+
+		[JsonProperty("distribution_members")]	public  List<DistributionMember> DistributionMembers { get ; set; }
+
+		/// <summary>
+		/// Environmentals
+		/// </summary>
+		[JsonProperty("environmentals")]	public  List<IncidentRecordBaseCompact> Environmentals { get ; set; }
+
+		/// <summary>
+		/// Injuries
+		/// </summary>
+		[JsonProperty("injuries")]	public  List<IncidentRecordBaseCompact> Injuries { get ; set; }
+
+		/// <summary>
+		/// NearMisses
+		/// </summary>
+		[JsonProperty("near_misses")]	public  List<IncidentRecordBaseCompact> NearMisses { get ; set; }
+
+		/// <summary>
+		/// PropertyDamages
+		/// </summary>
+		[JsonProperty("property_damages")]	public  List<IncidentRecordBaseCompact> PropertyDamages { get ; set; }
+
+		/// <summary>
+		/// WitnessStatements
+		/// </summary>
+		[JsonProperty("witness_statements")]	public  List<WitnessStatement> WitnessStatements { get ; set; }
+
+		/// <summary>
+		/// Actions
+		/// </summary>
+		[JsonProperty("actions")]	public  List<Action> Actions { get ; set; }
 	}
 }

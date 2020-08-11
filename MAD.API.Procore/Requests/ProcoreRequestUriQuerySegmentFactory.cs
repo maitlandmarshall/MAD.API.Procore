@@ -20,7 +20,18 @@ namespace MAD.API.Procore.Requests
                 if (rpValue is null)
                     continue;
 
-                yield return $"{attr.ParameterName}={rpValue}";
+                string rpValueString;
+
+                if (rpValue is bool)
+                {
+                    rpValueString = rpValue.ToString().ToLower();
+                }
+                else
+                {
+                    rpValueString = rpValue.ToString();
+                }
+
+                yield return $"{attr.ParameterName}={rpValueString}";
             }
         }
     }
