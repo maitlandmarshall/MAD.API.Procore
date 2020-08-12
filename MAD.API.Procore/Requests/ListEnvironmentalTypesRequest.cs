@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
-	public class ListEnvironmentalTypesRequest : ProcoreRequest<ArrayOfEnvironmentalTypes> {
+	public class ListEnvironmentalTypesRequest : ProcoreRequest<ArrayOfEnvironmentalType> {
 
 		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/incidents/environmental_types";}
 

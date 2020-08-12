@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
-	public class ListIncidentSeverityLevelsRequest : ProcoreRequest<ArrayOfIncidentSeverityLevels> {
+	public class ListIncidentSeverityLevelsRequest : ProcoreRequest<ArrayOfIncidentSeverityLevel> {
 
 		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/incidents/severity_levels";}
 

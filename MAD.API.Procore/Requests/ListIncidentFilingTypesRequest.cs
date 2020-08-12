@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
-	public class ListIncidentFilingTypesRequest : ProcoreRequest<ArrayOfIncidentFilingTypes> {
+	public class ListIncidentFilingTypesRequest : ProcoreRequest<ArrayOfIncidentFilingType> {
 
 		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/incidents/injury_filing_types";}
 

@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
-	public class ListBodyPartsRequest : ProcoreRequest<ArrayOfBodyParts> {
+	public class ListBodyPartsRequest : ProcoreRequest<ArrayOfBodyPart> {
 
 		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/incidents/body_parts";}
 
