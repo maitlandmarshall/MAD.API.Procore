@@ -4,12 +4,12 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
-	public class ListManpowerLogsRequestResult {
+	public class ManpowerLog {
 
 		/// <summary>
 		/// ID
 		/// </summary>
-		[JsonProperty("id")]	public  int Id { get ; set; }
+		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
 		/// Created at
@@ -82,7 +82,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// :filename to be deprecated, use :name
 		/// </summary>
-		[JsonProperty("attachments")]	public  Attachment[] Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
 
 		[JsonProperty("trade")]	public  Trade Trade { get ; set; }
 	}

@@ -9,7 +9,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// ID of the LOV Entry
 		/// </summary>
-		[JsonProperty("id")]	public  int Id { get ; set; }
+		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
 		/// Label of the LOV Entry

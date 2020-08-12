@@ -1,4 +1,5 @@
 ﻿using CSCodeGen;
+using Humanizer;
 using MAD.API.Procore.GenUI.Endpoints;
 using System;
 using System.Linq;
@@ -32,7 +33,16 @@ namespace MAD.API.Procore.Gen
                 switch (p.Type.Name)
                 {
                     case "integer":
-                        pm.Type = "int";
+                        if (pm.Name == "Id"
+                            || pm.Name.EndsWith("Id"))
+                        {
+                            pm.Type = "long";
+                        }
+                        else
+                        {
+                            pm.Type = "int";
+                        }
+
                         break;
                     case "boolean":
                         pm.Type = "bool";

@@ -9,7 +9,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// Trade ID
 		/// </summary>
-		[JsonProperty("id")]	public  int Id { get ; set; }
+		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
 		/// Trade name

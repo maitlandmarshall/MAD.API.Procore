@@ -9,7 +9,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// Location ID
 		/// </summary>
-		[JsonProperty("id")]	public  int Id { get ; set; }
+		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
 		/// Location name
@@ -24,7 +24,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// Location parent id
 		/// </summary>
-		[JsonProperty("parent_id")]	public  int? ParentId { get ; set; }
+		[JsonProperty("parent_id")]	public  long? ParentId { get ; set; }
 
 		/// <summary>
 		/// Timestamp of Location creation

@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
-	public class ListManpowerLogsRequest : ProcoreRequest<IEnumerable<ListManpowerLogsRequestResult>> {
+	public class ListManpowerLogsRequest : ProcoreRequest<IEnumerable<ManpowerLog>> {
 
 		public override string Resource { get => $"/vapid/projects/{this.ProjectId}/manpower_logs";}
 
