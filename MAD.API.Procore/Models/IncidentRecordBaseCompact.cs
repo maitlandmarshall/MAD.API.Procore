@@ -87,7 +87,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// Array of body parts affected by the affliction
 		/// </summary>
-		[JsonProperty("affected_body_parts")]	public  List<AffectedBodyPart> AffectedBodyParts { get ; set; }
+		[JsonProperty("affected_body_parts")]	public  List<string> AffectedBodyParts { get ; set; }
 
 		/// <summary>
 		/// DEPRECATED. Array of afflictions affecting the injured person. Currently this is limited to one.

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
 	public class Attachment {
-		[JsonProperty("id")] public int Id { get; set; }
+		[JsonProperty("id")] public long Id { get; set; }
 
 		/// <summary>
 		/// Use :name, :filename to be deprecated

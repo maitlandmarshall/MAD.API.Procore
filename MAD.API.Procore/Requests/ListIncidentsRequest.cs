@@ -42,7 +42,7 @@ namespace MAD.API.Procore.Requests {
 		/// <summary>
 		/// Return item(s) with the specified statuses
 		/// </summary>
-		[RequestParameter("filters[status]")]	public  long Status { get ; set; }
+		[RequestParameter("filters[status]")]	public  long? Status { get ; set; }
 
 		/// <summary>
 		/// Return item(s) with a specific Contributing Behavior ID
@@ -62,12 +62,12 @@ namespace MAD.API.Procore.Requests {
 		/// <summary>
 		/// Return item(s) where time of Incident occurrence is unknown
 		/// </summary>
-		[RequestParameter("filters[time_unknown]")]	public  bool TimeUnknown { get ; set; }
+		[RequestParameter("filters[time_unknown]")]	public  bool? TimeUnknown { get ; set; }
 
 		/// <summary>
 		/// Return item(s) that are recordable.
 		/// </summary>
-		[RequestParameter("filters[recordable]")]	public  bool Recordable { get ; set; }
+		[RequestParameter("filters[recordable]")]	public  bool? Recordable { get ; set; }
 
 		/// <summary>
 		/// Return item(s) containing query. Searchable fields include Incident title, Creator, Witness Statement, Incident Action description, Incident Action Type, Contributing Behavior, Contributing Condition, Hazard, and Location.

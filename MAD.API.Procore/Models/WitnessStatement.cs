@@ -48,6 +48,6 @@ namespace MAD.API.Procore.Models {
 		/// </summary>
 		[JsonProperty("updated_at")]	public  DateTimeOffset UpdatedAt { get ; set; }
 
-		[JsonProperty("witness")]	public  Witnes Witness { get ; set; }
+		[JsonProperty("witness")]	public  Witness Witness { get ; set; }
 	}
 }
