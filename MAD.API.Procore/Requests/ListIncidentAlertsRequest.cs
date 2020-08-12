@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
-	public class ListIncidentAlertsRequest : ProcoreRequest<IEnumerable<ArrayOfAlerts>> {
+	public class ListIncidentAlertsRequest : ProcoreRequest<IEnumerable<Alert>> {
 
 		public override string Resource { get => $"/vapid/projects/{this.ProjectId}/incidents/alerts";}
 
@@ -32,7 +32,7 @@ namespace MAD.API.Procore.Requests {
 		/// <summary>
 		/// Return item(s) with the specified Incident IDs
 		/// </summary>
-		[RequestParameter("filters[incident_id]")]	public  string[] IncidentIdFilter { get ; set; }
+		[RequestParameter("filters[incident_id]")]	public  string[] IncidentIds { get ; set; }
 
 		/// <summary>
 		/// Return item(s) with the specified Injury IDs
