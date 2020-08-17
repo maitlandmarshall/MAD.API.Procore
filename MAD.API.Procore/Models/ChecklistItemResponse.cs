@@ -42,7 +42,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// Response for an Open Ended Number Item
 		/// </summary>
-		public int? PayloadNumberValue
+		public decimal? PayloadNumberValue
         {
 			get => this.Payload?.NumberValue;
 			set

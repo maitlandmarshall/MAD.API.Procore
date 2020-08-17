@@ -14,7 +14,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// Response for an Open Ended Number Item
 		/// </summary>
-		[JsonProperty("number_value")]	public  int? NumberValue { get ; set; }
+		[JsonProperty("number_value")]	public  decimal? NumberValue { get ; set; }
 
 		/// <summary>
 		/// Response for an Open Ended Date Item

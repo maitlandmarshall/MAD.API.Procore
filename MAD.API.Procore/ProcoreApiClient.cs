@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace MAD.API.Procore
 {
@@ -46,6 +47,7 @@ namespace MAD.API.Procore
             {
                 string error = await sr.ReadToEndAsync();
 
+                // Has the access token expired? Use the refresh token to get a new one
                 if (httpResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized
                     && error.Contains("refresh token")
                     && !string.IsNullOrEmpty(this.options.RefreshToken))
@@ -54,6 +56,8 @@ namespace MAD.API.Procore
 
                     return await this.GetResponseAsync<TModel>(request);
                 }
+
+                // If there are too many requests, wait until the quota yields
                 else if (httpResponse.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
                 {
                     int unixTimeUntilRefresh = int.Parse(httpResponse.Headers.GetValues("X-Rate-Limit-Reset".ToLower()).First());
@@ -69,12 +73,25 @@ namespace MAD.API.Procore
                 throw new ProcoreApiException(httpResponse.ReasonPhrase, error, httpResponse.StatusCode);
             }
 
+            // Extract the last page from the response headers
+            int lastPage = 1;
+
+            if (httpResponse.Headers.TryGetValues("total", out IEnumerable<string> totalValues))
+            {
+                string totalString = totalValues.First();
+                int total = int.Parse(totalString);
+                float totalPages = (float)total / Constants.MaxResultsPerPage;
+
+                lastPage = Math.Max((int)Math.Ceiling(totalPages), 1);
+            }
+
             TModel result = jsonSerializer.Deserialize<TModel>(jr);
 
             ProcoreResponse<TModel> procoreResponse = new ProcoreResponse<TModel>(this)
             {
                 Result = result,
-                Request = request
+                Request = request,
+                IsLastPage = request.Page == lastPage
             };
 
             return procoreResponse;
