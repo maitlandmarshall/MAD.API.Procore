@@ -64,8 +64,10 @@ namespace MAD.API.Procore
                     DateTimeOffset refreshDate = DateTimeOffset.FromUnixTimeSeconds(unixTimeUntilRefresh);
                     DateTimeOffset currentDate = DateTimeOffset.UtcNow;
 
-                    TimeSpan waitSeconds = refreshDate - currentDate;
-                    await Task.Delay(waitSeconds);
+                    TimeSpan timeDifference = refreshDate - currentDate;
+                    int millisecondsToWait = (int)Math.Max(timeDifference.TotalMilliseconds, 0);
+
+                    await Task.Delay(millisecondsToWait);
 
                     return await this.GetResponseAsync<TModel>(request);
                 }

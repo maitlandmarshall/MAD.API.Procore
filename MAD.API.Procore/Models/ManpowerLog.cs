@@ -85,5 +85,7 @@ namespace MAD.API.Procore.Models {
 		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
 
 		[JsonProperty("trade")]	public  Trade Trade { get ; set; }
+
+		public int ProjectId { get; set; }
 	}
 }
