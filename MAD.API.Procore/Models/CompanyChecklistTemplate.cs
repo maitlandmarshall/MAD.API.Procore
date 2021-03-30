@@ -9,7 +9,7 @@ namespace MAD.API.Procore.Models {
 		/// <summary>
 		/// ID
 		/// </summary>
-		[JsonProperty("id")]	public  int Id { get ; set; }
+		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
 		/// Name
@@ -34,5 +34,24 @@ namespace MAD.API.Procore.Models {
 		/// Timestamp of last update
 		/// </summary>
 		[JsonProperty("updated_at")]	public  DateTimeOffset UpdatedAt { get ; set; }
+
+		/// <summary>
+		/// The ID of the associated Alternative Response Set (if null, the default response set is being used)
+		/// </summary>
+		[JsonProperty("alternative_response_set_id")]	public  long? AlternativeResponseSetId { get ; set; }
+
+		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+
+		/// <summary>
+		/// Attachments
+		/// </summary>
+		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+
+		[JsonProperty("response_set")]	public  ChecklistDefaultResponseSet ResponseSet { get ; set; }
+
+		/// <summary>
+		/// Sections
+		/// </summary>
+		[JsonProperty("sections")]	public  List<Section> Sections { get ; set; }
 	}
 }

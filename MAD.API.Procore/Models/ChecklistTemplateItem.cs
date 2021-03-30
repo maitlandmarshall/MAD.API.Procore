@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Models {
-	public class InspectionType {
+	public class ChecklistTemplateItem {
 
 		/// <summary>
 		/// ID
@@ -17,13 +17,15 @@ namespace MAD.API.Procore.Models {
 		[JsonProperty("name")]	public  string Name { get ; set; }
 
 		/// <summary>
-		/// Timestamp of creation
+		/// Checklist Template Section ID
 		/// </summary>
-		[JsonProperty("created_at")]	public  DateTimeOffset CreatedAt { get ; set; }
+		[JsonProperty("section_id")]	public  long? SectionId { get ; set; }
 
 		/// <summary>
-		/// Timestamp of last update
+		/// Position
 		/// </summary>
-		[JsonProperty("updated_at")]	public  DateTimeOffset UpdatedAt { get ; set; }
+		[JsonProperty("position")]	public  int? Position { get ; set; }
+
+		[JsonProperty("response_set")]	public  ResponseSet ResponseSet { get ; set; }
 	}
 }
