@@ -47,8 +47,10 @@ namespace CSCodeGen
 
             if (!string.IsNullOrEmpty(propertyModel.Comment))
             {
+                var comment = propertyModel.Comment.Replace("\n", $"\n{tabs}/// ");
+
                 sb.AppendLine($"{tabs}/// <summary>");
-                sb.AppendLine($"{tabs}/// {propertyModel.Comment}");
+                sb.AppendLine($"{tabs}/// {comment}");
                 sb.AppendLine($"{tabs}/// </summary>");
             }
 

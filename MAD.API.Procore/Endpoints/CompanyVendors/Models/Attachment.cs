@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-namespace MAD.API.Procore.Models {
+namespace MAD.API.Procore.Endpoints.CompanyVendors.Models {
 	public class Attachment {
 
 		/// <summary>
@@ -15,11 +15,6 @@ namespace MAD.API.Procore.Models {
 		/// URL
 		/// </summary>
 		[JsonProperty("url")]	public  string Url { get ; set; }
-
-		/// <summary>
-		/// Use :name, :filename to be deprecated
-		/// </summary>
-		[JsonProperty("name")] public string Name { get; set; }
 
 		/// <summary>
 		/// Filename

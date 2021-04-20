@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAD.API.Procore.GenUI", "MA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSCodeGen", "CSCodeGen\CSCodeGen.csproj", "{F5E307AE-94B3-42EE-B0E9-5EF29CAE74C7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{329AA0B8-2377-464C-9DF9-138FA946A65E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{1E8E73A9-1427-4A4C-93AB-C3EA099C0415} = {329AA0B8-2377-464C-9DF9-138FA946A65E}
 		{E684B514-E432-4380-8385-4F18397FA8EE} = {F191F08C-E942-40CA-94A7-42533922D72C}
 		{F5E307AE-94B3-42EE-B0E9-5EF29CAE74C7} = {F191F08C-E942-40CA-94A7-42533922D72C}
 	EndGlobalSection

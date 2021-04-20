@@ -11,7 +11,7 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
     {
         public static IEnumerable<ClassModel> Generate(Endpoint endpoint)
         {
-            EndpointResponse okResponse = endpoint.Responses.FirstOrDefault(y => y.Status == 200);
+            EndpointResponse okResponse = endpoint.Responses.FirstOrDefault(y => y.Status >= 200 && y.Status <= 299);
             IEnumerable<Schema> schemas = GetNestedSchemas(okResponse.Schema);
 
             IEnumerable<ClassModel> schemaClassModels = GenerateModels(schemas)
@@ -39,6 +39,8 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                 }
             };
 
+            var requestNamespace = $"MAD.API.Procore.Endpoints.{endpoint.Group.CleanForCode()}";
+
             ClassModel endpointRequestModel = new ClassModel
             {
                 Name = $"{endpoint.Summary.CleanForCode()}Request",
@@ -51,9 +53,11 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                     "Newtonsoft.Json",
                     "Newtonsoft.Json.Linq",
                     "System.Collections.Generic",
-                    "MAD.API.Procore.Models"
+                    $"{requestNamespace}.Models",
+                    "MAD.API.Procore",
+                    "MAD.API.Procore.Requests"
                 },
-                Namespace = "MAD.API.Procore.Requests"
+                Namespace = requestNamespace
             };
 
             endpointRequestModel.Properties.Add(new PropertyModel
@@ -130,7 +134,9 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                     if (className.ToLower().Contains("customfield"))
                         continue;
 
-                    ClassModel gen = ModelCSGen.Generate(s, "MAD.API.Procore.Models", className); ;
+                    var ns = s.Endpoint.Group.CleanForCode();
+
+                    ClassModel gen = ModelCSGen.Generate(s, $"MAD.API.Procore.Endpoints.{ns}.Models", className); ;
 
                     if (gen is null)
                         continue;

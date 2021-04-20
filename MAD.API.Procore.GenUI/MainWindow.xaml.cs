@@ -64,7 +64,8 @@ namespace MAD.API.Procore.GenUI
                     grp.Name :
                     grp.Name.Replace(" ", "-").ToLower();
 
-                IEnumerable<Endpoint> endpoints = await RemoteJsonFile.GetJsonFile<IEnumerable<Endpoint>>(gelatoGroup);
+                var definition = await RemoteJsonFile.GetJsonFile<ApiDefinition>(gelatoGroup);
+                var endpoints = definition.Versions.First(y => y.Version == 1).Endpoints;
 
                 foreach (var ep in endpoints)
                 {
@@ -134,23 +135,17 @@ namespace MAD.API.Procore.GenUI
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string baseDirectory = dialog.SelectedPath;
+                var baseDirectory = dialog.SelectedPath;
 
                 foreach (var f in filesToGenerate)
                 {
-                    string subDir;
+                    var ns = f.Namespace;
+                    ns = ns.Replace("MAD.API.Procore.", "");
+                    ns = ns.Replace(".", "\\");
 
-                    if (f.BaseClass?.Name == "ProcoreRequest")
-                    {
-                        subDir = "Requests";
-                    }
-                    else
-                    {
-                        subDir = "Models";
-                    }
+                    var fullFilePath = Path.Combine(baseDirectory, ns, $"{f.Name}.cs");
 
-                    string fullFilePath = Path.Combine(baseDirectory, subDir, $"{f.Name}.cs");
-
+                    Directory.CreateDirectory(Path.GetDirectoryName(fullFilePath));
                     await File.WriteAllTextAsync(fullFilePath, ClassSerialization.Serialize(f));
                 }
             }

@@ -11,9 +11,9 @@ namespace MAD.API.Procore
         private Uri GetBaseAddress(bool isSandbox)
         {
             if (isSandbox)
-                return new Uri("https://sandbox.procore.com/vapid/");
+                return new Uri("https://sandbox.procore.com/rest/v1.0/");
             else
-                return new Uri("https://api.procore.com/vapid/");
+                return new Uri("https://api.procore.com/rest/v1.0/");
         }
 
         public ProcoreApiClient Create(ProcoreApiClientOptions options)

@@ -26,7 +26,7 @@ namespace MAD.API.Procore.Gen
             }
             else
             {
-                json = await Globals.HttpClient.GetStringAsync(GetRelativeUri($"master/{fileName}"));
+                json = await Globals.HttpClient.GetStringAsync(GetRelativeUri(fileName));
 
                 Directory.CreateDirectory(Path.GetDirectoryName(filePath));
                 await File.WriteAllTextAsync(filePath, json);
