@@ -7,7 +7,7 @@ using MAD.API.Procore.Endpoints.CompanyVendors.Models;
 using MAD.API.Procore;
 using MAD.API.Procore.Requests;
 namespace MAD.API.Procore.Endpoints.CompanyVendors {
-	public class ListCompanyVendorsRequest : ProcoreRequest<IEnumerable<ArrayOfCompanyVendor>> {
+	public class ListCompanyVendorsRequest : ProcoreRequest<IEnumerable<CompanyVendor>> {
 
 		public override string Resource { get => $"/vendors";}
 

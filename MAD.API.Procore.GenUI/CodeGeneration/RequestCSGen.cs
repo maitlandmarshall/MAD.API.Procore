@@ -124,8 +124,15 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
             int i = 0;
             foreach (Schema s in schemas)
             {
+                var sItems = s.Items as Schema;
+
                 try
                 {
+                    if (s.Type.Name == "array"
+                        && sItems.Type.Name != "object"
+                        && sItems.Type.Name != "array")
+                        continue;
+
                     string className = ClassNameFactory.Create(s);
 
                     if (className is null)

@@ -67,9 +67,9 @@ namespace MAD.API.Procore.Gen
                         pm.Type = objClassName;
                         break;
                     case "array":
-                        if (p.Items != null)
+                        if (p.Items is Schema itemsSchema)
                         {
-                            string arrayItemName = ClassNameFactory.Create(p.Items as Schema);
+                            string arrayItemName = ClassNameFactory.Create(itemsSchema);
 
                             if (string.IsNullOrEmpty(arrayItemName))
                             {
@@ -130,11 +130,8 @@ namespace MAD.API.Procore.Gen
                 }
                 else
                 {
-                    string arrayItemClass = ClassNameFactory.Create(schema.Items as Schema)
-                        ?? (schema.Items as Schema).Type?.Name.ToString().CleanForCode();
-
-                    if (arrayItemClass == "Integer")
-                        arrayItemClass = "long";
+                    var itemsSchema = schema.Items as Schema;
+                    var arrayItemClass = ClassNameFactory.Create(itemsSchema);
 
                     if (arrayItemClass.Contains("null"))
                         return null;

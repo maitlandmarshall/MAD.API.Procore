@@ -4,12 +4,12 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.CompanyVendors.Models {
-	public class ArrayOfCompanyVendor {
+	public class CompanyVendor {
 
 		/// <summary>
 		/// Array of Project IDs
 		/// </summary>
-		[JsonProperty("project_ids")]	public  List<ProjectId> ProjectIds { get ; set; }
+		[JsonProperty("project_ids")]	public  List<long> ProjectIds { get ; set; }
 
 		[JsonProperty("standard_cost_codes")]	public  List<StandardCostCode> StandardCostCodes { get ; set; }
 

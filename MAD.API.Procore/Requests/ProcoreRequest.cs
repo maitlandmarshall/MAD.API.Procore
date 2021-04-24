@@ -13,7 +13,7 @@ namespace MAD.API.Procore.Requests
         public int Page { get; set; } = 1;
     }
 
-    public abstract class ProcoreRequest<TModel> : ProcoreRequest
+    public abstract class ProcoreRequest<TResponse> : ProcoreRequest
     {
         
     }

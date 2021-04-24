@@ -30,10 +30,10 @@ namespace MAD.API.Procore
 
         public event EventHandler<ApiClientOptionsChangedEventArgs> OptionsChanged;
 
-        public async Task<ProcoreResponse<TModel>> GetResponseAsync<TModel>(ProcoreRequest<TModel> request)
+        public async Task<ProcoreResponse<TResponse>> GetResponseAsync<TResponse>(ProcoreRequest<TResponse> request)
         {
             IEnumerable<string> queryParams = this.querySegmentFactory.Create(request);
-            string query = $"{request.Resource}?{string.Join("&", queryParams)}";
+            string query = $"{request.Resource.TrimStart('/')}?{string.Join("&", queryParams)}";
 
             HttpResponseMessage httpResponse = await this.httpClient.GetAsync(query);
 
@@ -54,7 +54,7 @@ namespace MAD.API.Procore
                 {
                     await this.UseRefreshToken();
 
-                    return await this.GetResponseAsync<TModel>(request);
+                    return await this.GetResponseAsync<TResponse>(request);
                 }
 
                 // If there are too many requests, wait until the quota yields
@@ -69,7 +69,7 @@ namespace MAD.API.Procore
 
                     await Task.Delay(millisecondsToWait);
 
-                    return await this.GetResponseAsync<TModel>(request);
+                    return await this.GetResponseAsync<TResponse>(request);
                 }
 
                 throw new ProcoreApiException(httpResponse.ReasonPhrase, error, httpResponse.StatusCode);
@@ -87,9 +87,9 @@ namespace MAD.API.Procore
                 lastPage = Math.Max((int)Math.Ceiling(totalPages), 1);
             }
 
-            TModel result = jsonSerializer.Deserialize<TModel>(jr);
+            TResponse result = jsonSerializer.Deserialize<TResponse>(jr);
 
-            ProcoreResponse<TModel> procoreResponse = new ProcoreResponse<TModel>(this)
+            ProcoreResponse<TResponse> procoreResponse = new ProcoreResponse<TResponse>(this)
             {
                 Result = result,
                 Request = request,
