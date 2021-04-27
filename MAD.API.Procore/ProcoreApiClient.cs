@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -35,7 +36,24 @@ namespace MAD.API.Procore
             IEnumerable<string> queryParams = this.querySegmentFactory.Create(request);
             string query = $"{request.Resource.TrimStart('/')}?{string.Join("&", queryParams)}";
 
-            HttpResponseMessage httpResponse = await this.httpClient.GetAsync(query);
+            HttpResponseMessage httpResponse;
+
+            if (request.HttpMethod == HttpMethod.Get)
+            {
+                httpResponse = await this.httpClient.GetAsync(query);
+            }
+            else if (request.HttpMethod == HttpMethod.Post)
+            {
+                httpResponse = await this.httpClient.PostAsync(query, new StringContent(request.Body));
+            }
+            else if (request.HttpMethod == HttpMethod.Patch)
+            {
+                httpResponse = await this.httpClient.PatchAsync(query, new StringContent(request.Body));
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
 
             using Stream stream = await httpResponse.Content.ReadAsStreamAsync();
             using StreamReader sr = new StreamReader(stream);

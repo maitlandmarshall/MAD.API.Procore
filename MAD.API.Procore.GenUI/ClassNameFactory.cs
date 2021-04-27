@@ -20,6 +20,9 @@ namespace MAD.API.Procore.Gen
                     case "integer":
                         itemType = "long";
                         break;
+                    case "string":
+                        itemType = "string";
+                        break;
                     default:
                         throw new NotSupportedException();
                 }

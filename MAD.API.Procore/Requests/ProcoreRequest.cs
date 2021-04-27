@@ -1,10 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http;
 
 namespace MAD.API.Procore.Requests
 {
     public abstract class ProcoreRequest
     {
         public abstract string Resource { get; }
+        public virtual HttpMethod HttpMethod { get; } = HttpMethod.Get;
+
+        /// <summary>
+		/// The HttpRequest Body
+		/// </summary>
+        public string Body { get; set; }
 
         [RequestParameter("per_page")]
         public int PerPage { get; set; } = Constants.MaxResultsPerPage;

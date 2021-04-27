@@ -3,7 +3,9 @@ using MAD.API.Procore.Gen;
 using MAD.API.Procore.GenUI.Endpoints;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 
 namespace MAD.API.Procore.GenUI.CodeGeneration
 {
@@ -67,6 +69,19 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                 Type = "string",
                 Override = true
             });
+
+            if (endpoint.Verb != "get")
+            {
+                endpointRequestModel.Usings.Add("System.Net.Http");
+                endpointRequestModel.Properties.Add(new PropertyModel
+                {
+                    Name = nameof(HttpMethod),
+                    Override = true,
+                    IsNullable = false,
+                    Type = nameof(HttpMethod),
+                    Getter = $"HttpMethod.{CultureInfo.CurrentCulture.TextInfo.ToTitleCase(endpoint.Verb)}"
+                });
+            }
 
             foreach (BaseParam pp in endpoint.PathParams)
             {
