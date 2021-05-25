@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListContributingConditionsRequest : ProcoreRequest<ArrayOfContributingConditions> {
 
-		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/contributing_conditions";}
+		public override string Resource { get => $"/companies/{this.CompanyId}/contributing_conditions";}
 
 		/// <summary>
 		/// Company ID

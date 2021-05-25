@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListBodyPartsRequest : ProcoreRequest<ArrayOfBodyPart> {
 
-		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/incidents/body_parts";}
+		public override string Resource { get => $"/companies/{this.CompanyId}/incidents/body_parts";}
 
 		/// <summary>
 		/// Company ID

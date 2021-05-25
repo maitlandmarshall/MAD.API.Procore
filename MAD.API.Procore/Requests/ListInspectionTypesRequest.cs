@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListInspectionTypesRequest : ProcoreRequest<ArrayOfInspectionTypes> {
 
-		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/inspection_types";}
+		public override string Resource { get => $"/companies/{this.CompanyId}/inspection_types";}
 
 		/// <summary>
 		/// Company ID

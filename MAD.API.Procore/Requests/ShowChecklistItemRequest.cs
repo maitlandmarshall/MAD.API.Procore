@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ShowChecklistItemRequest : ProcoreRequest<ChecklistSectionItem> {
 
-		public override string Resource { get => $"/vapid/checklist/lists/{this.ListId}/items/{this.Id}";}
+		public override string Resource { get => $"/checklist/lists/{this.ListId}/items/{this.Id}";}
 
 		/// <summary>
 		/// Checklist ID

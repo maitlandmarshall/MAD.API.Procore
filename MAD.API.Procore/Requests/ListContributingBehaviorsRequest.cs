@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListContributingBehaviorsRequest : ProcoreRequest<ArrayOfContributingBehaviors> {
 
-		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/contributing_behaviors";}
+		public override string Resource { get => $"/companies/{this.CompanyId}/contributing_behaviors";}
 
 		/// <summary>
 		/// Company ID

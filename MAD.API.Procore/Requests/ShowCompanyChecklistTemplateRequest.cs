@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ShowCompanyChecklistTemplateRequest : ProcoreRequest<ChecklistTemplate> {
 
-		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/checklist/list_templates/{this.ListTemplateId}";}
+		public override string Resource { get => $"/companies/{this.CompanyId}/checklist/list_templates/{this.ListTemplateId}";}
 
 		/// <summary>
 		/// Company Checklist Template ID

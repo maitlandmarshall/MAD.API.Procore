@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListHazardsRequest : ProcoreRequest<ArrayOfHazards> {
 
-		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/hazards";}
+		public override string Resource { get => $"/companies/{this.CompanyId}/hazards";}
 
 		/// <summary>
 		/// Company ID

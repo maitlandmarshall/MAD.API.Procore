@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListIncidentAlertsRequest : ProcoreRequest<IEnumerable<Alert>> {
 
-		public override string Resource { get => $"/vapid/projects/{this.ProjectId}/incidents/alerts";}
+		public override string Resource { get => $"/projects/{this.ProjectId}/incidents/alerts";}
 
 		/// <summary>
 		/// Project ID

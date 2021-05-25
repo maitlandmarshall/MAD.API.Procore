@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListProjectPeopleRequest : ProcoreRequest<ArrayOfProjectPeople> {
 
-		public override string Resource { get => $"/vapid/projects/{this.ProjectId}/people";}
+		public override string Resource { get => $"/projects/{this.ProjectId}/people";}
 
 		/// <summary>
 		/// ID of the project

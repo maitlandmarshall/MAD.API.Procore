@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListManpowerLogsRequest : ProcoreRequest<IEnumerable<ManpowerLog>> {
 
-		public override string Resource { get => $"/vapid/projects/{this.ProjectId}/manpower_logs";}
+		public override string Resource { get => $"/projects/{this.ProjectId}/manpower_logs";}
 
 		/// <summary>
 		/// Project ID

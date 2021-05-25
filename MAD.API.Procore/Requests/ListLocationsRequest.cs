@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListLocationsRequest : ProcoreRequest<ArrayOfLocations> {
 
-		public override string Resource { get => $"/vapid/locations";}
+		public override string Resource { get => $"/locations";}
 
 		/// <summary>
 		/// Project ID

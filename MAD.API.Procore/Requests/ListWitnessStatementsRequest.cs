@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListWitnessStatementsRequest : ProcoreRequest<IEnumerable<ListWitnessStatementsRequestResult>> {
 
-		public override string Resource { get => $"/vapid/projects/{this.ProjectId}/incidents/witness_statements";}
+		public override string Resource { get => $"/projects/{this.ProjectId}/incidents/witness_statements";}
 
 		/// <summary>
 		/// Project ID

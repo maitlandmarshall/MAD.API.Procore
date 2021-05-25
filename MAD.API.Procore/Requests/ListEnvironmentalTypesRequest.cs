@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListEnvironmentalTypesRequest : ProcoreRequest<ArrayOfEnvironmentalType> {
 
-		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/incidents/environmental_types";}
+		public override string Resource { get => $"/companies/{this.CompanyId}/incidents/environmental_types";}
 
 		/// <summary>
 		/// Company ID

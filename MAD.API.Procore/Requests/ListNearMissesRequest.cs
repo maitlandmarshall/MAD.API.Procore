@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListNearMissesRequest : ProcoreRequest<ListNearMissesRequestResult> {
 
-		public override string Resource { get => $"/vapid/projects/{this.ProjectId}/incidents/near_misses";}
+		public override string Resource { get => $"/projects/{this.ProjectId}/incidents/near_misses";}
 
 		/// <summary>
 		/// Project ID

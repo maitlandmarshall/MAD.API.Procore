@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListChecklistSignatureRequestsRequest : ProcoreRequest<ArrayOfChecklistSignatureRequests> {
 
-		public override string Resource { get => $"/vapid/checklist/lists/{this.ListId}/signature_requests";}
+		public override string Resource { get => $"/checklist/lists/{this.ListId}/signature_requests";}
 
 		/// <summary>
 		/// Checklist ID

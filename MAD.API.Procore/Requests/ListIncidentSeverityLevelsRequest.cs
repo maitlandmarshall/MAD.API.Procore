@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListIncidentSeverityLevelsRequest : ProcoreRequest<ArrayOfIncidentSeverityLevel> {
 
-		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/incidents/severity_levels";}
+		public override string Resource { get => $"/companies/{this.CompanyId}/incidents/severity_levels";}
 
 		/// <summary>
 		/// Company ID

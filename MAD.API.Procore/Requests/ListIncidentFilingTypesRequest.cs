@@ -7,7 +7,7 @@ using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
 	public class ListIncidentFilingTypesRequest : ProcoreRequest<ArrayOfIncidentFilingType> {
 
-		public override string Resource { get => $"/vapid/companies/{this.CompanyId}/incidents/injury_filing_types";}
+		public override string Resource { get => $"/companies/{this.CompanyId}/incidents/injury_filing_types";}
 
 		/// <summary>
 		/// Company ID
