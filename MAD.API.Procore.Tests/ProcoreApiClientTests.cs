@@ -15,7 +15,7 @@ namespace MAD.API.Procore.Tests
         {
             return new DefaultProcoreApiClientFactory().Create(new ProcoreApiClientOptions
             {
-                AccessToken = SandboxAccessToken,
+                RefreshToken = SandboxAccessToken,
                 IsSandbox = true
             });
         }

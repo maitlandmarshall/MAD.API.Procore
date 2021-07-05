@@ -86,6 +86,8 @@ namespace MAD.API.Procore.Models {
 
 		[JsonProperty("trade")]	public  Trade Trade { get ; set; }
 
+		[JsonProperty("custom_fields")] public JObject CustomFields { get; set; }
+
 		public int ProjectId { get; set; }
 	}
 }
