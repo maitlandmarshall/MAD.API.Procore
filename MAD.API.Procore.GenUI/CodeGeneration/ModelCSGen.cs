@@ -64,6 +64,11 @@ namespace MAD.API.Procore.Gen
                         if (objClassName.ToLower() == "customfields")
                             continue;
 
+                        if (objClassName.ToLower() == "customfield")
+                        {
+                            objClassName = "JObject";
+                        }
+
                         pm.Type = objClassName;
                         break;
                     case "array":

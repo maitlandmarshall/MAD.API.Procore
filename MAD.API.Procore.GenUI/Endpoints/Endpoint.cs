@@ -35,6 +35,9 @@ namespace MAD.API.Procore.GenUI.Endpoints
         [JsonProperty("query_params")]
         public List<BaseParam> QueryParams { get; set; }
 
+        [JsonProperty("body_params")]
+        public List<BaseParam> BodyParams { get; set; }
+
         public List<EndpointResponse> Responses { get; set; }
     }
 }

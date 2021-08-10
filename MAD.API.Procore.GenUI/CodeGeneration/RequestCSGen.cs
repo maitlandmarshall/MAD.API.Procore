@@ -42,10 +42,11 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
             };
 
             var requestNamespace = $"MAD.API.Procore.Endpoints.{endpoint.Group.CleanForCode()}";
+            var endpointName = endpoint.Summary.CleanForCode();
 
             ClassModel endpointRequestModel = new ClassModel
             {
-                Name = $"{endpoint.Summary.CleanForCode()}Request",
+                Name = $"{endpointName}Request",
                 BaseClass = procoreRequestModel,
                 AccessModifier = "public",
                 Usings =
