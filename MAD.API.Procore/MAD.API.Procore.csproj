@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>Maitland Marshall</Authors>
+    <Company>MAIT DEV</Company>
+    <PackageProjectUrl>https://github.com/maitlandmarshall/MAD.API.Procore</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
