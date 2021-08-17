@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -47,11 +48,11 @@ namespace MAD.API.Procore
             }
             else if (request.HttpMethod == HttpMethod.Post)
             {
-                httpResponse = await this.httpClient.PostAsync(query, new StringContent(request.Body));
+                httpResponse = await this.httpClient.PostAsync(query, new StringContent(request.Body, Encoding.UTF8, "application/json"));
             }
             else if (request.HttpMethod == HttpMethod.Patch)
             {
-                httpResponse = await this.httpClient.PatchAsync(query, new StringContent(request.Body));
+                httpResponse = await this.httpClient.PatchAsync(query, new StringContent(request.Body, Encoding.UTF8, "application/json"));
             }
             else
             {
