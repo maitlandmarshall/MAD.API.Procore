@@ -14,7 +14,7 @@ namespace MAD.API.Procore
         {
         }
 
-        public ProcoreApiException(string reasonPhrase, string responseJson, HttpStatusCode statusCode) : base(reasonPhrase)
+        public ProcoreApiException(string reasonPhrase, string responseJson, HttpStatusCode statusCode) : base($"{reasonPhrase} ({responseJson})")
         {
             this.ResponseJson = responseJson;
             this.StatusCode = statusCode;
