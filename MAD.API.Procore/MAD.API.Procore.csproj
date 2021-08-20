@@ -6,7 +6,7 @@
     <Authors>Maitland Marshall</Authors>
     <Company>MAIT DEV</Company>
     <PackageProjectUrl>https://github.com/maitlandmarshall/MAD.API.Procore</PackageProjectUrl>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
