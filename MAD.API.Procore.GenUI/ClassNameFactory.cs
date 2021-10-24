@@ -1,8 +1,6 @@
 ﻿using Humanizer;
 using MAD.API.Procore.GenUI.Endpoints;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MAD.API.Procore.Gen
 {
@@ -46,7 +44,7 @@ namespace MAD.API.Procore.Gen
                     name = name.Substring("array of".Length).Trim();
                 }
             }
-                
+
             else if (schemaModel.Parent != null)
                 return Create(schemaModel.Parent as Schema);
             else if (schemaModel.Endpoint != null)

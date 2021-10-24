@@ -1,13 +1,11 @@
-using System.Text;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-namespace MAD.API.Procore.Models {
-	public class ResponsibleCompany {
+namespace MAD.API.Procore.Models
+{
+    public class ResponsibleCompany
+    {
 
-		[JsonProperty("id")]	public  int Id { get ; set; }
+        [JsonProperty("id")] public int Id { get; set; }
 
-		[JsonProperty("name")]	public  string Name { get ; set; }
-	}
+        [JsonProperty("name")] public string Name { get; set; }
+    }
 }

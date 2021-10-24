@@ -1,12 +1,9 @@
 ﻿using MAD.API.Procore.Requests;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MAD.API.Procore
 {
-    public class ProcoreResponse <TModel>
+    public class ProcoreResponse<TModel>
     {
         private readonly ProcoreApiClient apiClient;
 
@@ -21,12 +18,12 @@ namespace MAD.API.Procore
 
         public async Task<ProcoreResponse<TModel>> GetNextPageAsync()
         {
-            if (this.IsLastPage)
+            if (IsLastPage)
                 return null;
 
-            this.Request.Page++;
+            Request.Page++;
 
-            return await this.apiClient.GetResponseAsync(this.Request);
+            return await apiClient.GetResponseAsync(Request);
         }
     }
 }

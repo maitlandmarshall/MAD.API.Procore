@@ -25,7 +25,7 @@ namespace MAD.API.Procore
                 });
 
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", options.AccessToken);
-            httpClient.BaseAddress = this.GetBaseAddress(options.IsSandbox);
+            httpClient.BaseAddress = GetBaseAddress(options.IsSandbox);
 
             return new ProcoreApiClient(
                 httpClient: httpClient,

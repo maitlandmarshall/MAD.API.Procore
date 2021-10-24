@@ -35,7 +35,7 @@ namespace MAD.API.Procore
 
         public async Task<OAuthTokenResponse> ExchangeRefreshToken(string refreshToken, HttpClient httpClient, bool isSandbox = false)
         {
-            return await this.PerformOAuthToken(new Dictionary<string, string>
+            return await PerformOAuthToken(new Dictionary<string, string>
             {
                 { "grant_type", "refresh_token" },
                 { "refresh_token", refreshToken }
@@ -44,7 +44,7 @@ namespace MAD.API.Procore
 
         public async Task<OAuthTokenResponse> GetAccessToken(string clientId, string clientSecret, HttpClient httpClient, bool isSandbox = false)
         {
-            return await this.PerformOAuthToken(new Dictionary<string, string>
+            return await PerformOAuthToken(new Dictionary<string, string>
             {
                 { "grant_type", "client_credentials" },
                 { "client_id", clientId },
@@ -54,7 +54,7 @@ namespace MAD.API.Procore
 
         private async Task<OAuthTokenResponse> PerformOAuthToken(IDictionary<string, string> postBody, HttpClient httpClient, bool isSandbox = false)
         {
-            HttpResponseMessage response = await httpClient.PostAsync(new Uri(this.GetBaseAddress(isSandbox), "token"), new FormUrlEncodedContent(postBody));
+            HttpResponseMessage response = await httpClient.PostAsync(new Uri(GetBaseAddress(isSandbox), "token"), new FormUrlEncodedContent(postBody));
 
             string accessTokenJson = await response.Content.ReadAsStringAsync();
 

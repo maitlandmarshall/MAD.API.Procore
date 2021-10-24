@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-using System.Runtime.Serialization;
 
 namespace MAD.API.Procore.GenUI.Endpoints
 {
@@ -13,7 +12,7 @@ namespace MAD.API.Procore.GenUI.Endpoints
         {
             get
             {
-                return this.TypeImpl.ToObject<string>();
+                return TypeImpl.ToObject<string>();
             }
         }
 

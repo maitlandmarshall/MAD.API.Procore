@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Forms;
@@ -20,16 +19,16 @@ namespace MAD.API.Procore.GenUI
     {
         private MainWindowViewModel ViewModel
         {
-            get => this.DataContext as MainWindowViewModel;
+            get => DataContext as MainWindowViewModel;
         }
 
         public MainWindow()
         {
-            this.InitializeComponent();
-            this.WindowState = WindowState.Maximized;
+            InitializeComponent();
+            WindowState = WindowState.Maximized;
 
-            this.DataContext = new MainWindowViewModel();
-            this.ViewModel.PropertyChanged += this.ViewModel_PropertyChanged;
+            DataContext = new MainWindowViewModel();
+            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
         }
 
         private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -71,7 +70,7 @@ namespace MAD.API.Procore.GenUI
                 {
                     foreach (var r in ep.Responses)
                     {
-                        this.SetSchemaReferences(r.Schema, ep);
+                        SetSchemaReferences(r.Schema, ep);
                     }
                 }
 
@@ -85,7 +84,7 @@ namespace MAD.API.Procore.GenUI
                     }));
             }
 
-            this.ViewModel.Endpoints = result.OrderBy(y => y.Group);
+            ViewModel.Endpoints = result.OrderBy(y => y.Group);
         }
 
         private void SetSchemaReferences(Schema schema, Endpoint ep)
@@ -100,14 +99,14 @@ namespace MAD.API.Procore.GenUI
                 foreach (var s in schema.Properties)
                 {
                     (s as Schema).Parent = schema;
-                    this.SetSchemaReferences(s as Schema, ep);
+                    SetSchemaReferences(s as Schema, ep);
                 }
             }
 
             if (schema.Items != null)
             {
                 (schema.Items as Schema).Parent = schema;
-                this.SetSchemaReferences(schema.Items as Schema, ep);
+                SetSchemaReferences(schema.Items as Schema, ep);
             }
         }
 
@@ -120,12 +119,12 @@ namespace MAD.API.Procore.GenUI
 
             var gen = RequestCSGen.Generate(endpoint);
 
-            this.ViewModel.Code = string.Join(Environment.NewLine, gen.Select(z => ClassSerialization.Serialize(z)));
+            ViewModel.Code = string.Join(Environment.NewLine, gen.Select(z => ClassSerialization.Serialize(z)));
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var endpoint = this.tv.SelectedItem as Endpoint;
+            var endpoint = tv.SelectedItem as Endpoint;
 
             if (endpoint is null)
                 return;

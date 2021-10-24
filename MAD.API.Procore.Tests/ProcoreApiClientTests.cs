@@ -1,7 +1,5 @@
-using MAD.API.Procore.Models;
 using MAD.API.Procore.Requests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MAD.API.Procore.Tests
@@ -23,7 +21,7 @@ namespace MAD.API.Procore.Tests
         [TestMethod]
         public async Task CompaniesTest()
         {
-            ProcoreApiClient apiClient = this.GetApiClient();
+            ProcoreApiClient apiClient = GetApiClient();
 
             var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
         }
@@ -31,7 +29,7 @@ namespace MAD.API.Procore.Tests
         [TestMethod]
         public async Task ProjectsTest()
         {
-            ProcoreApiClient apiClient = this.GetApiClient();
+            ProcoreApiClient apiClient = GetApiClient();
 
             var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
 
@@ -44,7 +42,7 @@ namespace MAD.API.Procore.Tests
         [TestMethod]
         public async Task IncidentsTest()
         {
-            ProcoreApiClient apiClient = this.GetApiClient();
+            ProcoreApiClient apiClient = GetApiClient();
 
             var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
 
@@ -66,7 +64,7 @@ namespace MAD.API.Procore.Tests
         [TestMethod]
         public async Task CompanyUsersTest()
         {
-            ProcoreApiClient apiClient = this.GetApiClient();
+            ProcoreApiClient apiClient = GetApiClient();
 
             var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
 
@@ -79,7 +77,7 @@ namespace MAD.API.Procore.Tests
         [TestMethod]
         public async Task InspectionChecklistTest()
         {
-            ProcoreApiClient apiClient = this.GetApiClient();
+            ProcoreApiClient apiClient = GetApiClient();
 
             var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
 
@@ -100,7 +98,7 @@ namespace MAD.API.Procore.Tests
         [TestMethod]
         public async Task InspectionChecklistTemplateTest()
         {
-            ProcoreApiClient apiClient = this.GetApiClient();
+            ProcoreApiClient apiClient = GetApiClient();
 
             var companies = await apiClient.GetResponseAsync(new ListCompaniesRequest());
 

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
+﻿using System.Net.Http;
 
 namespace MAD.API.Procore.Requests
 {
@@ -22,6 +21,6 @@ namespace MAD.API.Procore.Requests
 
     public abstract class ProcoreRequest<TResponse> : ProcoreRequest
     {
-        
+
     }
 }

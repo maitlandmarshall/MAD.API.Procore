@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using System.Runtime.Serialization;
 
 namespace MAD.API.Procore
 {
@@ -16,8 +15,8 @@ namespace MAD.API.Procore
 
         public ProcoreApiException(string reasonPhrase, string responseJson, HttpStatusCode statusCode) : base($"{reasonPhrase} ({responseJson})")
         {
-            this.ResponseJson = responseJson;
-            this.StatusCode = statusCode;
+            ResponseJson = responseJson;
+            StatusCode = statusCode;
         }
     }
 }

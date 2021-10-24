@@ -4,13 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace MAD.API.Procore
 {
@@ -35,31 +33,31 @@ namespace MAD.API.Procore
 
         public async Task<ProcoreResponse<TResponse>> GetResponseAsync<TResponse>(ProcoreRequest<TResponse> request)
         {
-            await this.Authenticate();
+            await Authenticate();
 
-            var queryParams = this.querySegmentFactory.Create(request);
+            var queryParams = querySegmentFactory.Create(request);
             var query = $"{request.Resource.TrimStart('/')}?{string.Join("&", queryParams)}";
 
             HttpResponseMessage httpResponse;
 
             if (request.HttpMethod == HttpMethod.Get)
             {
-                httpResponse = await this.httpClient.GetAsync(query);
+                httpResponse = await httpClient.GetAsync(query);
             }
             else if (request.HttpMethod == HttpMethod.Post)
             {
-                httpResponse = await this.httpClient.PostAsync(query, new StringContent(request.Body, Encoding.UTF8, "application/json"));
+                httpResponse = await httpClient.PostAsync(query, new StringContent(request.Body, Encoding.UTF8, "application/json"));
             }
             else if (request.HttpMethod == HttpMethod.Patch)
             {
-                httpResponse = await this.httpClient.PatchAsync(query, new StringContent(request.Body, Encoding.UTF8, "application/json"));
+                httpResponse = await httpClient.PatchAsync(query, new StringContent(request.Body, Encoding.UTF8, "application/json"));
             }
             else
             {
                 throw new NotImplementedException();
             }
 
-            return await this.ReadResponse<TResponse>(request, httpResponse);
+            return await ReadResponse<TResponse>(request, httpResponse);
         }
 
         private async Task<ProcoreResponse<TResponse>> ReadResponse<TResponse>(ProcoreRequest<TResponse> request, HttpResponseMessage httpResponse)
@@ -85,7 +83,7 @@ namespace MAD.API.Procore
 
                     await Task.Delay(millisecondsToWait);
 
-                    return await this.GetResponseAsync<TResponse>(request);
+                    return await GetResponseAsync<TResponse>(request);
                 }
 
                 throw new ProcoreApiException(httpResponse.ReasonPhrase, error, httpResponse.StatusCode);
@@ -117,11 +115,11 @@ namespace MAD.API.Procore
 
         private async Task Authenticate()
         {
-            if (!string.IsNullOrWhiteSpace(this.options.AccessToken))
+            if (!string.IsNullOrWhiteSpace(options.AccessToken))
             {
-                if (this.currentOAuth?.CreatedAt.HasValue == true && this.currentOAuth?.ExpiresInSeconds.HasValue == true)
+                if (currentOAuth?.CreatedAt.HasValue == true && currentOAuth?.ExpiresInSeconds.HasValue == true)
                 {
-                    var oauthExpiresIn = this.currentOAuth.CreatedAt.Value.AddSeconds(this.currentOAuth.ExpiresInSeconds.Value).ToLocalTime();
+                    var oauthExpiresIn = currentOAuth.CreatedAt.Value.AddSeconds(currentOAuth.ExpiresInSeconds.Value).ToLocalTime();
                     var now = DateTime.Now;
 
                     // If oauth expires in the future, do nothing
@@ -133,14 +131,14 @@ namespace MAD.API.Procore
                     return;
                 }
             }
-            
-            if (!string.IsNullOrWhiteSpace(this.options.ClientId) && !string.IsNullOrWhiteSpace(this.options.ClientSecret))
+
+            if (!string.IsNullOrWhiteSpace(options.ClientId) && !string.IsNullOrWhiteSpace(options.ClientSecret))
             {
-                await this.GetAccessToken();
+                await GetAccessToken();
             }
-            else if (!string.IsNullOrWhiteSpace(this.options.RefreshToken))
+            else if (!string.IsNullOrWhiteSpace(options.RefreshToken))
             {
-                await this.GetAccessToken();
+                await GetAccessToken();
             }
             else
             {
@@ -158,24 +156,24 @@ namespace MAD.API.Procore
                 if (isRefreshing)
                     return;
 
-                OAuthTokenExchange.OAuthTokenResponse authToken; 
-                
-                if (!string.IsNullOrWhiteSpace(this.options.RefreshToken))
+                OAuthTokenExchange.OAuthTokenResponse authToken;
+
+                if (!string.IsNullOrWhiteSpace(options.RefreshToken))
                 {
-                    authToken = await this.tokenExchange.ExchangeRefreshToken(this.options.RefreshToken, this.httpClient, this.options.IsSandbox);
+                    authToken = await tokenExchange.ExchangeRefreshToken(options.RefreshToken, httpClient, options.IsSandbox);
                 }
                 else
                 {
-                    authToken = await this.tokenExchange.GetAccessToken(this.options.ClientId, this.options.ClientSecret, this.httpClient, this.options.IsSandbox);
+                    authToken = await tokenExchange.GetAccessToken(options.ClientId, options.ClientSecret, httpClient, options.IsSandbox);
                 }
 
-                this.currentOAuth = authToken;
+                currentOAuth = authToken;
 
-                this.options.AccessToken = authToken.AccessToken;
-                this.options.RefreshToken = authToken.RefreshToken;
+                options.AccessToken = authToken.AccessToken;
+                options.RefreshToken = authToken.RefreshToken;
 
-                this.httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", this.options.AccessToken);
-                this.OptionsChanged?.Invoke(this, new ApiClientOptionsChangedEventArgs(this.options));
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", options.AccessToken);
+                OptionsChanged?.Invoke(this, new ApiClientOptionsChangedEventArgs(options));
             }
             finally
             {
