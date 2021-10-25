@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Models;
 namespace MAD.API.Procore.Requests {
+	[Obsolete("This has been replaced by Endpoints.Projects.ListProjectsRequest")]
 	public class ListProjectsRequest : ProcoreRequest<ArrayOfProjects> {
 
 		public override string Resource { get => $"/projects";}
