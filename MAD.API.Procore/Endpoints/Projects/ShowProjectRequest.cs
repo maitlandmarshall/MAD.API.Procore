@@ -14,11 +14,11 @@ namespace MAD.API.Procore.Endpoints.Projects {
 		/// <summary>
 		/// Unique identifier for the project.
 		/// </summary>
-		[RequestParameter("id")]	public  long? Id { get ; set; }
+		[RequestParameter("id")]	public  long Id { get ; set; }
 
 		/// <summary>
 		/// Unique identifier for the company.
 		/// </summary>
-		[RequestParameter("company_id")]	public  long? CompanyId { get ; set; }
+		[RequestParameter("company_id")]	public  long CompanyId { get ; set; }
 	}
 }
