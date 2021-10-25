@@ -3,7 +3,7 @@ using MAD.API.Procore.Requests;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.ScheduleUsers
 {
-    public class ListScheduleUsersRequest : ProcoreRequest<IEnumerable<ListScheduleUsersRequestResult>>
+    public class ListScheduleUsersRequest : ProcoreRequest<IEnumerable<ScheduleUser>>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/schedule/users"; }

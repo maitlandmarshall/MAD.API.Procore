@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.RFIs.Models
 {
-    public class ShowRFIRequestResult
+    public class RFI
     {
 
         /// <summary>

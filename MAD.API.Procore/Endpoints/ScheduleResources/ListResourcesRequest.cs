@@ -1,8 +1,10 @@
 using MAD.API.Procore.Endpoints.ScheduleResources.Models;
 using MAD.API.Procore.Requests;
+using System.Collections.Generic;
+
 namespace MAD.API.Procore.Endpoints.ScheduleResources
 {
-    public class ListResourcesRequest : ProcoreRequest<ListResourcesRequestResult>
+    public class ListResourcesRequest : ProcoreRequest<IEnumerable<Resource>>
     {
 
         public override string Resource { get => $"/resources"; }

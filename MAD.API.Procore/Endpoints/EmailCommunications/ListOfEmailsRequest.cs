@@ -15,7 +15,7 @@ namespace MAD.API.Procore.Endpoints.EmailCommunications
         /// <summary>
         /// The type of the topic to be associated with the communication
         /// </summary>
-        [RequestParameter("topic_type")] public string? TopicType { get; set; }
+        [RequestParameter("topic_type")] public string TopicType { get; set; }
 
         /// <summary>
         /// Topic ID

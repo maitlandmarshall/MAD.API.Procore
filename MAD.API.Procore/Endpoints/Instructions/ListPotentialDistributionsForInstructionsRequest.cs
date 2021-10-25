@@ -19,6 +19,6 @@ namespace MAD.API.Procore.Endpoints.Instructions
         /// 3 => "Standard"
         /// 4 => "Admin"
         /// </summary>
-        [RequestParameter("min_ual")] public string? MinUal { get; set; }
+        [RequestParameter("min_ual")] public string MinUal { get; set; }
     }
 }

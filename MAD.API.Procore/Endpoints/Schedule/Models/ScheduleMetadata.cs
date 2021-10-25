@@ -1,8 +1,9 @@
 using Newtonsoft.Json;
 using System;
+
 namespace MAD.API.Procore.Endpoints.Schedule.Models
 {
-    public class GetScheduleMetadataRequestResult
+    public class ScheduleMetadata
     {
 
         [JsonProperty("active_features")] public ActiveFeature ActiveFeatures { get; set; }

@@ -20,7 +20,7 @@ namespace MAD.API.Procore.Endpoints.Instructions
         /// 3 => "Standard"
         /// 4 => "Admin"
         /// </summary>
-        [RequestParameter("min_ual")] public string? MinUal { get; set; }
+        [RequestParameter("min_ual")] public string MinUal { get; set; }
 
         /// <summary>
         /// If true return all active company logins (not only valid)

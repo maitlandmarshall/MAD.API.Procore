@@ -3,7 +3,7 @@ using MAD.API.Procore.Requests;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.BIMModels
 {
-    public class ListBIMModelsRequest : ProcoreRequest<IEnumerable<ListBIMModelsRequestResult>>
+    public class ListBIMModelsRequest : ProcoreRequest<IEnumerable<BIMModel>>
     {
 
         public override string Resource { get => $"/bim_models"; }

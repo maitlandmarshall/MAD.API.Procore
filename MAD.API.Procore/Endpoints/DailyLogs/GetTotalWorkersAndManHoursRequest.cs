@@ -15,7 +15,7 @@ namespace MAD.API.Procore.Endpoints.DailyLogs
         /// <summary>
         /// Type of logs desired
         /// </summary>
-        [RequestParameter("log_type")] public string? LogType { get; set; }
+        [RequestParameter("log_type")] public string LogType { get; set; }
 
         /// <summary>
         /// Start date of specific logs desired in YYYY-MM-DD format (use together with end_date)

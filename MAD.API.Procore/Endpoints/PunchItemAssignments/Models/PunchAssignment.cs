@@ -1,8 +1,9 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
+
 namespace MAD.API.Procore.Endpoints.PunchItemAssignments.Models
 {
-    public class ShowPunchAssignmentRequestResult
+    public class PunchAssignment
     {
 
         /// <summary>

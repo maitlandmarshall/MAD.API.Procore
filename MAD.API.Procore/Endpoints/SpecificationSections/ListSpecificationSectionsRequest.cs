@@ -3,7 +3,7 @@ using MAD.API.Procore.Requests;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.SpecificationSections
 {
-    public class ListSpecificationSectionsRequest : ProcoreRequest<IEnumerable<ListSpecificationSectionsRequestResult>>
+    public class ListSpecificationSectionsRequest : ProcoreRequest<IEnumerable<SpecificationSection>>
     {
 
         public override string Resource { get => $"/specification_sections"; }

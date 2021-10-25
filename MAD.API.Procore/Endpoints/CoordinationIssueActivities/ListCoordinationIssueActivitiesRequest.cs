@@ -3,7 +3,7 @@ using MAD.API.Procore.Requests;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.CoordinationIssueActivities
 {
-    public class ListCoordinationIssueActivitiesRequest : ProcoreRequest<IEnumerable<ListCoordinationIssueActivitiesRequestResult>>
+    public class ListCoordinationIssueActivitiesRequest : ProcoreRequest<IEnumerable<CoordinationIssueActivity>>
     {
 
         public override string Resource { get => $"/coordination_issue_activities"; }

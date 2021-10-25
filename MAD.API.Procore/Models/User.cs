@@ -8,17 +8,17 @@ namespace MAD.API.Procore.Models
         /// <summary>
         /// User address
         /// </summary>
-        [JsonProperty("address")] public string? Address { get; set; }
+        [JsonProperty("address")] public string Address { get; set; }
 
         /// <summary>
         /// User avatar url
         /// </summary>
-        [JsonProperty("avatar")] public string? Avatar { get; set; }
+        [JsonProperty("avatar")] public string Avatar { get; set; }
 
         /// <summary>
         /// User business phone
         /// </summary>
-        [JsonProperty("business_phone")] public string? BusinessPhone { get; set; }
+        [JsonProperty("business_phone")] public string BusinessPhone { get; set; }
 
         /// <summary>
         /// User business phone extension
@@ -28,27 +28,27 @@ namespace MAD.API.Procore.Models
         /// <summary>
         /// User city
         /// </summary>
-        [JsonProperty("city")] public string? City { get; set; }
+        [JsonProperty("city")] public string City { get; set; }
 
         /// <summary>
         /// User country code (ISO-3166 Alpha-2 format)
         /// </summary>
-        [JsonProperty("country_code")] public string? CountryCode { get; set; }
+        [JsonProperty("country_code")] public string CountryCode { get; set; }
 
         /// <summary>
         /// User email
         /// </summary>
-        [JsonProperty("email_address")] public string? EmailAddress { get; set; }
+        [JsonProperty("email_address")] public string EmailAddress { get; set; }
 
         /// <summary>
         /// User email signature
         /// </summary>
-        [JsonProperty("email_signature")] public string? EmailSignature { get; set; }
+        [JsonProperty("email_signature")] public string EmailSignature { get; set; }
 
         /// <summary>
         /// User employee id
         /// </summary>
-        [JsonProperty("employee_id")] public string? EmployeeId { get; set; }
+        [JsonProperty("employee_id")] public string EmployeeId { get; set; }
 
         /// <summary>
         /// User erp integrated accountant status
@@ -58,12 +58,12 @@ namespace MAD.API.Procore.Models
         /// <summary>
         /// User fax number
         /// </summary>
-        [JsonProperty("fax_number")] public string? FaxNumber { get; set; }
+        [JsonProperty("fax_number")] public string FaxNumber { get; set; }
 
         /// <summary>
         /// User first name
         /// </summary>
-        [JsonProperty("first_name")] public string? FirstName { get; set; }
+        [JsonProperty("first_name")] public string FirstName { get; set; }
 
         /// <summary>
         /// User id
@@ -73,7 +73,7 @@ namespace MAD.API.Procore.Models
         /// <summary>
         /// User initials
         /// </summary>
-        [JsonProperty("initials")] public string? Initials { get; set; }
+        [JsonProperty("initials")] public string Initials { get; set; }
 
         /// <summary>
         /// User active status
@@ -88,7 +88,7 @@ namespace MAD.API.Procore.Models
         /// <summary>
         /// User job title
         /// </summary>
-        [JsonProperty("job_title")] public string? JobTitle { get; set; }
+        [JsonProperty("job_title")] public string JobTitle { get; set; }
 
         /// <summary>
         /// User last login at
@@ -103,7 +103,7 @@ namespace MAD.API.Procore.Models
         /// <summary>
         /// User mobile phone
         /// </summary>
-        [JsonProperty("mobile_phone")] public string? MobilePhone { get; set; }
+        [JsonProperty("mobile_phone")] public string MobilePhone { get; set; }
 
         /// <summary>
         /// User full name
@@ -113,12 +113,12 @@ namespace MAD.API.Procore.Models
         /// <summary>
         /// User notes
         /// </summary>
-        [JsonProperty("notes")] public string? Notes { get; set; }
+        [JsonProperty("notes")] public string Notes { get; set; }
 
         /// <summary>
         /// User state code (ISO-3166 Alpha-2 format)
         /// </summary>
-        [JsonProperty("state_code")] public string? StateCode { get; set; }
+        [JsonProperty("state_code")] public string StateCode { get; set; }
 
         /// <summary>
         /// User welcome email sent at
@@ -128,7 +128,7 @@ namespace MAD.API.Procore.Models
         /// <summary>
         /// User zip code
         /// </summary>
-        [JsonProperty("zip")] public string? Zip { get; set; }
+        [JsonProperty("zip")] public string Zip { get; set; }
 
         /// <summary>
         /// User origin id

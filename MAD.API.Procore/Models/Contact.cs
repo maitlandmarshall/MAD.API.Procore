@@ -12,9 +12,9 @@ namespace MAD.API.Procore.Models
 
         [JsonProperty("email")] public string Email { get; set; }
 
-        [JsonProperty("fax_number")] public string? FaxNumber { get; set; }
+        [JsonProperty("fax_number")] public string FaxNumber { get; set; }
 
-        [JsonProperty("job_title")] public string? JobTitle { get; set; }
+        [JsonProperty("job_title")] public string JobTitle { get; set; }
 
         [JsonProperty("login_information_id")] public long? LoginInformationId { get; set; }
 

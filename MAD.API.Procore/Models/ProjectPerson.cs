@@ -35,7 +35,7 @@ namespace MAD.API.Procore.Models
         /// <summary>
         /// Project Person employee id
         /// </summary>
-        [JsonProperty("employee_id")] public string? EmployeeId { get; set; }
+        [JsonProperty("employee_id")] public string EmployeeId { get; set; }
 
         /// <summary>
         /// Project Person first name

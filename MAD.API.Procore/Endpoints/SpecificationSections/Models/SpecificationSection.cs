@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace MAD.API.Procore.Endpoints.SpecificationSections.Models
 {
-    public class ListSpecificationSectionsRequestResult
+    public class SpecificationSection
     {
 
         /// <summary>

@@ -1,9 +1,10 @@
 using MAD.API.Procore.Endpoints.Observations.Models;
 using MAD.API.Procore.Requests;
+using System.Collections.Generic;
 
 namespace MAD.API.Procore.Endpoints.Observations
 {
-    public class ListObservationItemsRequest : ProcoreRequest<ArrayOfObservationItem>
+    public class ListObservationItemsRequest : ProcoreRequest<IEnumerable<ObservationItem>>
     {
         public override string Resource { get => $"/projects/{ProjectId}/observations/items"; }
 

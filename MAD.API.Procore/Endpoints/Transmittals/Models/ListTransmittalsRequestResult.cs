@@ -6,11 +6,6 @@ namespace MAD.API.Procore.Endpoints.Transmittals.Models
     public class ListTransmittalsRequestResult
     {
 
-        /// <summary>
-        /// Actions as noted
-        /// </summary>
-        [JsonProperty("actions")] public Action Actions { get; set; }
-
         [JsonProperty("cc_recipients")] public List<CcRecipient> CcRecipients { get; set; }
 
         /// <summary>
@@ -42,11 +37,6 @@ namespace MAD.API.Procore.Endpoints.Transmittals.Models
         /// If sent_method is 'Under Separate Cover', describes the separate cover method
         /// </summary>
         [JsonProperty("sent_via")] public string SentVia { get; set; }
-
-        /// <summary>
-        /// Transmittal reasons (Submitted For)
-        /// </summary>
-        [JsonProperty("reasons")] public Reason Reasons { get; set; }
 
         [JsonProperty("to_recipients")] public List<ToRecipient> ToRecipients { get; set; }
 

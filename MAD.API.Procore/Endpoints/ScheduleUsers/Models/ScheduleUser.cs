@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace MAD.API.Procore.Endpoints.ScheduleUsers.Models
 {
-    public class ListScheduleUsersRequestResult
+    public class ScheduleUser
     {
 
         /// <summary>

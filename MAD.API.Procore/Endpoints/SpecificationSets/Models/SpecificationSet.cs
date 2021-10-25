@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace MAD.API.Procore.Endpoints.SpecificationSets.Models
 {
-    public class ShowSpecificationSetRequestResult
+    public class SpecificationSet
     {
 
         [JsonProperty("id")] public long Id { get; set; }

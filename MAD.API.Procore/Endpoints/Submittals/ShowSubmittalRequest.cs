@@ -2,7 +2,7 @@ using MAD.API.Procore.Endpoints.Submittals.Models;
 using MAD.API.Procore.Requests;
 namespace MAD.API.Procore.Endpoints.Submittals
 {
-    public class ShowSubmittalRequest : ProcoreRequest<ShowSubmittalRequestResult>
+    public class ShowSubmittalRequest : ProcoreRequest<Submittal>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/submittals/{Id}"; }

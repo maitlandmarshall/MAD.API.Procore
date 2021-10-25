@@ -2,7 +2,7 @@ using MAD.API.Procore.Endpoints.Schedule.Models;
 using MAD.API.Procore.Requests;
 namespace MAD.API.Procore.Endpoints.Schedule
 {
-    public class GetScheduleMetadataRequest : ProcoreRequest<GetScheduleMetadataRequestResult>
+    public class GetScheduleMetadataRequest : ProcoreRequest<ScheduleMetadata>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/schedule"; }

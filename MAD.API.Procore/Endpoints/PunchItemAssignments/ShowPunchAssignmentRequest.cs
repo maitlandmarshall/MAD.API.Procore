@@ -2,7 +2,7 @@ using MAD.API.Procore.Endpoints.PunchItemAssignments.Models;
 using MAD.API.Procore.Requests;
 namespace MAD.API.Procore.Endpoints.PunchItemAssignments
 {
-    public class ShowPunchAssignmentRequest : ProcoreRequest<ShowPunchAssignmentRequestResult>
+    public class ShowPunchAssignmentRequest : ProcoreRequest<PunchAssignment>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/punch_item_assignments/{Id}"; }
