@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Instructions.Models
 {
-    public class ShowInstructionRequestResult
+    public class Instruction
     {
 
         /// <summary>
