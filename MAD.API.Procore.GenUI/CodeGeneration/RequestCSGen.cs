@@ -195,6 +195,9 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                 case "array":
                     type = "string[]";
                     break;
+                case "array[integer]":
+                    type = "int[]";
+                    break;
                 case "boolean":
                     type = "bool";
                     break;
@@ -209,7 +212,7 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
             }
 
             result.Type = type;
-            result.IsNullable = param.Required;
+            result.IsNullable = param.Required == false;
             result.Name = param.Name.CleanForCode();
 
             return result;
