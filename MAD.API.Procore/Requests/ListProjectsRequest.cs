@@ -1,4 +1,6 @@
 using MAD.API.Procore.Models;
+using System;
+
 namespace MAD.API.Procore.Requests {
 	[Obsolete("This has been replaced by Endpoints.Projects.ListProjectsRequest")]
 	public class ListProjectsRequest : ProcoreRequest<ArrayOfProjects> {
