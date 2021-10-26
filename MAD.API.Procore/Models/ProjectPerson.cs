@@ -1,9 +1,6 @@
-using System.Text;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-namespace MAD.API.Procore.Models {
+namespace MAD.API.Procore.Models
+{
     public class ProjectPerson
     {
         private bool isActive;
@@ -12,13 +9,14 @@ namespace MAD.API.Procore.Models {
         /// <summary>
         /// The Contact associated to the Project Person
         /// </summary>
-        [JsonProperty("contact")] public Contact Contact
+        [JsonProperty("contact")]
+        public Contact Contact
         {
-            get => this.contact;
+            get => contact;
             set
             {
-                this.contact = value;
-                this.IsActive = this.contact.IsActive;
+                contact = value;
+                IsActive = contact.IsActive;
             }
         }
 
@@ -26,18 +24,18 @@ namespace MAD.API.Procore.Models {
         {
             get
             {
-                return this.isActive;
+                return isActive;
             }
             set
             {
-                this.isActive = value;
+                isActive = value;
             }
         }
 
         /// <summary>
         /// Project Person employee id
         /// </summary>
-        [JsonProperty("employee_id")] public string? EmployeeId { get; set; }
+        [JsonProperty("employee_id")] public string EmployeeId { get; set; }
 
         /// <summary>
         /// Project Person first name

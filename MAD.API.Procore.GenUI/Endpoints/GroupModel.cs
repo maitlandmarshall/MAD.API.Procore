@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MAD.API.Procore.Gen
+﻿namespace MAD.API.Procore.Gen
 {
     public class GroupModel
     {

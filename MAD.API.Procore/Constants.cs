@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-
-namespace MAD.API.Procore
+﻿namespace MAD.API.Procore
 {
     public static class Constants
     {

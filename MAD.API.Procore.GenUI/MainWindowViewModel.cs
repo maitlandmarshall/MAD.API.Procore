@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace MAD.API.Procore.GenUI
 {
@@ -19,19 +18,19 @@ namespace MAD.API.Procore.GenUI
         {
             get
             {
-                if (this.EndpointFilter != null)
+                if (EndpointFilter != null)
                 {
-                    return this.endpoints.Where(this.EndpointFilter);
-                }    
+                    return endpoints.Where(EndpointFilter);
+                }
                 else
                 {
-                    return this.endpoints;
+                    return endpoints;
                 }
             }
             set
             {
-                this.endpoints = value;
-                this.OnPropertyChanged();
+                endpoints = value;
+                OnPropertyChanged();
             }
         }
 
@@ -40,8 +39,8 @@ namespace MAD.API.Procore.GenUI
             get => endpointFilter;
             set
             {
-                this.endpointFilter = value;
-                this.OnPropertyChanged(nameof(this.Endpoints));
+                endpointFilter = value;
+                OnPropertyChanged(nameof(Endpoints));
             }
         }
 
@@ -50,8 +49,8 @@ namespace MAD.API.Procore.GenUI
             get => code;
             set
             {
-                this.code = value;
-                this.OnPropertyChanged();
+                code = value;
+                OnPropertyChanged();
             }
         }
 
@@ -60,14 +59,14 @@ namespace MAD.API.Procore.GenUI
             get => searchText;
             set
             {
-                this.searchText = value;
-                this.OnPropertyChanged();
+                searchText = value;
+                OnPropertyChanged();
             }
         }
 
         public void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace MAD.API.Procore.GenUI.Endpoints
+﻿namespace MAD.API.Procore.GenUI.Endpoints
 {
     public class SchemaType
     {

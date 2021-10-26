@@ -121,7 +121,7 @@ namespace MAD.API.Procore.Models
 
         public string DrawingIds
         {
-            get => string.Join(",", this.DrawingIdList);
+            get => string.Join(",", DrawingIdList);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace MAD.API.Procore.Models
 
         public string CurrentDrawingRevisionIds
         {
-            get => string.Join(",", this.CurrentDrawingRevisionIdList);
+            get => string.Join(",", CurrentDrawingRevisionIdList);
         }
 
         [JsonProperty("location")] public Location Location { get; set; }

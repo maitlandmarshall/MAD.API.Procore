@@ -1,18 +1,16 @@
-using System.Text;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-namespace MAD.API.Procore.Endpoints.CompanyVendors.Models {
-	public class BiddingDistribution {
+namespace MAD.API.Procore.Endpoints.CompanyVendors.Models
+{
+    public class BiddingDistribution
+    {
 
-		/// <summary>
-		/// Email
-		/// </summary>
-		[JsonProperty("login")]	public  string Login { get ; set; }
+        /// <summary>
+        /// Email
+        /// </summary>
+        [JsonProperty("login")] public string Login { get; set; }
 
-		[JsonProperty("id")]	public  long Id { get ; set; }
+        [JsonProperty("id")] public long Id { get; set; }
 
-		[JsonProperty("name")]	public  string Name { get ; set; }
-	}
+        [JsonProperty("name")] public string Name { get; set; }
+    }
 }

@@ -25,7 +25,7 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
             string requestResponseType = ClassNameFactory.Create(responseType);
 
             ClassModel responseTypeClassModel = schemaClassModels.First(y => y.Name == requestResponseType);
-            
+
             if (responseTypeClassModel.BaseClass is null
                 && responseType.Type.Name == "array")
             {
@@ -200,6 +200,12 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                     break;
                 case "boolean":
                     type = "bool";
+                    break;
+                case "array[integer]":
+                    type = "int[]";
+                    break;
+                case "array[string]":
+                    type = "int[]";
                     break;
                 default:
                     throw new NotImplementedException();

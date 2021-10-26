@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace MAD.API.Procore.GenUI.Endpoints
 {
@@ -14,11 +13,11 @@ namespace MAD.API.Procore.GenUI.Endpoints
         {
             get
             {
-                if (this.GroupToken is JArray jArray)
+                if (GroupToken is JArray jArray)
                     return jArray.First?.ToString();
                 else
                 {
-                    return this.GroupToken.ToString();
+                    return GroupToken.ToString();
                 }
             }
         }

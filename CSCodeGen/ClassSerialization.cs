@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -21,7 +20,7 @@ namespace CSCodeGen
             {
                 sb.Append($" : {classModel.BaseClass.Name}");
 
-                if(classModel.BaseClass.Generics.Any())
+                if (classModel.BaseClass.Generics.Any())
                 {
                     sb.Append($"<{string.Join(",", classModel.BaseClass.Generics)}>");
                 }
@@ -60,9 +59,9 @@ namespace CSCodeGen
             if (propertyModel.Attributes.Any())
                 sb.Append("\t");
 
-            sb.Append($"public {(propertyModel.Override ? "override" : "")} {propertyModel.Type}{(propertyModel.IsNullable ? "?" :"")} {propertyModel.Name} {{ get ");
+            sb.Append($"public {(propertyModel.Override ? "override" : "")} {propertyModel.Type}{(propertyModel.IsNullable ? "?" : "")} {propertyModel.Name} {{ get ");
 
-            if(string.IsNullOrEmpty(propertyModel.Getter)
+            if (string.IsNullOrEmpty(propertyModel.Getter)
                 && string.IsNullOrEmpty(propertyModel.Setter))
             {
                 sb.Append("; set; ");

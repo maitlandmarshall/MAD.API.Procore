@@ -1,9 +1,7 @@
 ﻿using CSCodeGen;
-using Humanizer;
 using MAD.API.Procore.GenUI.Endpoints;
 using System;
 using System.Linq;
-using System.Text;
 
 namespace MAD.API.Procore.Gen
 {

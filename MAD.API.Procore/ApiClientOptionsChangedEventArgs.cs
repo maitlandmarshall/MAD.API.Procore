@@ -6,7 +6,7 @@ namespace MAD.API.Procore
     {
         public ApiClientOptionsChangedEventArgs(ProcoreApiClientOptions options)
         {
-            this.Options = options;
+            Options = options;
         }
 
         public ProcoreApiClientOptions Options { get; }

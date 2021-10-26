@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MAD.API.Procore
+﻿namespace MAD.API.Procore
 {
     public class ProcoreApiClientOptions
     {

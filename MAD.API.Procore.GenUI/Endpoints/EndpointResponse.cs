@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.DirectoryServices.ActiveDirectory;
-
-namespace MAD.API.Procore.GenUI.Endpoints
+﻿namespace MAD.API.Procore.GenUI.Endpoints
 {
     internal class EndpointResponse
     {
