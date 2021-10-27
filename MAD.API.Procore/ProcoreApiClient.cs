@@ -103,12 +103,16 @@ namespace MAD.API.Procore
 
             TResponse result = jsonSerializer.Deserialize<TResponse>(jr);
 
-            ProcoreResponse<TResponse> procoreResponse = new ProcoreResponse<TResponse>(this)
+            var procoreResponse = new ProcoreResponse<TResponse>(this)
             {
                 Result = result,
-                Request = request,
-                IsLastPage = request.Page == lastPage
+                Request = request
             };
+
+            if (request is ProcorePaginatedRequest<TResponse> paginatedRequest)
+            {
+                procoreResponse.IsLastPage = paginatedRequest.Page == lastPage;
+            }
 
             return procoreResponse;
         }

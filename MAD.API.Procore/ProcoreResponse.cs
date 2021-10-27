@@ -15,15 +15,5 @@ namespace MAD.API.Procore
         public ProcoreRequest<TModel> Request { get; internal set; }
         public TModel Result { get; internal set; }
         public bool IsLastPage { get; set; }
-
-        public async Task<ProcoreResponse<TModel>> GetNextPageAsync()
-        {
-            if (IsLastPage)
-                return null;
-
-            Request.Page++;
-
-            return await apiClient.GetResponseAsync(Request);
-        }
     }
 }

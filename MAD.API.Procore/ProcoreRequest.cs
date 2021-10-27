@@ -11,12 +11,6 @@ namespace MAD.API.Procore
 		/// The HttpRequest Body
 		/// </summary>
         public string Body { get; set; }
-
-        [RequestParameter("per_page")]
-        public int PerPage { get; set; } = Constants.MaxResultsPerPage;
-
-        [RequestParameter("page")]
-        public int Page { get; set; } = 1;
     }
 
     public abstract class ProcoreRequest<TResponse> : ProcoreRequest

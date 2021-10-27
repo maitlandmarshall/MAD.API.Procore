@@ -34,7 +34,7 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
 
             ClassModel procoreRequestModel = new ClassModel
             {
-                Name = "ProcoreRequest",
+                Name = responseType.Type.Name.StartsWith("array") ? "ProcorePaginatedRequest": "ProcoreRequest",
                 Generics =
                 {
                     requestResponseType
