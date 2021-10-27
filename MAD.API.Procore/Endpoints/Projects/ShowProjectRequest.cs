@@ -5,7 +5,6 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.Projects.Models;
 using MAD.API.Procore;
-
 namespace MAD.API.Procore.Endpoints.Projects {
 	public class ShowProjectRequest : ProcoreRequest<Project> {
 

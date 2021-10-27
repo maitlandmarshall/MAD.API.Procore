@@ -5,9 +5,8 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.Projects.Models;
 using MAD.API.Procore;
-
 namespace MAD.API.Procore.Endpoints.Projects {
-	public class ListProjectsRequest : ProcoreRequest<IEnumerable<Project>> {
+	public class ListProjectsRequest : ProcorePaginatedRequest<IEnumerable<Project>> {
 
 		public override string Resource { get => $"/projects";}
 
