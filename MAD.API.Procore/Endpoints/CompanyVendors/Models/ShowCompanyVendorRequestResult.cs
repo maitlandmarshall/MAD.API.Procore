@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.CompanyVendors.Models {
-	public class CompanyVendor {
+	public class ShowCompanyVendorRequestResult {
 
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
