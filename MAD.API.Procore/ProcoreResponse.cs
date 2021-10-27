@@ -1,4 +1,4 @@
-﻿using MAD.API.Procore.Requests;
+﻿
 using System.Threading.Tasks;
 
 namespace MAD.API.Procore

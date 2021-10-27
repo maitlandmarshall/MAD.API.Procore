@@ -1,5 +1,5 @@
 using MAD.API.Procore.Endpoints.Trades.Models;
-using MAD.API.Procore.Requests;
+
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Trades
 {

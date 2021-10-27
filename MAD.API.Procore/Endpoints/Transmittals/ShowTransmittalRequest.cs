@@ -1,5 +1,5 @@
 using MAD.API.Procore.Endpoints.Transmittals.Models;
-using MAD.API.Procore.Requests;
+
 namespace MAD.API.Procore.Endpoints.Transmittals
 {
     public class ShowTransmittalRequest : ProcoreRequest<Transmittal>

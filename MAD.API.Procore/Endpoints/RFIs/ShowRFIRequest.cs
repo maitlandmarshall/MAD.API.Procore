@@ -1,5 +1,5 @@
 using MAD.API.Procore.Endpoints.RFIs.Models;
-using MAD.API.Procore.Requests;
+
 namespace MAD.API.Procore.Endpoints.RFIs
 {
     public class ShowRFIRequest : ProcoreRequest<RFI>

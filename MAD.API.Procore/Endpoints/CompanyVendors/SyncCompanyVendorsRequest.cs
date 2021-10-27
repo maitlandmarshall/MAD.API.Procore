@@ -1,5 +1,5 @@
 using MAD.API.Procore.Endpoints.CompanyVendors.Models;
-using MAD.API.Procore.Requests;
+
 using System.Net.Http;
 namespace MAD.API.Procore.Endpoints.CompanyVendors
 {

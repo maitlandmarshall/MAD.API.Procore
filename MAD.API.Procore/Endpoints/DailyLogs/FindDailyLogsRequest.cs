@@ -1,5 +1,5 @@
 using MAD.API.Procore.Endpoints.DailyLogs.Models;
-using MAD.API.Procore.Requests;
+
 namespace MAD.API.Procore.Endpoints.DailyLogs
 {
     public class FindDailyLogsRequest : ProcoreRequest<FindDailyLogsRequestResult>

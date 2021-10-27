@@ -1,5 +1,5 @@
 using MAD.API.Procore.Endpoints.EmailCommunications.Models;
-using MAD.API.Procore.Requests;
+
 namespace MAD.API.Procore.Endpoints.EmailCommunications
 {
     public class ListOfEmailsRequest : ProcoreRequest<ListOfEmailsRequestResult>

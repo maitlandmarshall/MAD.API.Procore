@@ -1,5 +1,5 @@
 using MAD.API.Procore.Endpoints.Instructions.Models;
-using MAD.API.Procore.Requests;
+
 namespace MAD.API.Procore.Endpoints.Instructions
 {
     public class ListPotentialDistributionsForInstructionsRequest : ProcoreRequest<ListOfPotentialDistribution>

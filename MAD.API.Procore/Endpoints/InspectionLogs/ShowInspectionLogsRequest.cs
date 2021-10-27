@@ -1,5 +1,5 @@
 using MAD.API.Procore.Endpoints.InspectionLogs.Models;
-using MAD.API.Procore.Requests;
+
 namespace MAD.API.Procore.Endpoints.InspectionLogs
 {
     public class ShowInspectionLogsRequest : ProcoreRequest<ShowInspectionLogsRequestResult>

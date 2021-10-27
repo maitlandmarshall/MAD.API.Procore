@@ -1,5 +1,5 @@
 using MAD.API.Procore.Endpoints.Observations.Models;
-using MAD.API.Procore.Requests;
+
 namespace MAD.API.Procore.Endpoints.Observations
 {
     public class ShowObservationItemRequest : ProcoreRequest<ObservationItem>

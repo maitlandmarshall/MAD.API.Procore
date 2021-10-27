@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.Projects.Models;
 using MAD.API.Procore;
-using MAD.API.Procore.Requests;
+
 namespace MAD.API.Procore.Endpoints.Projects {
 	public class ListProjectsRequest : ProcoreRequest<IEnumerable<Project>> {
 

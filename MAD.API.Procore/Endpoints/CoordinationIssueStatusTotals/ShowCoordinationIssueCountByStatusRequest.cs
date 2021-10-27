@@ -1,5 +1,5 @@
 using MAD.API.Procore.Endpoints.CoordinationIssueStatusTotals.Models;
-using MAD.API.Procore.Requests;
+
 namespace MAD.API.Procore.Endpoints.CoordinationIssueStatusTotals
 {
     public class ShowCoordinationIssueCountByStatusRequest : ProcoreRequest<ShowCoordinationIssueCountByStatusRequestResult>

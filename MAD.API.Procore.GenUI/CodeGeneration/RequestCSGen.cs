@@ -57,8 +57,7 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                     "Newtonsoft.Json.Linq",
                     "System.Collections.Generic",
                     $"{requestNamespace}.Models",
-                    "MAD.API.Procore",
-                    "MAD.API.Procore.Requests"
+                    "MAD.API.Procore"
                 },
                 Namespace = requestNamespace
             };
