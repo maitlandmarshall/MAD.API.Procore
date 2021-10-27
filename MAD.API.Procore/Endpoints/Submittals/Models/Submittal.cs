@@ -80,7 +80,7 @@ namespace MAD.API.Procore.Endpoints.Submittals.Models
 
         [JsonProperty("status")] public Status Status { get; set; }
 
-        [JsonProperty("type")] public Procore.Models.Type Type { get; set; }
+        [JsonProperty("type")] public Type Type { get; set; }
 
         [JsonProperty("updated_at")] public DateTimeOffset UpdatedAt { get; set; }
 
