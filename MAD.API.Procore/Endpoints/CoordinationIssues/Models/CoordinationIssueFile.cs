@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace MAD.API.Procore.Endpoints.CoordinationIssues.Models
 {
-    public class CoordinationIsueFile
+    public class CoordinationIssueFile
     {
 
         /// <summary>

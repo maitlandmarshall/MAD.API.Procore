@@ -2,7 +2,7 @@ using MAD.API.Procore.Endpoints.DailyLogs.Models;
 using MAD.API.Procore.Requests;
 namespace MAD.API.Procore.Endpoints.DailyLogs
 {
-    public class GetTotalWorkersAndManHoursRequest : ProcoreRequest<GetTotalWorkersAndManHoursRequestResult>
+    public class GetTotalWorkersAndManHoursRequest : ProcoreRequest<TotalWorkersAndManHours>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/daily_log_totals"; }
