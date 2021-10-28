@@ -1,12 +1,14 @@
+using System.Text;
 using Newtonsoft.Json;
-namespace MAD.API.Procore.Endpoints.Forms.Models
-{
-    public class Permission
-    {
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+namespace MAD.API.Procore.Endpoints.Forms.Models {
+	public class Permission {
 
-        /// <summary>
-        /// Can Edit permission
-        /// </summary>
-        [JsonProperty("can_edit")] public bool CanEdit { get; set; }
-    }
+		/// <summary>
+		/// Can Edit permission
+		/// </summary>
+		[JsonProperty("can_edit")]	public  bool CanEdit { get ; set; }
+	}
 }

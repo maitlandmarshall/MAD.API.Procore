@@ -1,16 +1,18 @@
-using MAD.API.Procore.Endpoints.FormsUsers.Models;
+using System;
+using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using MAD.API.Procore.Endpoints.FormsUsers.Models;
+using MAD.API.Procore;
+namespace MAD.API.Procore.Endpoints.FormsUsers {
+	public class ListFormsUsersRequest : ProcorePaginatedRequest<ListFormsUsersRequestResult> {
 
-namespace MAD.API.Procore.Endpoints.FormsUsers
-{
-    public class ListFormsUsersRequest : ProcoreRequest<IEnumerable<FormsUser>>
-    {
+		public override string Resource { get => $"/projects/{this.ProjectId}/forms/users";}
 
-        public override string Resource { get => $"/projects/{this.ProjectId}/forms/users"; }
-
-        /// <summary>
-        /// Unique identifier for the project.
-        /// </summary>
-        [RequestParameter("project_id")] public long? ProjectId { get; set; }
-    }
+		/// <summary>
+		/// Unique identifier for the project.
+		/// </summary>
+		[RequestParameter("project_id")]	public  long ProjectId { get ; set; }
+	}
 }

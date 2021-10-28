@@ -1,17 +1,19 @@
+using System.Text;
 using Newtonsoft.Json;
-namespace MAD.API.Procore.Endpoints.PunchItems.Models
-{
-    public class PunchItemType
-    {
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+namespace MAD.API.Procore.Endpoints.PunchItems.Models {
+	public class PunchItemType {
 
-        /// <summary>
-        /// ID
-        /// </summary>
-        [JsonProperty("id")] public long Id { get; set; }
+		/// <summary>
+		/// ID
+		/// </summary>
+		[JsonProperty("id")]	public  long Id { get ; set; }
 
-        /// <summary>
-        /// Name
-        /// </summary>
-        [JsonProperty("name")] public string Name { get; set; }
-    }
+		/// <summary>
+		/// Name
+		/// </summary>
+		[JsonProperty("name")]	public  string Name { get ; set; }
+	}
 }

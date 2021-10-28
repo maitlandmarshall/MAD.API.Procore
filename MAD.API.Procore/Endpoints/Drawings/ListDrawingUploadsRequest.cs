@@ -1,16 +1,18 @@
-using MAD.API.Procore.Endpoints.Drawings.Models;
-
+using System;
+using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-namespace MAD.API.Procore.Endpoints.Drawings
-{
-    public class ListDrawingUploadsRequest : ProcoreRequest<IEnumerable<DrawingUpload>>
-    {
+using MAD.API.Procore.Endpoints.Drawings.Models;
+using MAD.API.Procore;
+namespace MAD.API.Procore.Endpoints.Drawings {
+	public class ListDrawingUploadsRequest : ProcorePaginatedRequest<IEnumerable<DrawingUpload>> {
 
-        public override string Resource { get => $"/projects/{ProjectId}/drawing_uploads"; }
+		public override string Resource { get => $"/projects/{this.ProjectId}/drawing_uploads";}
 
-        /// <summary>
-        /// Unique identifier for the project.
-        /// </summary>
-        [RequestParameter("project_id")] public long? ProjectId { get; set; }
-    }
+		/// <summary>
+		/// Unique identifier for the project.
+		/// </summary>
+		[RequestParameter("project_id")]	public  long ProjectId { get ; set; }
+	}
 }

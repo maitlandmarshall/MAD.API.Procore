@@ -1,15 +1,18 @@
-using MAD.API.Procore.Endpoints.Correspondences.Models;
-
+using System;
+using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-namespace MAD.API.Procore.Endpoints.Correspondences
-{
-    public class ListCorrespondenceTypePermissionsRequest : ProcoreRequest<IEnumerable<CorrespondenceTypesAndTheirPermission>>
-    {
-        public override string Resource { get => $"/projects/{ProjectId}/correspondence_types/permissions"; }
+using MAD.API.Procore.Endpoints.Correspondences.Models;
+using MAD.API.Procore;
+namespace MAD.API.Procore.Endpoints.Correspondences {
+	public class ListCorrespondenceTypePermissionsRequest : ProcorePaginatedRequest<IEnumerable<CorrespondenceTypesAndTheirPermission>> {
 
-        /// <summary>
-        /// Unique identifier for the project.
-        /// </summary>
-        [RequestParameter("project_id")] public long? ProjectId { get; set; }
-    }
+		public override string Resource { get => $"/projects/{this.ProjectId}/correspondence_types/permissions";}
+
+		/// <summary>
+		/// Unique identifier for the project.
+		/// </summary>
+		[RequestParameter("project_id")]	public  long ProjectId { get ; set; }
+	}
 }

@@ -1,11 +1,13 @@
+using System.Text;
 using Newtonsoft.Json;
-namespace MAD.API.Procore.Endpoints.RFIs.Models
-{
-    public class ResponsibleContractor
-    {
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+namespace MAD.API.Procore.Endpoints.RFIs.Models {
+	public class ResponsibleContractor {
 
-        [JsonProperty("id")] public long Id { get; set; }
+		[JsonProperty("id")]	public  long Id { get ; set; }
 
-        [JsonProperty("name")] public string Name { get; set; }
-    }
+		[JsonProperty("name")]	public  string Name { get ; set; }
+	}
 }
