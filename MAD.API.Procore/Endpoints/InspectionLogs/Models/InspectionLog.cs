@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.InspectionLogs.Models
 {
-    public class ShowInspectionLogsRequestResult
+    public class InspectionLog
     {
 
         /// <summary>

@@ -74,7 +74,7 @@ namespace MAD.API.Procore.Endpoints.CoordinationIssues.Models
         /// <summary>
         /// Coordination Issue File
         /// </summary>
-        [JsonProperty("coordination_isue_file")] public CoordinationIsueFile CoordinationIsueFile { get; set; }
+        [JsonProperty("coordination_isue_file")] public CoordinationIssueFile CoordinationIssueFile { get; set; }
 
         [JsonProperty("drawing_revision")] public DrawingRevision DrawingRevision { get; set; }
 

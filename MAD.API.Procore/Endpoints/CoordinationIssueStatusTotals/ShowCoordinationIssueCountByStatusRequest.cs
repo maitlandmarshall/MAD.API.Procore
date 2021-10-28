@@ -2,7 +2,7 @@ using MAD.API.Procore.Endpoints.CoordinationIssueStatusTotals.Models;
 
 namespace MAD.API.Procore.Endpoints.CoordinationIssueStatusTotals
 {
-    public class ShowCoordinationIssueCountByStatusRequest : ProcoreRequest<ShowCoordinationIssueCountByStatusRequestResult>
+    public class ShowCoordinationIssueCountByStatusRequest : ProcoreRequest<CoordinationIssueCounts>
     {
 
         public override string Resource { get => $"/coordination_issues/status_total"; }

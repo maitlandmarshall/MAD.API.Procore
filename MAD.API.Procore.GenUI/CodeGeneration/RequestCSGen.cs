@@ -200,9 +200,6 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                 case "boolean":
                     type = "bool";
                     break;
-                case "array[string]":
-                    type = "int[]";
-                    break;
                 default:
                     throw new NotImplementedException();
             }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Forms.Models
 {
-    public class ShowFormRequestResult
+    public class Form
     {
 
         /// <summary>

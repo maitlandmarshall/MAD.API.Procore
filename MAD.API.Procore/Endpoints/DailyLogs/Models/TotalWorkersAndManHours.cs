@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace MAD.API.Procore.Endpoints.DailyLogs.Models
 {
-    public class GetTotalWorkersAndManHoursRequestResult
+    public class TotalWorkersAndManHours
     {
 
         /// <summary>

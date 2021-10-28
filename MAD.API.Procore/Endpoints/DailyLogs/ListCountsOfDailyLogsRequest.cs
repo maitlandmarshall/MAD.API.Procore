@@ -3,7 +3,7 @@ using MAD.API.Procore.Endpoints.DailyLogs.Models;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.DailyLogs
 {
-    public class ListCountsOfDailyLogsRequest : ProcoreRequest<IEnumerable<ListCountsOfDailyLogsRequestResult>>
+    public class ListCountsOfDailyLogsRequest : ProcoreRequest<IEnumerable<DailyLogCount>>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/daily_logs/count"; }

@@ -2,7 +2,7 @@ using MAD.API.Procore.Endpoints.DailyLogHeaders.Models;
 
 namespace MAD.API.Procore.Endpoints.DailyLogHeaders
 {
-    public class GetTheDailyLogHeaderViaDateOrIdRequest : ProcoreRequest<ADailyLogHeader>
+    public class GetTheDailyLogHeaderViaDateOrIdRequest : ProcoreRequest<DailyLogHeader>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/daily_log_headers"; }

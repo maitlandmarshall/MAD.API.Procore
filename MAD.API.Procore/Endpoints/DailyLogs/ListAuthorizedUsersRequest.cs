@@ -3,7 +3,7 @@ using MAD.API.Procore.Endpoints.DailyLogs.Models;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.DailyLogs
 {
-    public class ListAuthorizedUsersRequest : ProcoreRequest<IEnumerable<ListAuthorizedUsersRequestResult>>
+    public class ListAuthorizedUsersRequest : ProcoreRequest<IEnumerable<AuthorizedUser>>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/daily_logs/users"; }
