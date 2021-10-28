@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace MAD.API.Procore.Endpoints.DailyLogs.Models
 {
-    public class ListAuthorizedUsersRequestResult
+    public class AuthorizedUser
     {
 
         [JsonProperty("id")] public long Id { get; set; }

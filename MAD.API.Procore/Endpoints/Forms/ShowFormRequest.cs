@@ -2,7 +2,7 @@ using MAD.API.Procore.Endpoints.Forms.Models;
 using MAD.API.Procore.Requests;
 namespace MAD.API.Procore.Endpoints.Forms
 {
-    public class ShowFormRequest : ProcoreRequest<ShowFormRequestResult>
+    public class ShowFormRequest : ProcoreRequest<Form>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/forms/{Id}"; }

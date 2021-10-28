@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using System;
 namespace MAD.API.Procore.Endpoints.DailyLogHeaders.Models
 {
-    public class ADailyLogHeader
+    public class DailyLogHeader
     {
 
         /// <summary>

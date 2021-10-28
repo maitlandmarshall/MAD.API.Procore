@@ -2,7 +2,7 @@ using MAD.API.Procore.Endpoints.InspectionLogs.Models;
 using MAD.API.Procore.Requests;
 namespace MAD.API.Procore.Endpoints.InspectionLogs
 {
-    public class ShowInspectionLogsRequest : ProcoreRequest<ShowInspectionLogsRequestResult>
+    public class ShowInspectionLogsRequest : ProcoreRequest<InspectionLog>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/inspection_logs/{Id}"; }

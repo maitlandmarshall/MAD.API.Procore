@@ -2,7 +2,7 @@ using MAD.API.Procore.Endpoints.ProjectDates.Models;
 using MAD.API.Procore.Requests;
 namespace MAD.API.Procore.Endpoints.ProjectDates
 {
-    public class ListProjectDatesRequest : ProcoreRequest<ListProjectDatesRequestResult>
+    public class ListProjectDatesRequest : ProcoreRequest<ProjectDatesMaster>
     {
         public override string Resource { get => $"/projects/{ProjectId}/project_dates"; }
 

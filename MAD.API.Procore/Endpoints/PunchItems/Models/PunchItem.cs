@@ -15,7 +15,7 @@ namespace MAD.API.Procore.Endpoints.PunchItems.Models
         /// <summary>
         /// Array of Users
         /// </summary>
-        [JsonProperty("ball_in_court")] public List<LoginInformation> BallInCourt { get; set; }
+        [JsonProperty("ball_in_court")] public List<BallInCourt> BallInCourt { get; set; }
 
         /// <summary>
         /// Cost impact status

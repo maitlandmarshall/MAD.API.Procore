@@ -1,8 +1,10 @@
 using MAD.API.Procore.Endpoints.Incidents.Models;
 using MAD.API.Procore.Requests;
+using System.Collections.Generic;
+
 namespace MAD.API.Procore.Endpoints.Incidents
 {
-    public class ListIncidentsRequest : ProcoreRequest<ListIncidentsRequestResult>
+    public class ListIncidentsRequest : ProcoreRequest<IEnumerable<IncidentCompact>>
     {
 
         public override string Resource { get => $"/projects/{ProjectId}/incidents"; }
