@@ -194,6 +194,9 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                 case "array":
                     type = "string[]";
                     break;
+                case "array[string]":
+                    type = "string[]";
+                    break;
                 case "array[integer]":
                     type = "int[]";
                     break;

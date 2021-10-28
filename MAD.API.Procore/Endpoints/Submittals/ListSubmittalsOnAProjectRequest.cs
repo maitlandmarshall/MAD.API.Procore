@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.Submittals.Models;
 using MAD.API.Procore;
 namespace MAD.API.Procore.Endpoints.Submittals {
-	public class ListSubmittalsOnAProjectRequest : ProcoreRequest<IEnumerable<ListSubmittalsOnAProjectRequestResult>> {
+	public class ListSubmittalsOnAProjectRequest : ProcorePaginatedRequest<IEnumerable<ListSubmittalsOnAProjectRequestResult>> {
 
 		public override string Resource { get => $"/projects/{this.ProjectId}/submittals";}
 
@@ -93,7 +93,7 @@ namespace MAD.API.Procore.Endpoints.Submittals {
 		/// <summary>
 		/// Array of Submittal Types. A single Submittal Type is also accepted.
 		/// </summary>
-		[RequestParameter("filters[type]")]	public  int[]? Type { get ; set; }
+		[RequestParameter("filters[type]")]	public  string[]? Type { get ; set; }
 
 		/// <summary>
 		/// Return item(s) last updated within the specified ISO 8601 datetime range.

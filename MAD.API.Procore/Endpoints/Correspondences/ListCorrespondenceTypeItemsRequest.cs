@@ -1,12 +1,11 @@
 using MAD.API.Procore.Endpoints.Correspondences.Models;
-using MAD.API.Procore.Requests;
 using System.Collections.Generic;
 
 namespace MAD.API.Procore.Endpoints.Correspondences
 {
     public class ListCorrespondenceTypeItemsRequest : ProcoreRequest<IEnumerable<CorrespondenceTypeItem>>
     {
-        public override string Resource { get => $"/projects/{ProjectId}/correspondence_type_items"; }
+        public override string Resource { get => $"/projects/{this.ProjectId}/correspondence_type_items"; }
 
         /// <summary>
         /// Unique identifier for the project.
