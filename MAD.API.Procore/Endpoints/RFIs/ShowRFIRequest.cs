@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.RFIs.Models;
 using MAD.API.Procore;
 namespace MAD.API.Procore.Endpoints.RFIs {
-	public class ShowRFIRequest : ProcoreRequest<ShowRFIRequestResult> {
+	public class ShowRFIRequest : ProcoreRequest<RFI> {
 
 		public override string Resource { get => $"/rfis/{this.Id}";}
 

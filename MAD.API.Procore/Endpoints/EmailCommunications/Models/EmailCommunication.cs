@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.EmailCommunications.Models {
-	public class ShowEmailCommunicationRequestResult {
+	public class EmailCommunication {
 
 		/// <summary>
 		/// Communication ID

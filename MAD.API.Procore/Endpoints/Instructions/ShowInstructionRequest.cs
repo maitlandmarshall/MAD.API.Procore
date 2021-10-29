@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.Instructions.Models;
 using MAD.API.Procore;
 namespace MAD.API.Procore.Endpoints.Instructions {
-	public class ShowInstructionRequest : ProcoreRequest<ShowInstructionRequestResult> {
+	public class ShowInstructionRequest : ProcoreRequest<Instruction> {
 
 		public override string Resource { get => $"/projects/{this.ProjectId}/instructions/{this.Id}";}
 

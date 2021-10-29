@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.Observations.Models;
 using MAD.API.Procore;
 namespace MAD.API.Procore.Endpoints.Observations {
-	public class ListObservationsResponseLogsRequest : ProcorePaginatedRequest<ArrayOfObservationItemResponseLog> {
+	public class ListObservationsResponseLogsRequest : ProcorePaginatedRequest<IEnumerable<ObservationItemResponseLog>> {
 
 		public override string Resource { get => $"/projects/{this.ProjectId}/observations/response_logs";}
 

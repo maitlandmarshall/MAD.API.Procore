@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.Observations.Models;
 using MAD.API.Procore;
 namespace MAD.API.Procore.Endpoints.Observations {
-	public class ListObservationItemsRequest : ProcorePaginatedRequest<ArrayOfObservationItem> {
+	public class ListObservationItemsRequest : ProcorePaginatedRequest<IEnumerable<ObservationItem>> {
 
 		public override string Resource { get => $"/observations/items";}
 

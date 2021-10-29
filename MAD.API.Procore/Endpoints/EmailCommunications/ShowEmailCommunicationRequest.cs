@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.EmailCommunications.Models;
 using MAD.API.Procore;
 namespace MAD.API.Procore.Endpoints.EmailCommunications {
-	public class ShowEmailCommunicationRequest : ProcoreRequest<ShowEmailCommunicationRequestResult> {
+	public class ShowEmailCommunicationRequest : ProcoreRequest<EmailCommunication> {
 
 		public override string Resource { get => $"/project/{this.ProjectId}/email_communications/{this.Id}";}
 

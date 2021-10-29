@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Submittals.Models {
-	public class ShowSubmittalRequestResult {
+	public class Submittal {
 
 		[JsonProperty("actual_delivery_date")]	public  string ActualDeliveryDate { get ; set; }
 
