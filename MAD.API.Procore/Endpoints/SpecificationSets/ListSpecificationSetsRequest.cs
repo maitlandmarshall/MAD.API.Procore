@@ -1,16 +1,18 @@
-using MAD.API.Procore.Endpoints.SpecificationSets.Models;
-using MAD.API.Procore.Requests;
+using System;
+using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-namespace MAD.API.Procore.Endpoints.SpecificationSets
-{
-    public class ListSpecificationSetsRequest : ProcoreRequest<IEnumerable<SpecificationSet>>
-    {
+using MAD.API.Procore.Endpoints.SpecificationSets.Models;
+using MAD.API.Procore;
+namespace MAD.API.Procore.Endpoints.SpecificationSets {
+	public class ListSpecificationSetsRequest : ProcorePaginatedRequest<IEnumerable<ListSpecificationSetsRequestResult>> {
 
-        public override string Resource { get => $"/projects/{ProjectId}/specification_sets"; }
+		public override string Resource { get => $"/projects/{this.ProjectId}/specification_sets";}
 
-        /// <summary>
-        /// The ID of the project for the new set
-        /// </summary>
-        [RequestParameter("project_id")] public long? ProjectId { get; set; }
-    }
+		/// <summary>
+		/// The ID of the project for the new set
+		/// </summary>
+		[RequestParameter("project_id")]	public  long ProjectId { get ; set; }
+	}
 }

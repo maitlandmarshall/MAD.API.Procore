@@ -1,15 +1,17 @@
+using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
-namespace MAD.API.Procore.Endpoints.Correspondences.Models
-{
-    public class CorrespondenceTypeUser
-    {
-        [JsonProperty("id")] public long Id { get; set; }
+namespace MAD.API.Procore.Endpoints.Correspondences.Models {
+	public class CorrespondenceTypeUser {
 
-        [JsonProperty("name")] public string Name { get; set; }
+		[JsonProperty("id")]	public  long Id { get ; set; }
 
-        [JsonProperty("company")] public Company Company { get; set; }
+		[JsonProperty("name")]	public  string Name { get ; set; }
 
-        [JsonProperty("generic_tools")] public List<GenericTool> GenericTools { get; set; }
-    }
+		[JsonProperty("company")]	public  Company Company { get ; set; }
+
+		[JsonProperty("generic_tools")]	public  List<GenericTool> GenericTools { get ; set; }
+	}
 }

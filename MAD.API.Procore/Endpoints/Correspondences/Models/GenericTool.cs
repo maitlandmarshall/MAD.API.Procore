@@ -1,16 +1,19 @@
+using System.Text;
 using Newtonsoft.Json;
-namespace MAD.API.Procore.Endpoints.Correspondences.Models
-{
-    public class GenericTool
-    {
-        /// <summary>
-        /// Unique identifier for the generic tool.
-        /// </summary>
-        [JsonProperty("id")] public long Id { get; set; }
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+namespace MAD.API.Procore.Endpoints.Correspondences.Models {
+	public class GenericTool {
 
-        /// <summary>
-        /// Primary name/title for the generic tool.
-        /// </summary>
-        [JsonProperty("title")] public string Title { get; set; }
-    }
+		[JsonProperty("id")]	public  long Id { get ; set; }
+
+		[JsonProperty("potential_assignee")]	public  bool PotentialAssignee { get ; set; }
+
+		[JsonProperty("potential_received_from")]	public  bool PotentialReceivedFrom { get ; set; }
+
+		[JsonProperty("potential_distribution_member")]	public  bool PotentialDistributionMember { get ; set; }
+
+		[JsonProperty("custom_fields")]	public  JObject CustomFields { get ; set; }
+	}
 }

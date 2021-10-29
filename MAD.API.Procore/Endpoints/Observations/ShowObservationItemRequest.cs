@@ -1,20 +1,23 @@
+using System;
+using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.Observations.Models;
-using MAD.API.Procore.Requests;
-namespace MAD.API.Procore.Endpoints.Observations
-{
-    public class ShowObservationItemRequest : ProcoreRequest<ObservationItem>
-    {
+using MAD.API.Procore;
+namespace MAD.API.Procore.Endpoints.Observations {
+	public class ShowObservationItemRequest : ProcoreRequest<ObservationItem> {
 
-        public override string Resource { get => $"/projects/{ProjectId}/observations/items/{Id}"; }
+		public override string Resource { get => $"/observations/items/{this.Id}";}
 
-        /// <summary>
-        /// Unique identifier for the project.
-        /// </summary>
-        [RequestParameter("project_id")] public long? ProjectId { get; set; }
+		/// <summary>
+		/// Observation Item ID
+		/// </summary>
+		[RequestParameter("id")]	public  long Id { get ; set; }
 
-        /// <summary>
-        /// Observation ID
-        /// </summary>
-        [RequestParameter("id")] public long? Id { get; set; }
-    }
+		/// <summary>
+		/// Unique identifier for the project.
+		/// </summary>
+		[RequestParameter("project_id")]	public  long ProjectId { get ; set; }
+	}
 }

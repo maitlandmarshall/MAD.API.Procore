@@ -1,16 +1,18 @@
-using MAD.API.Procore.Endpoints.DailyLogs.Models;
-using MAD.API.Procore.Requests;
+using System;
+using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-namespace MAD.API.Procore.Endpoints.DailyLogs
-{
-    public class ListAuthorizedUsersRequest : ProcoreRequest<IEnumerable<AuthorizedUser>>
-    {
+using MAD.API.Procore.Endpoints.DailyLogs.Models;
+using MAD.API.Procore;
+namespace MAD.API.Procore.Endpoints.DailyLogs {
+	public class ListAuthorizedUsersRequest : ProcorePaginatedRequest<IEnumerable<ListAuthorizedUsersRequestResult>> {
 
-        public override string Resource { get => $"/projects/{ProjectId}/daily_logs/users"; }
+		public override string Resource { get => $"/projects/{this.ProjectId}/daily_logs/users";}
 
-        /// <summary>
-        /// Unique identifier for the project.
-        /// </summary>
-        [RequestParameter("project_id")] public long? ProjectId { get; set; }
-    }
+		/// <summary>
+		/// Unique identifier for the project.
+		/// </summary>
+		[RequestParameter("project_id")]	public  long ProjectId { get ; set; }
+	}
 }

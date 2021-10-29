@@ -34,7 +34,7 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
 
             ClassModel procoreRequestModel = new ClassModel
             {
-                Name = "ProcoreRequest",
+                Name = responseType.Type.Name.StartsWith("array") ? "ProcorePaginatedRequest": "ProcoreRequest",
                 Generics =
                 {
                     requestResponseType
@@ -57,8 +57,7 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                     "Newtonsoft.Json.Linq",
                     "System.Collections.Generic",
                     $"{requestNamespace}.Models",
-                    "MAD.API.Procore",
-                    "MAD.API.Procore.Requests"
+                    "MAD.API.Procore"
                 },
                 Namespace = requestNamespace
             };
@@ -193,6 +192,9 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                     type = "string";
                     break;
                 case "array":
+                    type = "string[]";
+                    break;
+                case "array[string]":
                     type = "string[]";
                     break;
                 case "array[integer]":
