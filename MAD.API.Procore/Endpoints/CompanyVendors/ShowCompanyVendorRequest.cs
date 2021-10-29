@@ -5,20 +5,22 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.CompanyVendors.Models;
 using MAD.API.Procore;
-namespace MAD.API.Procore.Endpoints.CompanyVendors {
-	public class ShowCompanyVendorRequest : ProcoreRequest<ShowCompanyVendorRequestResult> {
+namespace MAD.API.Procore.Endpoints.CompanyVendors
+{
+	public class ShowCompanyVendorRequest : ProcoreRequest<ShowCompanyVendorRequestResult>
+	{
 
-		public override string Resource { get => $"/vendors/{this.Id}";}
+		public override string Resource { get => $"/vendors/{this.Id}"; }
 
 		/// <summary>
 		/// ID of the vendor
 		/// </summary>
-		[RequestParameter("id")]	public  long Id { get ; set; }
+		[RequestParameter("id")] public long Id { get; set; }
 
 		/// <summary>
 		/// Unique identifier for the company.
 		/// </summary>
-		[RequestParameter("company_id")]	public  long CompanyId { get ; set; }
+		[RequestParameter("company_id")] public long CompanyId { get; set; }
 
 		/// <summary>
 		/// The compact view provides only the id and name. The extended view provides what is shown below.
@@ -26,6 +28,6 @@ namespace MAD.API.Procore.Endpoints.CompanyVendors {
 		/// The erp view is the same as the normal view but it includes origin_custom_fields.
 		/// The default view is extended.
 		/// </summary>
-		[RequestParameter("view")]	public  string? View { get ; set; }
+		[RequestParameter("view")] public string? View { get; set; }
 	}
 }

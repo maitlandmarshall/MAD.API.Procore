@@ -7,12 +7,17 @@ namespace MAD.API.Procore.Endpoints.Observations.Models {
 	public class CreatedBy {
 
 		/// <summary>
-		/// User ID
+		/// ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// User name
+		/// Email
+		/// </summary>
+		[JsonProperty("login")]	public  string Login { get ; set; }
+
+		/// <summary>
+		/// Name
 		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
 	}

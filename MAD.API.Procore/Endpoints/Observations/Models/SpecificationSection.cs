@@ -22,11 +22,6 @@ namespace MAD.API.Procore.Endpoints.Observations.Models {
 		[JsonProperty("number")]	public  string Number { get ; set; }
 
 		/// <summary>
-		/// Number
-		/// </summary>
-		[JsonProperty("section")]	public  string Section { get ; set; }
-
-		/// <summary>
 		/// Url to PDF view
 		/// </summary>
 		[JsonProperty("latest_revision_url")]	public  string LatestRevisionUrl { get ; set; }
