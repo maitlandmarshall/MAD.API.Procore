@@ -17,6 +17,11 @@ namespace MAD.API.Procore.Endpoints.EmailCommunications.Models {
 		[JsonProperty("communication_id")]	public  long? CommunicationId { get ; set; }
 
 		/// <summary>
+		/// Subject of the email
+		/// </summary>
+		[JsonProperty("subject")]	public  string Subject { get ; set; }
+
+		/// <summary>
 		/// Private Indicator
 		/// </summary>
 		[JsonProperty("private")]	public  bool Private { get ; set; }

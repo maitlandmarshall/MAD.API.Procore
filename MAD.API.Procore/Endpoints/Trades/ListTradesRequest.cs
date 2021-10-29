@@ -18,7 +18,7 @@ namespace MAD.API.Procore.Endpoints.Trades {
 		/// <summary>
 		/// Return item(s) last updated within the specified ISO 8601 datetime range.
 		/// </summary>
-		[RequestParameter("filters[updated_at]")]	public  string? UpdatedAt { get ; set; }
+		[RequestParameter("filters[updated_at]")]	public  string UpdatedAt { get ; set; }
 
 		/// <summary>
 		/// Limit results to available trades

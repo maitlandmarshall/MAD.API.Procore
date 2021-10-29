@@ -26,6 +26,6 @@ namespace MAD.API.Procore.Endpoints.CompanyVendors {
 		/// The erp view is the same as the normal view but it includes origin_custom_fields.
 		/// The default view is extended.
 		/// </summary>
-		[RequestParameter("view")]	public  string? View { get ; set; }
+		[RequestParameter("view")]	public  string View { get ; set; }
 	}
 }

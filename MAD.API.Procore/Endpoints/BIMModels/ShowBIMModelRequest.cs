@@ -26,6 +26,6 @@ namespace MAD.API.Procore.Endpoints.BIMModels {
 		/// The normal view contains 'current_revision_id' instead of an embedded object 'current_revision'
 		/// The default view is normal.
 		/// </summary>
-		[RequestParameter("view")]	public  string? View { get ; set; }
+		[RequestParameter("view")]	public  string View { get ; set; }
 	}
 }

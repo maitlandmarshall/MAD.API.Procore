@@ -18,11 +18,11 @@ namespace MAD.API.Procore.Endpoints.Observations {
 		/// <summary>
 		/// Return item(s) with the specified IDs.
 		/// </summary>
-		[RequestParameter("filters[id]")]	public  int[]? Id { get ; set; }
+		[RequestParameter("filters[id]")]	public  int[] Id { get ; set; }
 
 		/// <summary>
 		/// Return item(s) last updated within the specified ISO 8601 datetime range.
 		/// </summary>
-		[RequestParameter("filters[updated_at]")]	public  string? UpdatedAt { get ; set; }
+		[RequestParameter("filters[updated_at]")]	public  string UpdatedAt { get ; set; }
 	}
 }

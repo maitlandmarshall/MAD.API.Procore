@@ -18,12 +18,12 @@ namespace MAD.API.Procore.Endpoints.CoordinationIssueActivities {
 		/// <summary>
 		/// Return item(s) with the specified IDs.
 		/// </summary>
-		[RequestParameter("filters[id]")]	public  int[]? Id { get ; set; }
+		[RequestParameter("filters[id]")]	public  int[] Id { get ; set; }
 
 		/// <summary>
 		/// Filter item(s) with coordination issues.
 		/// </summary>
-		[RequestParameter("filters[coordination_issue_id]")]	public  string? CoordinationIssueId { get ; set; }
+		[RequestParameter("filters[coordination_issue_id]")]	public  string CoordinationIssueId { get ; set; }
 
 		/// <summary>
 		/// The compact view contains only ids.
@@ -31,11 +31,11 @@ namespace MAD.API.Procore.Endpoints.CoordinationIssueActivities {
 		/// The normal view contains all attributes in extended view except activity_details.
 		/// The default view is normal.
 		/// </summary>
-		[RequestParameter("view")]	public  string? View { get ; set; }
+		[RequestParameter("view")]	public  string View { get ; set; }
 
 		/// <summary>
 		/// Use 'only' for only deleted resources. Use 'with' for deleted and undeleted resources.
 		/// </summary>
-		[RequestParameter("filters[include_deleted]")]	public  string? IncludeDeleted { get ; set; }
+		[RequestParameter("filters[include_deleted]")]	public  string IncludeDeleted { get ; set; }
 	}
 }

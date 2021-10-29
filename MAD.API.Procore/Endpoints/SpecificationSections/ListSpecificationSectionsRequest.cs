@@ -18,6 +18,6 @@ namespace MAD.API.Procore.Endpoints.SpecificationSections {
 		/// <summary>
 		/// Return item(s) with the specified IDs.
 		/// </summary>
-		[RequestParameter("filters[id]")]	public  int[]? Id { get ; set; }
+		[RequestParameter("filters[id]")]	public  int[] Id { get ; set; }
 	}
 }

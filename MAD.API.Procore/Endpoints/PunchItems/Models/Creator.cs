@@ -4,21 +4,21 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.PunchItems.Models {
-	public class PunchItemManager {
+	public class Creator {
 
 		/// <summary>
-		/// User ID
+		/// ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// User Name
-		/// </summary>
-		[JsonProperty("name")]	public  string Name { get ; set; }
-
-		/// <summary>
-		/// User Email
+		/// Email
 		/// </summary>
 		[JsonProperty("login")]	public  string Login { get ; set; }
+
+		/// <summary>
+		/// Name
+		/// </summary>
+		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }

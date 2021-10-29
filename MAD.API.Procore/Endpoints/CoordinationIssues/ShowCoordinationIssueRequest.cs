@@ -26,13 +26,13 @@ namespace MAD.API.Procore.Endpoints.CoordinationIssues {
 		/// The extended view contains the response shown below.
 		/// The default view is normal.
 		/// </summary>
-		[RequestParameter("view")]	public  string? View { get ; set; }
+		[RequestParameter("view")]	public  string View { get ; set; }
 
 		/// <summary>
 		/// Specify viewpoint data format. This parameter functions only when the query parameter view is 'extended'
 		/// The default format returns the viewpoint content as saved.
 		/// The procore format returns the viewpoint content converted to Procore format. If a valid conversion is not possible, empty viewpoint is returned.
 		/// </summary>
-		[RequestParameter("viewpoint_format")]	public  string? ViewpointFormat { get ; set; }
+		[RequestParameter("viewpoint_format")]	public  string ViewpointFormat { get ; set; }
 	}
 }

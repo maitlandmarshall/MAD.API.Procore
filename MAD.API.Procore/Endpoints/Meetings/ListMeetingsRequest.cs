@@ -21,6 +21,6 @@ namespace MAD.API.Procore.Endpoints.Meetings {
 		/// The extended view includes the default fields plus Meeting Template fields.
 		/// Default view is normal.
 		/// </summary>
-		[RequestParameter("serializer_view")]	public  string? SerializerView { get ; set; }
+		[RequestParameter("serializer_view")]	public  string SerializerView { get ; set; }
 	}
 }

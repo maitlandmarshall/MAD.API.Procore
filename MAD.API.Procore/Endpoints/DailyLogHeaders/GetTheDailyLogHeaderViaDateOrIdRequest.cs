@@ -23,6 +23,6 @@ namespace MAD.API.Procore.Endpoints.DailyLogHeaders {
 		/// <summary>
 		/// The log date for the requested Daily Log Header
 		/// </summary>
-		[RequestParameter("log_date")]	public  string? LogDate { get ; set; }
+		[RequestParameter("log_date")]	public  string LogDate { get ; set; }
 	}
 }

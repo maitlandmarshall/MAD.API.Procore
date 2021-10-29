@@ -27,6 +27,6 @@ namespace MAD.API.Procore.Endpoints.CoordinationIssueStatusChanges {
 		/// The default view is normal.
 		/// Both linked_rfi or linked_observation_item can be empty objects, or at most one of them is populated.
 		/// </summary>
-		[RequestParameter("view")]	public  string? View { get ; set; }
+		[RequestParameter("view")]	public  string View { get ; set; }
 	}
 }

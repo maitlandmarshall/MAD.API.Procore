@@ -18,12 +18,12 @@ namespace MAD.API.Procore.Endpoints.PunchItems {
 		/// <summary>
 		/// Return item(s) with the specified Punch Item Status - 'open' or 'closed'.
 		/// </summary>
-		[RequestParameter("filters[status]")]	public  string? Status { get ; set; }
+		[RequestParameter("filters[status]")]	public  string Status { get ; set; }
 
 		/// <summary>
 		/// Return item(s) with the specified Punch Item Priority -  'low', 'medium', 'high'
 		/// </summary>
-		[RequestParameter("filters[priority]")]	public  string? Priority { get ; set; }
+		[RequestParameter("filters[priority]")]	public  string Priority { get ; set; }
 
 		/// <summary>
 		/// Return item(s) with the specified Punch Item Type ID.
@@ -33,7 +33,7 @@ namespace MAD.API.Procore.Endpoints.PunchItems {
 		/// <summary>
 		/// Location ID. Returns item(s) with the specified Location ID or a range of Location IDs.
 		/// </summary>
-		[RequestParameter("filters[location_id]")]	public  int[]? LocationId { get ; set; }
+		[RequestParameter("filters[location_id]")]	public  int[] LocationId { get ; set; }
 
 		/// <summary>
 		/// Use together with `filters[location_id]`
@@ -64,16 +64,16 @@ namespace MAD.API.Procore.Endpoints.PunchItems {
 		/// <summary>
 		/// Return item(s) with the specified Punch Item ID.
 		/// </summary>
-		[RequestParameter("filters[id]")]	public  int[]? Id { get ; set; }
+		[RequestParameter("filters[id]")]	public  int[] Id { get ; set; }
 
 		/// <summary>
 		/// Return item(s) containing search query
 		/// </summary>
-		[RequestParameter("filters[query]")]	public  string? Query { get ; set; }
+		[RequestParameter("filters[query]")]	public  string Query { get ; set; }
 
 		/// <summary>
 		/// Return item(s) last updated within the specified ISO 8601 datetime range.
 		/// </summary>
-		[RequestParameter("filters[updated_at]")]	public  string? UpdatedAt { get ; set; }
+		[RequestParameter("filters[updated_at]")]	public  string UpdatedAt { get ; set; }
 	}
 }

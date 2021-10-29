@@ -23,16 +23,16 @@ namespace MAD.API.Procore.Endpoints.DailyLogs {
 		/// <summary>
 		/// Start date of specific logs desired in YYYY-MM-DD format (use together with end_date)
 		/// </summary>
-		[RequestParameter("start_date")]	public  string? StartDate { get ; set; }
+		[RequestParameter("start_date")]	public  string StartDate { get ; set; }
 
 		/// <summary>
 		/// End date of specific logs desired in YYYY-MM-DD format (use together with start_date)
 		/// </summary>
-		[RequestParameter("end_date")]	public  string? EndDate { get ; set; }
+		[RequestParameter("end_date")]	public  string EndDate { get ; set; }
 
 		/// <summary>
 		/// Returns item(s) created by the specified User IDs.
 		/// </summary>
-		[RequestParameter("filters[created_by_id]")]	public  int[]? CreatedById { get ; set; }
+		[RequestParameter("filters[created_by_id]")]	public  int[] CreatedById { get ; set; }
 	}
 }

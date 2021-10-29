@@ -18,6 +18,6 @@ namespace MAD.API.Procore.Endpoints.Transmittals {
 		/// <summary>
 		/// Search Query
 		/// </summary>
-		[RequestParameter("filters[query]")]	public  string? Query { get ; set; }
+		[RequestParameter("filters[query]")]	public  string Query { get ; set; }
 	}
 }

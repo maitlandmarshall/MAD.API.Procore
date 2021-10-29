@@ -40,13 +40,13 @@ namespace MAD.API.Procore.Endpoints.Drawings {
 		/// Filter by Drawing Revision ID
 		/// To request specific drawing revision ids add `id[]=42&id[]=43` to query
 		/// </summary>
-		[RequestParameter("id")]	public  int[]? Id { get ; set; }
+		[RequestParameter("id")]	public  int[] Id { get ; set; }
 
 		/// <summary>
 		/// Filter by Drawing Revisions ID
 		/// To request specific drawing revision ids add `filters[ids]=[1,2,3]` to filters
 		/// </summary>
-		[RequestParameter("filters[ids]")]	public  int[]? Ids { get ; set; }
+		[RequestParameter("filters[ids]")]	public  int[] Ids { get ; set; }
 
 		/// <summary>
 		/// Filter by `reviewed` status
@@ -56,7 +56,7 @@ namespace MAD.API.Procore.Endpoints.Drawings {
 		/// <summary>
 		/// Filter by custom query
 		/// </summary>
-		[RequestParameter("query")]	public  string? Query { get ; set; }
+		[RequestParameter("query")]	public  string Query { get ; set; }
 
 		/// <summary>
 		/// Include obsolete drawing revisions. Obsolete drawing revisions are filtered by default.
