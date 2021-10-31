@@ -33,7 +33,19 @@ namespace MAD.API.Procore.Gen
             if (!string.IsNullOrEmpty(schemaModel.Title))
                 name = schemaModel.Title;
             else if (!string.IsNullOrEmpty(schemaModel.Field))
-                name = schemaModel.Field;
+            {
+                if (schemaModel.Parent != null
+                    && schemaModel.Field != "custom_field"
+                    && schemaModel.Field != "custom_fields")
+                {
+                    // Unless the model has a specific title, the name should be a concatenation of its parent's name and its field
+                    name = $"{Create(schemaModel.Parent as Schema)}_{schemaModel.Field}";
+                }
+                else
+                {
+                    name = schemaModel.Field;
+                }
+            }
             else if (!string.IsNullOrEmpty(schemaModel.Description))
             {
                 name = schemaModel.Description;
