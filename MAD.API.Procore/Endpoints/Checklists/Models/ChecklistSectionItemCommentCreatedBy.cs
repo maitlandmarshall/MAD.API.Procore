@@ -4,15 +4,20 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Checklists.Models {
-	public class ResponseOption {
+	public class ChecklistSectionItemCommentCreatedBy {
 
 		/// <summary>
-		/// Response Option ID
+		/// ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// Response Option Name
+		/// Email
+		/// </summary>
+		[JsonProperty("login")]	public  string Login { get ; set; }
+
+		/// <summary>
+		/// Name
 		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
 	}

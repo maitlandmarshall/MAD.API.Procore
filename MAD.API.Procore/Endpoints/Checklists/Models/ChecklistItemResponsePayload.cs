@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Checklists.Models {
-	public class Payload {
+	public class ChecklistItemResponsePayload {
 
 		/// <summary>
 		/// Response for an Open Ended Text Item
@@ -21,6 +21,6 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		/// </summary>
 		[JsonProperty("date_value")]	public  string DateValue { get ; set; }
 
-		[JsonProperty("response_option")]	public  ResponseOption ResponseOption { get ; set; }
+		[JsonProperty("response_option")]	public  ChecklistItemResponsePayloadResponseOption ResponseOption { get ; set; }
 	}
 }

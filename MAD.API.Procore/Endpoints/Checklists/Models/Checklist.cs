@@ -31,7 +31,7 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		/// <summary>
 		/// Users on the Inspection distribution list
 		/// </summary>
-		[JsonProperty("distribution_members")]	public  List<DistributionMember> DistributionMembers { get ; set; }
+		[JsonProperty("distribution_members")]	public  List<ChecklistDistributionMember> DistributionMembers { get ; set; }
 
 		/// <summary>
 		/// Timestamp indicating when the Inspection is due
@@ -128,18 +128,18 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		/// <summary>
 		/// Specification Section
 		/// </summary>
-		[JsonProperty("specification_section")]	public  SpecificationSection SpecificationSection { get ; set; }
+		[JsonProperty("specification_section")]	public  ChecklistSpecificationSection SpecificationSection { get ; set; }
 
 		[JsonProperty("trade")]	public  Trade Trade { get ; set; }
 
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("created_by")]	public  ChecklistCreatedBy CreatedBy { get ; set; }
 
-		[JsonProperty("closed_by")]	public  ClosedBy ClosedBy { get ; set; }
+		[JsonProperty("closed_by")]	public  ChecklistClosedBy ClosedBy { get ; set; }
 
 		/// <summary>
 		/// Checklist inspectors
 		/// </summary>
-		[JsonProperty("inspectors")]	public  List<Inspector> Inspectors { get ; set; }
+		[JsonProperty("inspectors")]	public  List<ChecklistInspector> Inspectors { get ; set; }
 
 		/// <summary>
 		/// Checklist signature requests
@@ -149,16 +149,16 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		/// <summary>
 		/// Vendor responsible for the work being inspected
 		/// </summary>
-		[JsonProperty("responsible_contractor")]	public  ResponsibleContractor ResponsibleContractor { get ; set; }
+		[JsonProperty("responsible_contractor")]	public  ChecklistResponsibleContractor ResponsibleContractor { get ; set; }
 
-		[JsonProperty("responsible_party")]	public  ResponsibleParty ResponsibleParty { get ; set; }
+		[JsonProperty("responsible_party")]	public  ChecklistResponsibleParty ResponsibleParty { get ; set; }
 
 		[JsonProperty("response_set")]	public  ChecklistDefaultResponseSet ResponseSet { get ; set; }
 
 		/// <summary>
 		/// Checklist Attachments
 		/// </summary>
-		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<ChecklistAttachment> Attachments { get ; set; }
 
 		/// <summary>
 		/// Checklist Sections

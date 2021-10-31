@@ -49,22 +49,22 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		/// <summary>
 		/// Observations created from the Checklist Item
 		/// </summary>
-		[JsonProperty("observations")]	public  List<Observation> Observations { get ; set; }
+		[JsonProperty("observations")]	public  List<ChecklistSectionItemObservation> Observations { get ; set; }
 
 		/// <summary>
 		/// Item attachment histories
 		/// </summary>
-		[JsonProperty("attachment_histories")]	public  List<AttachmentHistory> AttachmentHistories { get ; set; }
+		[JsonProperty("attachment_histories")]	public  List<ChecklistSectionItemAttachmentHistory> AttachmentHistories { get ; set; }
 
 		/// <summary>
 		/// Item attachments
 		/// </summary>
-		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<ChecklistSectionItemAttachment> Attachments { get ; set; }
 
 		/// <summary>
 		/// Item histories
 		/// </summary>
-		[JsonProperty("histories")]	public  List<History> Histories { get ; set; }
+		[JsonProperty("histories")]	public  List<ChecklistSectionItemHistory> Histories { get ; set; }
 
 		/// <summary>
 		/// Item Response
@@ -74,11 +74,11 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		/// <summary>
 		/// Item comments
 		/// </summary>
-		[JsonProperty("comments")]	public  List<Comment> Comments { get ; set; }
+		[JsonProperty("comments")]	public  List<ChecklistSectionItemComment> Comments { get ; set; }
 
 		[JsonProperty("response")]	public  ChecklistResponse Response { get ; set; }
 
-		[JsonProperty("response_set")]	public  ResponseSet ResponseSet { get ; set; }
+		[JsonProperty("response_set")]	public  ChecklistSectionItemResponseSet ResponseSet { get ; set; }
 
 		[JsonProperty("type")]	public  ChecklistItemType Type { get ; set; }
 

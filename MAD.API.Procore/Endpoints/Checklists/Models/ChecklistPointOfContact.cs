@@ -4,15 +4,21 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Checklists.Models {
-	public class ChecklistSignatureRequest {
+	public class ChecklistPointOfContact {
 
 		/// <summary>
 		/// ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
-		[JsonProperty("signatory")]	public  ChecklistSignatureRequestSignatory Signatory { get ; set; }
+		/// <summary>
+		/// Email
+		/// </summary>
+		[JsonProperty("login")]	public  string Login { get ; set; }
 
-		[JsonProperty("signature")]	public  ChecklistSignature Signature { get ; set; }
+		/// <summary>
+		/// Name
+		/// </summary>
+		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }

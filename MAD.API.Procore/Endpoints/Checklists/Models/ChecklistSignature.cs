@@ -11,13 +11,13 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
-		[JsonProperty("captured_by")]	public  CapturedBy CapturedBy { get ; set; }
+		[JsonProperty("captured_by")]	public  ChecklistSignatureCapturedBy CapturedBy { get ; set; }
 
 		/// <summary>
 		/// Timestamp of creation
 		/// </summary>
 		[JsonProperty("captured_at")]	public  DateTimeOffset? CapturedAt { get ; set; }
 
-		[JsonProperty("attachment")]	public  Attachment Attachment { get ; set; }
+		[JsonProperty("attachment")]	public  ChecklistSignatureAttachment Attachment { get ; set; }
 	}
 }

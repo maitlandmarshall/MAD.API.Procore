@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Checklists.Models {
-	public class AttachmentHistory {
+	public class ChecklistSectionItemAttachmentHistory {
 
 		/// <summary>
 		/// Attachment ID
@@ -16,8 +16,8 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		/// </summary>
 		[JsonProperty("created_at")]	public  DateTimeOffset CreatedAt { get ; set; }
 
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("created_by")]	public  ChecklistSectionItemAttachmentHistoryCreatedBy CreatedBy { get ; set; }
 
-		[JsonProperty("attachment")]	public  Attachment Attachment { get ; set; }
+		[JsonProperty("attachment")]	public  ChecklistSectionItemAttachmentHistoryAttachment Attachment { get ; set; }
 	}
 }

@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Checklists.Models {
-	public class Comment {
+	public class ChecklistSectionItemAttachmentCreatedBy {
 
 		/// <summary>
 		/// ID
@@ -12,15 +12,13 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// Comment body
+		/// Email
 		/// </summary>
-		[JsonProperty("body")]	public  string Body { get ; set; }
+		[JsonProperty("login")]	public  string Login { get ; set; }
 
 		/// <summary>
-		/// Timestamp of creation
+		/// Name
 		/// </summary>
-		[JsonProperty("created_at")]	public  DateTimeOffset CreatedAt { get ; set; }
-
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }

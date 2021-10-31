@@ -21,10 +21,10 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		/// </summary>
 		[JsonProperty("responded_at")]	public  DateTimeOffset? RespondedAt { get ; set; }
 
-		[JsonProperty("responder")]	public  Responder Responder { get ; set; }
+		[JsonProperty("responder")]	public  ChecklistItemResponseResponder Responder { get ; set; }
 
 		[JsonProperty("item_type")]	public  ChecklistItemType ItemType { get ; set; }
 
-		[JsonProperty("payload")]	public  Payload Payload { get ; set; }
+		[JsonProperty("payload")]	public  ChecklistItemResponsePayload Payload { get ; set; }
 	}
 }
