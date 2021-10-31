@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Checklists.Models {
-	public class Attachment {
+	public class ChecklistResponse {
 
 		/// <summary>
 		/// ID
@@ -12,18 +12,13 @@ namespace MAD.API.Procore.Endpoints.Checklists.Models {
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// URL
-		/// </summary>
-		[JsonProperty("url")]	public  string Url { get ; set; }
-
-		/// <summary>
-		/// Filename
-		/// </summary>
-		[JsonProperty("filename")]	public  string Filename { get ; set; }
-
-		/// <summary>
-		/// Attachment Name
+		/// The name of the Response
 		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
+
+		/// <summary>
+		/// Corresponding Checklist Item status
+		/// </summary>
+		[JsonProperty("corresponding_status")]	public  string CorrespondingStatus { get ; set; }
 	}
 }

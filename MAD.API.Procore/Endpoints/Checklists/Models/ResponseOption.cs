@@ -4,25 +4,15 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Checklists.Models {
-	public class Attachment {
+	public class ResponseOption {
 
 		/// <summary>
-		/// ID
+		/// Response Option ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// URL
-		/// </summary>
-		[JsonProperty("url")]	public  string Url { get ; set; }
-
-		/// <summary>
-		/// Filename
-		/// </summary>
-		[JsonProperty("filename")]	public  string Filename { get ; set; }
-
-		/// <summary>
-		/// Attachment Name
+		/// Response Option Name
 		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
