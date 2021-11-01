@@ -9,7 +9,7 @@ namespace MAD.API.Procore.Endpoints.Transmittals.Models {
 		/// <summary>
 		/// Actions as noted
 		/// </summary>
-		[JsonProperty("actions")]	public  ListTransmittalsRequestResultAction Actions { get ; set; }
+		[JsonProperty("actions")]	public  JObject Actions { get ; set; }
 
 		[JsonProperty("cc_recipients")]	public  List<ListTransmittalsRequestResultCcRecipient> CcRecipients { get ; set; }
 
@@ -46,7 +46,7 @@ namespace MAD.API.Procore.Endpoints.Transmittals.Models {
 		/// <summary>
 		/// Transmittal reasons (Submitted For)
 		/// </summary>
-		[JsonProperty("reasons")]	public  ListTransmittalsRequestResultReason Reasons { get ; set; }
+		[JsonProperty("reasons")]	public  JObject Reasons { get ; set; }
 
 		[JsonProperty("to_recipients")]	public  List<ListTransmittalsRequestResultToRecipient> ToRecipients { get ; set; }
 
