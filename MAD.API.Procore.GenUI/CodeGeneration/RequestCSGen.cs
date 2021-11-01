@@ -13,28 +13,42 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
     {
         public static IEnumerable<ClassModel> Generate(Endpoint endpoint)
         {
-            EndpointResponse okResponse = endpoint.Responses.FirstOrDefault(y => y.Status >= 200 && y.Status <= 299);
-            IEnumerable<Schema> schemas = GetNestedSchemas(okResponse.Schema);
-
-            IEnumerable<ClassModel> schemaClassModels = GenerateModels(schemas)
+            var okResponse = endpoint.Responses.FirstOrDefault(y => y.Status >= 200 && y.Status <= 299);
+            var schemas = GetNestedSchemas(okResponse.Schema);
+            var schemaClassModels = GenerateModels(schemas)
                 .OrderByDescending(y => y.Properties.Count)
                 .GroupBy(y => y.Name)
                 .Select(y => y.First());
 
-            Schema responseType = schemas.First();
-            string requestResponseType = ClassNameFactory.Create(responseType);
+            var responseType = schemas.FirstOrDefault();
+            
+            string requestResponseType;
+            ClassModel responseTypeClassModel;
 
-            ClassModel responseTypeClassModel = schemaClassModels.First(y => y.Name == requestResponseType);
+            if (responseType is null
+                && okResponse.Schema.Type.Name == "string")
+            {
+                requestResponseType = "string";
+                responseTypeClassModel = new ClassModel
+                {
+                    Name = "String"
+                };
+            }
+            else
+            {
+                requestResponseType = ClassNameFactory.Create(responseType);
+                responseTypeClassModel = schemaClassModels.First(y => y.Name == requestResponseType);
+            }
 
             if (responseTypeClassModel.BaseClass is null
-                && responseType.Type.Name == "array")
+                && responseType?.Type.Name == "array")
             {
                 requestResponseType = $"IEnumerable<{requestResponseType}>";
             }
 
             ClassModel procoreRequestModel = new ClassModel
             {
-                Name = responseType.Type.Name.StartsWith("array") ? "ProcorePaginatedRequest": "ProcoreRequest",
+                Name = responseType?.Type.Name.StartsWith("array") == true ? "ProcorePaginatedRequest": "ProcoreRequest",
                 Generics =
                 {
                     requestResponseType
