@@ -69,25 +69,25 @@ namespace MAD.API.Procore.Endpoints.ManpowerLogs.Models {
 		/// <summary>
 		/// This key is available when Contact is a Vendor
 		/// </summary>
-		[JsonProperty("vendor")]	public  Vendor Vendor { get ; set; }
+		[JsonProperty("vendor")]	public  ListManpowerLogsRequestResultVendor Vendor { get ; set; }
 
 		/// <summary>
 		/// This key is available when Contact is a User
 		/// </summary>
-		[JsonProperty("user")]	public  User User { get ; set; }
+		[JsonProperty("user")]	public  ListManpowerLogsRequestResultUser User { get ; set; }
 
-		[JsonProperty("contact")]	public  Contact Contact { get ; set; }
+		[JsonProperty("contact")]	public  ListManpowerLogsRequestResultContact Contact { get ; set; }
 
-		[JsonProperty("cost_code")]	public  CostCode CostCode { get ; set; }
+		[JsonProperty("cost_code")]	public  ListManpowerLogsRequestResultCostCode CostCode { get ; set; }
 
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("created_by")]	public  ListManpowerLogsRequestResultCreatedBy CreatedBy { get ; set; }
 
 		[JsonProperty("location")]	public  Location Location { get ; set; }
 
 		/// <summary>
 		/// :filename to be deprecated, use :name
 		/// </summary>
-		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<ListManpowerLogsRequestResultAttachment> Attachments { get ; set; }
 
 		[JsonProperty("trade")]	public  Trade Trade { get ; set; }
 

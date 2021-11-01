@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.ManpowerLogs.Models {
-	public class Contact {
+	public class CreateManpowerLogRequestResultContact {
 
 		[JsonProperty("id")]	public  long Id { get ; set; }
 

@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.ManpowerLogs.Models {
-	public class CreatedBy {
+	public class CreateManpowerLogRequestResultCreatedBy {
 
 		/// <summary>
 		/// ID

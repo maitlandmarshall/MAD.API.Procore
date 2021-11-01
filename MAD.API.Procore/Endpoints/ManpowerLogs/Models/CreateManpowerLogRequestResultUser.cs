@@ -4,16 +4,21 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.ManpowerLogs.Models {
-	public class Value {
+	public class CreateManpowerLogRequestResultUser {
 
 		/// <summary>
-		/// The unique identifier of the list of values (LOV) entry.
+		/// User ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// Label of the list of values (LOV) entry.
+		/// User Login
 		/// </summary>
-		[JsonProperty("label")]	public  string Label { get ; set; }
+		[JsonProperty("login")]	public  string Login { get ; set; }
+
+		/// <summary>
+		/// User Name
+		/// </summary>
+		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }
