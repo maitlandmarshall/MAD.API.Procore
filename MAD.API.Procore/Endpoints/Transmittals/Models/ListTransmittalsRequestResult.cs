@@ -9,9 +9,9 @@ namespace MAD.API.Procore.Endpoints.Transmittals.Models {
 		/// <summary>
 		/// Actions as noted
 		/// </summary>
-		[JsonProperty("actions")]	public  Action Actions { get ; set; }
+		[JsonProperty("actions")]	public  ListTransmittalsRequestResultAction Actions { get ; set; }
 
-		[JsonProperty("cc_recipients")]	public  List<CcRecipient> CcRecipients { get ; set; }
+		[JsonProperty("cc_recipients")]	public  List<ListTransmittalsRequestResultCcRecipient> CcRecipients { get ; set; }
 
 		/// <summary>
 		/// Date created
@@ -46,11 +46,11 @@ namespace MAD.API.Procore.Endpoints.Transmittals.Models {
 		/// <summary>
 		/// Transmittal reasons (Submitted For)
 		/// </summary>
-		[JsonProperty("reasons")]	public  Reason Reasons { get ; set; }
+		[JsonProperty("reasons")]	public  ListTransmittalsRequestResultReason Reasons { get ; set; }
 
-		[JsonProperty("to_recipients")]	public  List<ToRecipient> ToRecipients { get ; set; }
+		[JsonProperty("to_recipients")]	public  List<ListTransmittalsRequestResultToRecipient> ToRecipients { get ; set; }
 
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("created_by")]	public  ListTransmittalsRequestResultCreatedBy CreatedBy { get ; set; }
 
 		/// <summary>
 		/// ID

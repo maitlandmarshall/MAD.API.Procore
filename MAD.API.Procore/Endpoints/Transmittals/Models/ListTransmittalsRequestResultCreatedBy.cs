@@ -4,21 +4,15 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Transmittals.Models {
-	public class CcRecipient {
-
-		/// <summary>
-		/// ID
-		/// </summary>
-		[JsonProperty("id")]	public  long Id { get ; set; }
+	public class ListTransmittalsRequestResultCreatedBy {
 
 		/// <summary>
 		/// Email
 		/// </summary>
 		[JsonProperty("login")]	public  string Login { get ; set; }
 
-		/// <summary>
-		/// Name
-		/// </summary>
+		[JsonProperty("id")]	public  long Id { get ; set; }
+
 		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }
