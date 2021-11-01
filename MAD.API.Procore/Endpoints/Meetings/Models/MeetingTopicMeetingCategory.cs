@@ -4,18 +4,16 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Meetings.Models {
-	public class Attendee {
+	public class MeetingTopicMeetingCategory {
 
 		/// <summary>
-		/// Attendee id
+		/// Meeting category id
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// Attendee status
+		/// Meeting category title
 		/// </summary>
-		[JsonProperty("status")]	public  string Status { get ; set; }
-
-		[JsonProperty("login_information")]	public  LoginInformation LoginInformation { get ; set; }
+		[JsonProperty("title")]	public  string Title { get ; set; }
 	}
 }

@@ -79,16 +79,16 @@ namespace MAD.API.Procore.Endpoints.Meetings.Models {
 		/// <summary>
 		/// Meeting attachments
 		/// </summary>
-		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<MeetingAttachment> Attachments { get ; set; }
 
 		/// <summary>
 		/// Meeting attendees
 		/// </summary>
-		[JsonProperty("attendees")]	public  List<Attendee> Attendees { get ; set; }
+		[JsonProperty("attendees")]	public  List<MeetingAttendee> Attendees { get ; set; }
 
 		/// <summary>
 		/// Meeting categories
 		/// </summary>
-		[JsonProperty("meeting_categories")]	public  List<MeetingCategory> MeetingCategories { get ; set; }
+		[JsonProperty("meeting_categories")]	public  List<MeetingMeetingCategory> MeetingCategories { get ; set; }
 	}
 }

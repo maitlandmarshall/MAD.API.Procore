@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Meetings.Models {
-	public class MeetingTopic {
+	public class MeetingMeetingCategoryMeetingTopic {
 
 		/// <summary>
 		/// Meeting topic id
