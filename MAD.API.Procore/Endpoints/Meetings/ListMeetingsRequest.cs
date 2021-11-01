@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using MAD.API.Procore.Endpoints.Meetings.Models;
 using MAD.API.Procore;
 namespace MAD.API.Procore.Endpoints.Meetings {
-	public class ListMeetingsRequest : ProcorePaginatedRequest<IEnumerable<Meeting>> {
+	public class ListMeetingsRequest : ProcorePaginatedRequest<IEnumerable<GroupOfMeeting>> {
 
 		public override string Resource { get => $"/meetings";}
 
