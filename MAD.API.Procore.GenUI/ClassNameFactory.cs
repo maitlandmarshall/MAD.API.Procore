@@ -28,10 +28,55 @@ namespace MAD.API.Procore.Gen
                 return itemType;
             }
 
+            var model = schemaModel;
             string name;
 
-            if (!string.IsNullOrEmpty(schemaModel.Title))
+            do
+            {
+                if (model.Type?.Name == "array")
+                {
+                    // Does the array's item type have a name?
+                    name = GetName(model.Items as Schema) ?? GetName(model);
+                }
+                else
+                {
+                    name = GetName(model);
+                }
+
+                model = model.Parent as Schema;
+
+            } while (string.IsNullOrWhiteSpace(name));
+
+            return name;
+        }
+
+        private static string GetName(Schema schemaModel)
+        {
+            string name;
+
+            if (schemaModel.Type.Name != "object"
+                && schemaModel.Type.Name != "array")
+            {
+                string itemType;
+
+                switch (schemaModel.Type.Name)
+                {
+                    case "integer":
+                        itemType = "long";
+                        break;
+                    case "string":
+                        itemType = "string";
+                        break;
+                    default:
+                        throw new NotSupportedException();
+                }
+
+                return itemType;
+            }
+            else if (!string.IsNullOrEmpty(schemaModel.Title))
+            {
                 name = schemaModel.Title;
+            }
             else if (!string.IsNullOrEmpty(schemaModel.Field))
             {
                 if (schemaModel.Parent != null
@@ -39,7 +84,16 @@ namespace MAD.API.Procore.Gen
                     && schemaModel.Field != "custom_fields")
                 {
                     // Unless the model has a specific title, the name should be a concatenation of its parent's name and its field
-                    name = $"{Create(schemaModel.Parent as Schema)}_{schemaModel.Field}";
+                    var parentName = Create(schemaModel.Parent as Schema);
+
+                    if (string.IsNullOrWhiteSpace(parentName))
+                    {
+                        name = schemaModel.Field;
+                    }
+                    else
+                    {
+                        name = $"{parentName}_{schemaModel.Field}";
+                    }
                 }
                 else
                 {
@@ -56,15 +110,15 @@ namespace MAD.API.Procore.Gen
                     name = name.Substring("array of".Length).Trim();
                 }
             }
-
-            else if (schemaModel.Parent != null)
-                return Create(schemaModel.Parent as Schema);
-            else if (schemaModel.Endpoint != null)
+            else if (schemaModel.Endpoint != null
+                && schemaModel.Parent is null)
+            {
                 name = schemaModel.Endpoint.Summary + "RequestResult";
-            else
-                return null;
+            }
+            else return null;
 
             var finalName = name.CleanForCode().Singularize();
+
             return finalName;
         }
     }
