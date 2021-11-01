@@ -39,7 +39,7 @@ namespace MAD.API.Procore.Endpoints.ChecklistTemplates.Models {
 		/// <summary>
 		/// Inspection Type
 		/// </summary>
-		[JsonProperty("inspection_type")]	public  InspectionType InspectionType { get ; set; }
+		[JsonProperty("inspection_type")]	public  ChecklistTemplateInspectionType InspectionType { get ; set; }
 
 		/// <summary>
 		/// The ID of the associated Alternative Response Set (if null, the default response set is being used)
@@ -48,20 +48,20 @@ namespace MAD.API.Procore.Endpoints.ChecklistTemplates.Models {
 
 		[JsonProperty("response_set")]	public  ChecklistDefaultResponseSet ResponseSet { get ; set; }
 
-		[JsonProperty("location")]	public  Location Location { get ; set; }
+		[JsonProperty("location")]	public  ChecklistTemplateLocation Location { get ; set; }
 
 		[JsonProperty("trade")]	public  Trade Trade { get ; set; }
 
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("created_by")]	public  ChecklistTemplateCreatedBy CreatedBy { get ; set; }
 
 		/// <summary>
 		/// Attachments
 		/// </summary>
-		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<ChecklistTemplateAttachment> Attachments { get ; set; }
 
 		/// <summary>
 		/// Checklist Sections
 		/// </summary>
-		[JsonProperty("sections")]	public  List<Section> Sections { get ; set; }
+		[JsonProperty("sections")]	public  List<ChecklistTemplateSection> Sections { get ; set; }
 	}
 }

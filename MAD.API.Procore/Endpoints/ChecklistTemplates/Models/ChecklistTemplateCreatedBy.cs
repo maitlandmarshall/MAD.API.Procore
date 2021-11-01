@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.ChecklistTemplates.Models {
-	public class CreatedBy {
+	public class ChecklistTemplateCreatedBy {
 
 		/// <summary>
 		/// ID

@@ -64,7 +64,8 @@ namespace MAD.API.Procore.Gen
             else
                 return null;
 
-            return name.CleanForCode().Singularize();
+            var finalName = name.CleanForCode().Singularize();
+            return finalName;
         }
     }
 }
