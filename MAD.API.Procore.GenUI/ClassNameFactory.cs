@@ -83,6 +83,13 @@ namespace MAD.API.Procore.Gen
                     && schemaModel.Field != "custom_field"
                     && schemaModel.Field != "custom_fields")
                 {
+                    // Prevent generating empty class objects with no properties when the schema provided by Procore has no properties
+                    if (schemaModel.Properties is null
+                        && schemaModel.Items is null)
+                    {
+                        return "JObject";
+                    }
+
                     // Unless the model has a specific title, the name should be a concatenation of its parent's name and its field
                     var parentName = Create(schemaModel.Parent as Schema);
 

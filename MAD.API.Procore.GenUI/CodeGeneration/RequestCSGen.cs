@@ -172,7 +172,11 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
 
                     var ns = s.Endpoint.Group.CleanForCode();
 
-                    ClassModel gen = ModelCSGen.Generate(s, $"MAD.API.Procore.Endpoints.{ns}.Models", className); ;
+                    ClassModel gen = ModelCSGen.Generate(s, $"MAD.API.Procore.Endpoints.{ns}.Models", className);
+
+                    // The api schema has supplied an empty object
+                    if (gen.Properties.Any() == false)
+                        continue;
 
                     if (gen is null)
                         continue;
