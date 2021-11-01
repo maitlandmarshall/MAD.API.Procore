@@ -4,15 +4,16 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Incidents.Models {
-	public class CreatedBy {
+	public class IncidentRecordBaseNormalManagedEquipment {
 
 		/// <summary>
-		/// Email
+		/// Equipment ID
 		/// </summary>
-		[JsonProperty("login")]	public  string Login { get ; set; }
-
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
+		/// <summary>
+		/// Equipment name
+		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }

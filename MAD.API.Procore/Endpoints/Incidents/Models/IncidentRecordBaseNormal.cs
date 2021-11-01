@@ -18,7 +18,7 @@ namespace MAD.API.Procore.Endpoints.Incidents.Models {
 
 		[JsonProperty("affected_party")]	public  Party AffectedParty { get ; set; }
 
-		[JsonProperty("affected_person")]	public  AffectedPerson AffectedPerson { get ; set; }
+		[JsonProperty("affected_person")]	public  IncidentRecordBaseNormalAffectedPerson AffectedPerson { get ; set; }
 
 		[JsonProperty("harm_source")]	public  HarmSource HarmSource { get ; set; }
 
@@ -151,7 +151,7 @@ namespace MAD.API.Procore.Endpoints.Incidents.Models {
 		/// </summary>
 		[JsonProperty("description")]	public  string Description { get ; set; }
 
-		[JsonProperty("affected_company")]	public  AffectedCompany AffectedCompany { get ; set; }
+		[JsonProperty("affected_company")]	public  IncidentRecordBaseNormalAffectedCompany AffectedCompany { get ; set; }
 
 		/// <summary>
 		/// Timestamp of creation
@@ -163,9 +163,9 @@ namespace MAD.API.Procore.Endpoints.Incidents.Models {
 		/// </summary>
 		[JsonProperty("deleted_at")]	public  DateTimeOffset? DeletedAt { get ; set; }
 
-		[JsonProperty("managed_equipment")]	public  ManagedEquipment ManagedEquipment { get ; set; }
+		[JsonProperty("managed_equipment")]	public  IncidentRecordBaseNormalManagedEquipment ManagedEquipment { get ; set; }
 
-		[JsonProperty("incident_created_by")]	public  IncidentCreatedBy IncidentCreatedBy { get ; set; }
+		[JsonProperty("incident_created_by")]	public  IncidentRecordBaseNormalIncidentCreatedBy IncidentCreatedBy { get ; set; }
 
 		/// <summary>
 		/// Timestamp of last update

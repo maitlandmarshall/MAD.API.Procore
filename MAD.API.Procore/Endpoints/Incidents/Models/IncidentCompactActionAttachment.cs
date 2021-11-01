@@ -4,10 +4,6 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Incidents.Models {
-	public class Witnes {
-
-		[JsonProperty("id")]	public  long Id { get ; set; }
-
-		[JsonProperty("name")]	public  string Name { get ; set; }
+	public class IncidentCompactActionAttachment : List<IncidentAttachment> {
 	}
 }

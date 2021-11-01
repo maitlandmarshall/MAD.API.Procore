@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Incidents.Models {
-	public class AffectedPerson {
+	public class IncidentRecordBaseNormalIncidentCreatedBy {
 
 		/// <summary>
 		/// Email

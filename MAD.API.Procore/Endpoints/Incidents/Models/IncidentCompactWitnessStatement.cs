@@ -4,10 +4,10 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Incidents.Models {
-	public class Action {
+	public class IncidentCompactWitnessStatement {
 
 		/// <summary>
-		/// Action ID
+		/// Witness Statement ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
@@ -16,19 +16,22 @@ namespace MAD.API.Procore.Endpoints.Incidents.Models {
 		/// </summary>
 		[JsonProperty("incident_id")]	public  long? IncidentId { get ; set; }
 
-		[JsonProperty("action_type")]	public  ActionType ActionType { get ; set; }
-
 		[JsonProperty("attachments")]	public  List<IncidentAttachment> Attachments { get ; set; }
 
 		/// <summary>
-		/// The account of the action in rich text form.
+		/// The account of the event by the witness in rich text form.
 		/// </summary>
-		[JsonProperty("description")]	public  string Description { get ; set; }
+		[JsonProperty("statement")]	public  string Statement { get ; set; }
 
 		/// <summary>
-		/// The account of the action plain text form.
+		/// The account of the event by the witness in plain text form.
 		/// </summary>
-		[JsonProperty("description_plain_text")]	public  string DescriptionPlainText { get ; set; }
+		[JsonProperty("statement_plain_text")]	public  string StatementPlainText { get ; set; }
+
+		/// <summary>
+		/// Date that the Witness Statement was received.
+		/// </summary>
+		[JsonProperty("date_received")]	public  string DateReceived { get ; set; }
 
 		/// <summary>
 		/// Timestamp of creation
@@ -45,10 +48,7 @@ namespace MAD.API.Procore.Endpoints.Incidents.Models {
 		/// </summary>
 		[JsonProperty("updated_at")]	public  DateTimeOffset UpdatedAt { get ; set; }
 
-		/// <summary>
-		/// Observation ID
-		/// </summary>
-		[JsonProperty("observation_id")]	public  long? ObservationId { get ; set; }
+		[JsonProperty("witness")]	public  IncidentCompactWitnessStatementWitnes Witness { get ; set; }
 
 		[JsonProperty("custom_fields")]	public  JObject CustomFields { get ; set; }
 	}

@@ -4,6 +4,6 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Incidents.Models {
-	public class Injury : List<IncidentRecordBaseNormal> {
+	public class IncidentCompactPropertyDamage : List<IncidentRecordBaseNormal> {
 	}
 }

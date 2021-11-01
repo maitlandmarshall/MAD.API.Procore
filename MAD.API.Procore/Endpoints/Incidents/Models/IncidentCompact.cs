@@ -88,7 +88,7 @@ namespace MAD.API.Procore.Endpoints.Incidents.Models {
 		/// </summary>
 		[JsonProperty("updated_at")]	public  DateTimeOffset UpdatedAt { get ; set; }
 
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("created_by")]	public  IncidentCompactCreatedBy CreatedBy { get ; set; }
 
 		[JsonProperty("contributing_behavior")]	public  ContributingBehavior ContributingBehavior { get ; set; }
 
@@ -110,7 +110,7 @@ namespace MAD.API.Procore.Endpoints.Incidents.Models {
 		/// </summary>
 		[JsonProperty("attachments")]	public  List<IncidentAttachment> Attachments { get ; set; }
 
-		[JsonProperty("distribution_members")]	public  List<DistributionMember> DistributionMembers { get ; set; }
+		[JsonProperty("distribution_members")]	public  List<IncidentCompactDistributionMember> DistributionMembers { get ; set; }
 
 		/// <summary>
 		/// Environmentals
@@ -135,11 +135,11 @@ namespace MAD.API.Procore.Endpoints.Incidents.Models {
 		/// <summary>
 		/// WitnessStatements
 		/// </summary>
-		[JsonProperty("witness_statements")]	public  List<WitnessStatement> WitnessStatements { get ; set; }
+		[JsonProperty("witness_statements")]	public  List<IncidentCompactWitnessStatement> WitnessStatements { get ; set; }
 
 		/// <summary>
 		/// Actions
 		/// </summary>
-		[JsonProperty("actions")]	public  List<Action> Actions { get ; set; }
+		[JsonProperty("actions")]	public  List<IncidentCompactAction> Actions { get ; set; }
 	}
 }
