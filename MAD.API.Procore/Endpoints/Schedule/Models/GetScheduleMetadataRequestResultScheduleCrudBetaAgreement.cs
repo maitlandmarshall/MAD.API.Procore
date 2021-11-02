@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Schedule.Models {
-	public class ScheduleCrudBetaAgreement {
+	public class GetScheduleMetadataRequestResultScheduleCrudBetaAgreement {
 
 		[JsonProperty("signed")]	public  bool Signed { get ; set; }
 

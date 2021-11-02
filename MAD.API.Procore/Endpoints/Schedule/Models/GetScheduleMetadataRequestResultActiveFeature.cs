@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Schedule.Models {
-	public class ActiveFeature {
+	public class GetScheduleMetadataRequestResultActiveFeature {
 
 		[JsonProperty("schedule_activity_feed")]	public  bool ScheduleActivityFeed { get ; set; }
 
