@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Submittals.Models {
-	public class Approver {
+	public class ListSubmittalsOnAProjectRequestResultApprover {
 
 		/// <summary>
 		/// Role of Approver
@@ -15,7 +15,7 @@ namespace MAD.API.Procore.Endpoints.Submittals.Models {
 
 		[JsonProperty("distributed")]	public  bool Distributed { get ; set; }
 
-		[JsonProperty("response")]	public  Response Response { get ; set; }
+		[JsonProperty("response")]	public  ListSubmittalsOnAProjectRequestResultApproverResponse Response { get ; set; }
 
 		/// <summary>
 		/// Returned Date
@@ -32,12 +32,12 @@ namespace MAD.API.Procore.Endpoints.Submittals.Models {
 		/// </summary>
 		[JsonProperty("due_date")]	public  string DueDate { get ; set; }
 
-		[JsonProperty("user")]	public  User User { get ; set; }
+		[JsonProperty("user")]	public  ListSubmittalsOnAProjectRequestResultApproverUser User { get ; set; }
 
 		/// <summary>
 		/// Attachments
 		/// </summary>
-		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<ListSubmittalsOnAProjectRequestResultApproverAttachment> Attachments { get ; set; }
 
 		/// <summary>
 		/// Submittal Associated Attachment IDs

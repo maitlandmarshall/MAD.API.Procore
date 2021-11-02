@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Submittals.Models {
-	public class SubJob {
+	public class ShowSubmittalRequestResultSubmittalManager {
 
 		/// <summary>
 		/// ID
@@ -12,13 +12,13 @@ namespace MAD.API.Procore.Endpoints.Submittals.Models {
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
+		/// Email
+		/// </summary>
+		[JsonProperty("login")]	public  string Login { get ; set; }
+
+		/// <summary>
 		/// Name
 		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
-
-		/// <summary>
-		/// Unique code in the scope of a Project
-		/// </summary>
-		[JsonProperty("code")]	public  string Code { get ; set; }
 	}
 }

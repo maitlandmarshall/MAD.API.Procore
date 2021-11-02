@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Submittals.Models {
-	public class Response {
+	public class ListSubmittalsOnAProjectRequestResultApproverResponse {
 
 		/// <summary>
 		/// Name of Submittal Response

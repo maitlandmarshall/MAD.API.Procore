@@ -4,15 +4,15 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Submittals.Models {
-	public class SubmittalPackage {
+	public class ListSubmittalsOnAProjectRequestResultSubmittalPackage {
 
 		[JsonProperty("attachments_count")]	public  int? AttachmentsCount { get ; set; }
 
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("created_by")]	public  ListSubmittalsOnAProjectRequestResultSubmittalPackageCreatedBy CreatedBy { get ; set; }
 
 		[JsonProperty("description")]	public  string Description { get ; set; }
 
-		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<ListSubmittalsOnAProjectRequestResultSubmittalPackageAttachment> Attachments { get ; set; }
 
 		[JsonProperty("submittal_ids")]	public  List<long> SubmittalIds { get ; set; }
 

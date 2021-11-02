@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Submittals.Models {
-	public class Type {
+	public class ShowSubmittalRequestResultDistributedSubmittalFinalAttachment {
 
 		/// <summary>
 		/// ID
@@ -12,8 +12,13 @@ namespace MAD.API.Procore.Endpoints.Submittals.Models {
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// Name
+		/// URL
 		/// </summary>
-		[JsonProperty("name")]	public  string Name { get ; set; }
+		[JsonProperty("url")]	public  string Url { get ; set; }
+
+		/// <summary>
+		/// Filename
+		/// </summary>
+		[JsonProperty("filename")]	public  string Filename { get ; set; }
 	}
 }

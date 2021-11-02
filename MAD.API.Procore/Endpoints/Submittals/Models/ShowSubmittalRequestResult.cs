@@ -8,11 +8,11 @@ namespace MAD.API.Procore.Endpoints.Submittals.Models {
 
 		[JsonProperty("actual_delivery_date")]	public  string ActualDeliveryDate { get ; set; }
 
-		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<ShowSubmittalRequestResultAttachment> Attachments { get ; set; }
 
 		[JsonProperty("confirmed_delivery_date")]	public  string ConfirmedDeliveryDate { get ; set; }
 
-		[JsonProperty("cost_code")]	public  CostCode CostCode { get ; set; }
+		[JsonProperty("cost_code")]	public  ShowSubmittalRequestResultCostCode CostCode { get ; set; }
 
 		[JsonProperty("created_at")]	public  DateTimeOffset CreatedAt { get ; set; }
 
@@ -29,7 +29,7 @@ namespace MAD.API.Procore.Endpoints.Submittals.Models {
 
 		[JsonProperty("design_team_review_time")]	public  int? DesignTeamReviewTime { get ; set; }
 
-		[JsonProperty("distribution_members")]	public  List<DistributionMember> DistributionMembers { get ; set; }
+		[JsonProperty("distribution_members")]	public  List<ShowSubmittalRequestResultDistributionMember> DistributionMembers { get ; set; }
 
 		[JsonProperty("internal_review_time")]	public  int? InternalReviewTime { get ; set; }
 
@@ -41,15 +41,15 @@ namespace MAD.API.Procore.Endpoints.Submittals.Models {
 
 		[JsonProperty("source_submittal_log_id")]	public  long? SourceSubmittalLogId { get ; set; }
 
-		[JsonProperty("distributed_submittals")]	public  List<DistributedSubmittal> DistributedSubmittals { get ; set; }
+		[JsonProperty("distributed_submittals")]	public  List<ShowSubmittalRequestResultDistributedSubmittal> DistributedSubmittals { get ; set; }
 
-		[JsonProperty("approvers")]	public  List<Approver> Approvers { get ; set; }
+		[JsonProperty("approvers")]	public  List<ShowSubmittalRequestResultApprover> Approvers { get ; set; }
 
 		[JsonProperty("attachments_count")]	public  int? AttachmentsCount { get ; set; }
 
-		[JsonProperty("ball_in_court")]	public  List<BallInCourt> BallInCourt { get ; set; }
+		[JsonProperty("ball_in_court")]	public  List<ShowSubmittalRequestResultBallInCourt> BallInCourt { get ; set; }
 
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("created_by")]	public  ShowSubmittalRequestResultCreatedBy CreatedBy { get ; set; }
 
 		[JsonProperty("current_revision")]	public  bool CurrentRevision { get ; set; }
 
@@ -65,25 +65,25 @@ namespace MAD.API.Procore.Endpoints.Submittals.Models {
 
 		[JsonProperty("received_date")]	public  string ReceivedDate { get ; set; }
 
-		[JsonProperty("received_from")]	public  ReceivedFrom ReceivedFrom { get ; set; }
+		[JsonProperty("received_from")]	public  ShowSubmittalRequestResultReceivedFrom ReceivedFrom { get ; set; }
 
-		[JsonProperty("responsible_contractor")]	public  ResponsibleContractor ResponsibleContractor { get ; set; }
+		[JsonProperty("responsible_contractor")]	public  ShowSubmittalRequestResultResponsibleContractor ResponsibleContractor { get ; set; }
 
-		[JsonProperty("specification_section")]	public  SpecificationSection SpecificationSection { get ; set; }
+		[JsonProperty("specification_section")]	public  ShowSubmittalRequestResultSpecificationSection SpecificationSection { get ; set; }
 
-		[JsonProperty("sub_job")]	public  SubJob SubJob { get ; set; }
+		[JsonProperty("sub_job")]	public  ShowSubmittalRequestResultSubJob SubJob { get ; set; }
 
 		[JsonProperty("submit_by")]	public  string SubmitBy { get ; set; }
 
-		[JsonProperty("status")]	public  Statu Status { get ; set; }
+		[JsonProperty("status")]	public  ShowSubmittalRequestResultStatu Status { get ; set; }
 
-		[JsonProperty("type")]	public  Type Type { get ; set; }
+		[JsonProperty("type")]	public  ShowSubmittalRequestResultType Type { get ; set; }
 
 		[JsonProperty("updated_at")]	public  DateTimeOffset UpdatedAt { get ; set; }
 
-		[JsonProperty("submittal_manager")]	public  SubmittalManager SubmittalManager { get ; set; }
+		[JsonProperty("submittal_manager")]	public  ShowSubmittalRequestResultSubmittalManager SubmittalManager { get ; set; }
 
-		[JsonProperty("submittal_package")]	public  SubmittalPackage SubmittalPackage { get ; set; }
+		[JsonProperty("submittal_package")]	public  ShowSubmittalRequestResultSubmittalPackage SubmittalPackage { get ; set; }
 
 		[JsonProperty("location")]	public  Location Location { get ; set; }
 

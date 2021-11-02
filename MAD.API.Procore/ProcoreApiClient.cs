@@ -1,4 +1,5 @@
 ﻿
+using MAD.API.Procore.Endpoints.RFIs.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -66,7 +67,18 @@ namespace MAD.API.Procore
             using StreamReader sr = new StreamReader(stream);
             using JsonTextReader jr = new JsonTextReader(sr);
 
-            JsonSerializer jsonSerializer = new JsonSerializer();
+            JsonSerializer jsonSerializer = JsonSerializer.CreateDefault(new JsonSerializerSettings
+            {
+                Error = (sender, args) =>
+                {
+                    // The Procore API returns a different value than the schema specifies, so just ignore the error
+                    if (args.CurrentObject.GetType() == typeof(ListRFIsRequestResultQuestion)
+                        && args.ErrorContext.Path.EndsWith("errors"))
+                    {
+                        args.ErrorContext.Handled = true;
+                    }
+                }
+            });
 
             if (!httpResponse.IsSuccessStatusCode)
             {

@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Submittals.Models {
-	public class DistributedSubmittal {
+	public class ShowSubmittalRequestResultDistributedSubmittal {
 
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
@@ -12,11 +12,11 @@ namespace MAD.API.Procore.Endpoints.Submittals.Models {
 
 		[JsonProperty("sent_at")]	public  DateTimeOffset? SentAt { get ; set; }
 
-		[JsonProperty("distributed_by")]	public  DistributedBy DistributedBy { get ; set; }
+		[JsonProperty("distributed_by")]	public  ShowSubmittalRequestResultDistributedSubmittalDistributedBy DistributedBy { get ; set; }
 
-		[JsonProperty("distributed_to")]	public  List<DistributedTo> DistributedTo { get ; set; }
+		[JsonProperty("distributed_to")]	public  List<ShowSubmittalRequestResultDistributedSubmittalDistributedTo> DistributedTo { get ; set; }
 
-		[JsonProperty("final_attachments")]	public  List<FinalAttachment> FinalAttachments { get ; set; }
+		[JsonProperty("final_attachments")]	public  List<ShowSubmittalRequestResultDistributedSubmittalFinalAttachment> FinalAttachments { get ; set; }
 
 		/// <summary>
 		/// List of Submittal Approver IDs for approvers selected to be distributed

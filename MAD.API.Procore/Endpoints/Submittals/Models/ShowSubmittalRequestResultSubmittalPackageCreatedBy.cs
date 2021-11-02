@@ -4,7 +4,12 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Submittals.Models {
-	public class ResponsibleContractor {
+	public class ShowSubmittalRequestResultSubmittalPackageCreatedBy {
+
+		/// <summary>
+		/// Email
+		/// </summary>
+		[JsonProperty("login")]	public  string Login { get ; set; }
 
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
