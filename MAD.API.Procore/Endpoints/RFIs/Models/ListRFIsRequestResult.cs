@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.RFIs.Models {
 	public class ListRFIsRequestResult {
 
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("created_by")]	public  ListRFIsRequestResultCreatedBy CreatedBy { get ; set; }
 
 		/// <summary>
 		/// Web link to resource
@@ -21,7 +21,7 @@ namespace MAD.API.Procore.Endpoints.RFIs.Models {
 		/// <summary>
 		/// RFI Questions
 		/// </summary>
-		[JsonProperty("questions")]	public  List<Question> Questions { get ; set; }
+		[JsonProperty("questions")]	public  List<ListRFIsRequestResultQuestion> Questions { get ; set; }
 
 		[JsonProperty("custom_fields")]	public  JObject CustomFields { get ; set; }
 
@@ -30,23 +30,23 @@ namespace MAD.API.Procore.Endpoints.RFIs.Models {
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
-		[JsonProperty("assignee")]	public  Assignee Assignee { get ; set; }
+		[JsonProperty("assignee")]	public  ListRFIsRequestResultAssignee Assignee { get ; set; }
 
 		/// <summary>
 		/// RFI Assignees
 		/// </summary>
-		[JsonProperty("assignees")]	public  List<Assignee> Assignees { get ; set; }
+		[JsonProperty("assignees")]	public  List<ListRFIsRequestResultAssignee> Assignees { get ; set; }
 
-		[JsonProperty("ball_in_court")]	public  BallInCourt BallInCourt { get ; set; }
+		[JsonProperty("ball_in_court")]	public  ListRFIsRequestResultBallInCourt BallInCourt { get ; set; }
 
 		/// <summary>
 		/// Ball In Courts
 		/// </summary>
-		[JsonProperty("ball_in_courts")]	public  List<BallInCourt> BallInCourts { get ; set; }
+		[JsonProperty("ball_in_courts")]	public  List<ListRFIsRequestResultBallInCourt> BallInCourts { get ; set; }
 
-		[JsonProperty("cost_code")]	public  CostCode CostCode { get ; set; }
+		[JsonProperty("cost_code")]	public  ListRFIsRequestResultCostCode CostCode { get ; set; }
 
-		[JsonProperty("cost_impact")]	public  CostImpact CostImpact { get ; set; }
+		[JsonProperty("cost_impact")]	public  ListRFIsRequestResultCostImpact CostImpact { get ; set; }
 
 		/// <summary>
 		/// Date created
@@ -95,18 +95,18 @@ namespace MAD.API.Procore.Endpoints.RFIs.Models {
 		/// </summary>
 		[JsonProperty("private")]	public  bool Private { get ; set; }
 
-		[JsonProperty("received_from")]	public  ReceivedFrom ReceivedFrom { get ; set; }
+		[JsonProperty("received_from")]	public  ListRFIsRequestResultReceivedFrom ReceivedFrom { get ; set; }
 
 		/// <summary>
 		/// Reference
 		/// </summary>
 		[JsonProperty("reference")]	public  string Reference { get ; set; }
 
-		[JsonProperty("responsible_contractor")]	public  ResponsibleContractor ResponsibleContractor { get ; set; }
+		[JsonProperty("responsible_contractor")]	public  ListRFIsRequestResultResponsibleContractor ResponsibleContractor { get ; set; }
 
-		[JsonProperty("rfi_manager")]	public  RfiManager RfiManager { get ; set; }
+		[JsonProperty("rfi_manager")]	public  ListRFIsRequestResultRfiManager RfiManager { get ; set; }
 
-		[JsonProperty("schedule_impact")]	public  ScheduleImpact ScheduleImpact { get ; set; }
+		[JsonProperty("schedule_impact")]	public  ListRFIsRequestResultScheduleImpact ScheduleImpact { get ; set; }
 
 		/// <summary>
 		/// Status

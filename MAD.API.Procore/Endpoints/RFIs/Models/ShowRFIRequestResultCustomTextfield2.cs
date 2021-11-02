@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.RFIs.Models {
-	public class CustomTextfield2 {
+	public class ShowRFIRequestResultCustomTextfield2 {
 
 		/// <summary>
 		/// Project label for RFI custom text field 2

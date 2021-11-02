@@ -4,16 +4,21 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.RFIs.Models {
-	public class Value {
+	public class ShowRFIRequestResultSpecificationSection {
 
 		/// <summary>
-		/// The unique identifier of the list of values (LOV) entry.
+		/// ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// Label of the list of values (LOV) entry.
+		/// Description
 		/// </summary>
-		[JsonProperty("label")]	public  string Label { get ; set; }
+		[JsonProperty("description")]	public  string Description { get ; set; }
+
+		/// <summary>
+		/// Number
+		/// </summary>
+		[JsonProperty("number")]	public  string Number { get ; set; }
 	}
 }

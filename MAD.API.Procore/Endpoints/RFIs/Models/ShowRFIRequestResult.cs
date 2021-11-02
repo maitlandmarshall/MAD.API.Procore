@@ -19,17 +19,17 @@ namespace MAD.API.Procore.Endpoints.RFIs.Models {
 		/// <summary>
 		/// Custom RFI text field 1
 		/// </summary>
-		[JsonProperty("custom_textfield_1")]	public  CustomTextfield1 CustomTextfield1 { get ; set; }
+		[JsonProperty("custom_textfield_1")]	public  ShowRFIRequestResultCustomTextfield1 CustomTextfield1 { get ; set; }
 
 		/// <summary>
 		/// Custom RFI text field 2
 		/// </summary>
-		[JsonProperty("custom_textfield_2")]	public  CustomTextfield2 CustomTextfield2 { get ; set; }
+		[JsonProperty("custom_textfield_2")]	public  ShowRFIRequestResultCustomTextfield2 CustomTextfield2 { get ; set; }
 
 		/// <summary>
 		/// RFI Distribution List of Users
 		/// </summary>
-		[JsonProperty("distribution_list")]	public  List<DistributionList> DistributionList { get ; set; }
+		[JsonProperty("distribution_list")]	public  List<ShowRFIRequestResultDistributionList> DistributionList { get ; set; }
 
 		/// <summary>
 		/// Draft status, true if draft
@@ -49,9 +49,9 @@ namespace MAD.API.Procore.Endpoints.RFIs.Models {
 		/// <summary>
 		/// List of questions
 		/// </summary>
-		[JsonProperty("questions")]	public  List<Question> Questions { get ; set; }
+		[JsonProperty("questions")]	public  List<ShowRFIRequestResultQuestion> Questions { get ; set; }
 
-		[JsonProperty("specification_section")]	public  SpecificationSection SpecificationSection { get ; set; }
+		[JsonProperty("specification_section")]	public  ShowRFIRequestResultSpecificationSection SpecificationSection { get ; set; }
 
 		[JsonProperty("custom_fields")]	public  JObject CustomFields { get ; set; }
 
@@ -60,23 +60,23 @@ namespace MAD.API.Procore.Endpoints.RFIs.Models {
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
-		[JsonProperty("assignee")]	public  Assignee Assignee { get ; set; }
+		[JsonProperty("assignee")]	public  ShowRFIRequestResultAssignee Assignee { get ; set; }
 
 		/// <summary>
 		/// RFI Assignees
 		/// </summary>
-		[JsonProperty("assignees")]	public  List<Assignee> Assignees { get ; set; }
+		[JsonProperty("assignees")]	public  List<ShowRFIRequestResultAssignee> Assignees { get ; set; }
 
-		[JsonProperty("ball_in_court")]	public  BallInCourt BallInCourt { get ; set; }
+		[JsonProperty("ball_in_court")]	public  ShowRFIRequestResultBallInCourt BallInCourt { get ; set; }
 
 		/// <summary>
 		/// Ball In Courts
 		/// </summary>
-		[JsonProperty("ball_in_courts")]	public  List<BallInCourt> BallInCourts { get ; set; }
+		[JsonProperty("ball_in_courts")]	public  List<ShowRFIRequestResultBallInCourt> BallInCourts { get ; set; }
 
-		[JsonProperty("cost_code")]	public  CostCode CostCode { get ; set; }
+		[JsonProperty("cost_code")]	public  ShowRFIRequestResultCostCode CostCode { get ; set; }
 
-		[JsonProperty("cost_impact")]	public  CostImpact CostImpact { get ; set; }
+		[JsonProperty("cost_impact")]	public  ShowRFIRequestResultCostImpact CostImpact { get ; set; }
 
 		/// <summary>
 		/// Date created
@@ -125,18 +125,18 @@ namespace MAD.API.Procore.Endpoints.RFIs.Models {
 		/// </summary>
 		[JsonProperty("private")]	public  bool Private { get ; set; }
 
-		[JsonProperty("received_from")]	public  ReceivedFrom ReceivedFrom { get ; set; }
+		[JsonProperty("received_from")]	public  ShowRFIRequestResultReceivedFrom ReceivedFrom { get ; set; }
 
 		/// <summary>
 		/// Reference
 		/// </summary>
 		[JsonProperty("reference")]	public  string Reference { get ; set; }
 
-		[JsonProperty("responsible_contractor")]	public  ResponsibleContractor ResponsibleContractor { get ; set; }
+		[JsonProperty("responsible_contractor")]	public  ShowRFIRequestResultResponsibleContractor ResponsibleContractor { get ; set; }
 
-		[JsonProperty("rfi_manager")]	public  RfiManager RfiManager { get ; set; }
+		[JsonProperty("rfi_manager")]	public  ShowRFIRequestResultRfiManager RfiManager { get ; set; }
 
-		[JsonProperty("schedule_impact")]	public  ScheduleImpact ScheduleImpact { get ; set; }
+		[JsonProperty("schedule_impact")]	public  ShowRFIRequestResultScheduleImpact ScheduleImpact { get ; set; }
 
 		/// <summary>
 		/// Status

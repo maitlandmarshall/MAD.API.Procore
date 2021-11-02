@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.RFIs.Models {
-	public class Answer {
+	public class ShowRFIRequestResultQuestionAnswer {
 
 		/// <summary>
 		/// ID
@@ -44,6 +44,6 @@ namespace MAD.API.Procore.Endpoints.RFIs.Models {
 		/// <summary>
 		/// Attachments
 		/// </summary>
-		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<ShowRFIRequestResultQuestionAnswerAttachment> Attachments { get ; set; }
 	}
 }

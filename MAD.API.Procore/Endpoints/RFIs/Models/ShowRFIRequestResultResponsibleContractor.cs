@@ -4,8 +4,10 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.RFIs.Models {
-	public class Error {
+	public class ShowRFIRequestResultResponsibleContractor {
 
-		[JsonProperty("errors")]	public  string Errors { get ; set; }
+		[JsonProperty("id")]	public  long Id { get ; set; }
+
+		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }

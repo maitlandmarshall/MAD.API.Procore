@@ -4,16 +4,16 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.RFIs.Models {
-	public class ScheduleImpact {
+	public class ListRFIsRequestResultCostCode {
 
 		/// <summary>
-		/// Schedule impact status
+		/// ID
 		/// </summary>
-		[JsonProperty("status")]	public  string Status { get ; set; }
+		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// Schedule impact value
+		/// Name
 		/// </summary>
-		[JsonProperty("value")]	public  int? Value { get ; set; }
+		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }

@@ -4,16 +4,15 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.RFIs.Models {
-	public class CostCode {
+	public class ListRFIsRequestResultCreatedBy {
 
 		/// <summary>
-		/// ID
+		/// Email
 		/// </summary>
+		[JsonProperty("login")]	public  string Login { get ; set; }
+
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
-		/// <summary>
-		/// Name
-		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }
