@@ -46,9 +46,9 @@ namespace MAD.API.Procore.Endpoints.Correspondences.Models {
 		/// </summary>
 		[JsonProperty("private")]	public  bool Private { get ; set; }
 
-		[JsonProperty("schedule_impact")]	public  ScheduleImpact ScheduleImpact { get ; set; }
+		[JsonProperty("schedule_impact")]	public  GenericToolItemScheduleImpact ScheduleImpact { get ; set; }
 
-		[JsonProperty("cost_impact")]	public  CostImpact CostImpact { get ; set; }
+		[JsonProperty("cost_impact")]	public  GenericToolItemCostImpact CostImpact { get ; set; }
 
 		/// <summary>
 		/// Generic Tool Item updated at
@@ -65,34 +65,34 @@ namespace MAD.API.Procore.Endpoints.Correspondences.Models {
 		/// </summary>
 		[JsonProperty("title")]	public  string Title { get ; set; }
 
-		[JsonProperty("created_by")]	public  CreatedBy CreatedBy { get ; set; }
+		[JsonProperty("created_by")]	public  GenericToolItemCreatedBy CreatedBy { get ; set; }
 
-		[JsonProperty("received_from")]	public  ReceivedFrom ReceivedFrom { get ; set; }
+		[JsonProperty("received_from")]	public  GenericToolItemReceivedFrom ReceivedFrom { get ; set; }
 
 		[JsonProperty("location")]	public  Location Location { get ; set; }
 
-		[JsonProperty("cost_code")]	public  CostCode CostCode { get ; set; }
+		[JsonProperty("cost_code")]	public  GenericToolItemCostCode CostCode { get ; set; }
 
-		[JsonProperty("specification_section")]	public  SpecificationSection SpecificationSection { get ; set; }
+		[JsonProperty("specification_section")]	public  GenericToolItemSpecificationSection SpecificationSection { get ; set; }
 
 		[JsonProperty("trade")]	public  Trade Trade { get ; set; }
 
-		[JsonProperty("generic_tool")]	public  GenericTool GenericTool { get ; set; }
+		[JsonProperty("generic_tool")]	public  GenericToolItemGenericTool GenericTool { get ; set; }
 
 		/// <summary>
 		/// Attachments
 		/// </summary>
-		[JsonProperty("attachments")]	public  List<Attachment> Attachments { get ; set; }
+		[JsonProperty("attachments")]	public  List<GenericToolItemAttachment> Attachments { get ; set; }
 
 		/// <summary>
 		/// Distribution Members
 		/// </summary>
-		[JsonProperty("distribution_members")]	public  List<DistributionMember> DistributionMembers { get ; set; }
+		[JsonProperty("distribution_members")]	public  List<GenericToolItemDistributionMember> DistributionMembers { get ; set; }
 
 		/// <summary>
 		/// Assignees
 		/// </summary>
-		[JsonProperty("assignees")]	public  List<Assignee> Assignees { get ; set; }
+		[JsonProperty("assignees")]	public  List<GenericToolItemAssignee> Assignees { get ; set; }
 
 		[JsonProperty("custom_fields")]	public  JObject CustomFields { get ; set; }
 	}

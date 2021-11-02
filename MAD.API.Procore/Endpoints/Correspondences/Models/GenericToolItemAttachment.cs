@@ -4,14 +4,21 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Correspondences.Models {
-	public class CorrespondenceTypeUser {
+	public class GenericToolItemAttachment {
 
+		/// <summary>
+		/// ID
+		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
+		/// <summary>
+		/// URL
+		/// </summary>
+		[JsonProperty("url")]	public  string Url { get ; set; }
+
+		/// <summary>
+		/// Filename
+		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
-
-		[JsonProperty("company")]	public  Company Company { get ; set; }
-
-		[JsonProperty("generic_tools")]	public  List<GenericTool> GenericTools { get ; set; }
 	}
 }

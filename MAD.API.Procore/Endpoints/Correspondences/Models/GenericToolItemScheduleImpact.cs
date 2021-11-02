@@ -4,16 +4,16 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Correspondences.Models {
-	public class Company {
+	public class GenericToolItemScheduleImpact {
 
 		/// <summary>
-		/// Unique identifier for the company.
+		/// Schedule impact status
 		/// </summary>
-		[JsonProperty("id")]	public  long Id { get ; set; }
+		[JsonProperty("status")]	public  string Status { get ; set; }
 
 		/// <summary>
-		/// Name
+		/// Schedule impact value
 		/// </summary>
-		[JsonProperty("name")]	public  string Name { get ; set; }
+		[JsonProperty("value")]	public  decimal? Value { get ; set; }
 	}
 }

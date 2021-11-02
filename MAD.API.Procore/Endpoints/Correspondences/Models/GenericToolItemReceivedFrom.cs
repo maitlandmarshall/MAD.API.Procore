@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Correspondences.Models {
-	public class Assignee {
+	public class GenericToolItemReceivedFrom {
 
 		/// <summary>
 		/// The unique identifier of the user.
@@ -21,6 +21,6 @@ namespace MAD.API.Procore.Endpoints.Correspondences.Models {
 		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
 
-		[JsonProperty("company")]	public  Company Company { get ; set; }
+		[JsonProperty("company")]	public  GenericToolItemReceivedFromCompany Company { get ; set; }
 	}
 }

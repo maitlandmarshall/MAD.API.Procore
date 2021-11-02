@@ -4,21 +4,16 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Correspondences.Models {
-	public class CostCode {
+	public class GenericToolItemGenericTool {
 
 		/// <summary>
-		/// ID
+		/// Unique identifier for the generic tool.
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// Full Cost code, including parent prefixes
+		/// Primary name/title for the generic tool.
 		/// </summary>
-		[JsonProperty("full_code")]	public  string FullCode { get ; set; }
-
-		/// <summary>
-		/// Name
-		/// </summary>
-		[JsonProperty("name")]	public  string Name { get ; set; }
+		[JsonProperty("title")]	public  string Title { get ; set; }
 	}
 }

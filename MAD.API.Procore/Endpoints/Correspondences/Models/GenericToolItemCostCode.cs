@@ -4,21 +4,21 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Correspondences.Models {
-	public class UserAccessLevel {
+	public class GenericToolItemCostCode {
 
 		/// <summary>
-		/// access level
+		/// ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// friendly name for level
+		/// Full Cost code, including parent prefixes
 		/// </summary>
-		[JsonProperty("name")]	public  string Name { get ; set; }
+		[JsonProperty("full_code")]	public  string FullCode { get ; set; }
 
 		/// <summary>
-		/// actions supported by access level by tool
+		/// Name
 		/// </summary>
-		[JsonProperty("permitted_actions")]	public  PermittedAction PermittedActions { get ; set; }
+		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }

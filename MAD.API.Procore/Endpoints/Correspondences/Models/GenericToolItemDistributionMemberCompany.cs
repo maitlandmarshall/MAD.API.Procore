@@ -4,16 +4,16 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.Correspondences.Models {
-	public class Value {
+	public class GenericToolItemDistributionMemberCompany {
 
 		/// <summary>
-		/// The unique identifier of the list of values (LOV) entry.
+		/// ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// Label of the list of values (LOV) entry.
+		/// Name
 		/// </summary>
-		[JsonProperty("label")]	public  string Label { get ; set; }
+		[JsonProperty("name")]	public  string Name { get ; set; }
 	}
 }
