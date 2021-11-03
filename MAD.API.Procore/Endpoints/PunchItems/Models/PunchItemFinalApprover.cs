@@ -7,18 +7,18 @@ namespace MAD.API.Procore.Endpoints.PunchItems.Models {
 	public class PunchItemFinalApprover {
 
 		/// <summary>
-		/// User ID
+		/// Login Information ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// User Name
+		/// User name
 		/// </summary>
 		[JsonProperty("name")]	public  string Name { get ; set; }
 
 		/// <summary>
-		/// User Email
+		/// User dictionary
 		/// </summary>
-		[JsonProperty("login")]	public  string Login { get ; set; }
+		[JsonProperty("locale")]	public  string Locale { get ; set; }
 	}
 }

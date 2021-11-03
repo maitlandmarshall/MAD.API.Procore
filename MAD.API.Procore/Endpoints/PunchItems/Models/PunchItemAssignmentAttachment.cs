@@ -4,16 +4,21 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.PunchItems.Models {
-	public class Value {
+	public class PunchItemAssignmentAttachment {
 
 		/// <summary>
-		/// The unique identifier of the list of values (LOV) entry.
+		/// ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
 
 		/// <summary>
-		/// Label of the list of values (LOV) entry.
+		/// URL
 		/// </summary>
-		[JsonProperty("label")]	public  string Label { get ; set; }
+		[JsonProperty("url")]	public  string Url { get ; set; }
+
+		/// <summary>
+		/// Filename
+		/// </summary>
+		[JsonProperty("filename")]	public  string Filename { get ; set; }
 	}
 }

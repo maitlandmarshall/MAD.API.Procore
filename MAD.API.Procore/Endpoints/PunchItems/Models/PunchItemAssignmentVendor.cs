@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.PunchItems.Models {
-	public class Vendor {
+	public class PunchItemAssignmentVendor {
 
 		[JsonProperty("id")]	public  long Id { get ; set; }
 

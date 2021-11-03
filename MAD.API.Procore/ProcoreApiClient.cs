@@ -1,4 +1,5 @@
 ﻿
+using MAD.API.Procore.Endpoints.PunchItems.Models;
 using MAD.API.Procore.Endpoints.RFIs.Models;
 using Newtonsoft.Json;
 using System;
@@ -72,7 +73,7 @@ namespace MAD.API.Procore
                 Error = (sender, args) =>
                 {
                     // The Procore API returns a different value than the schema specifies, so just ignore the error
-                    if (args.CurrentObject.GetType() == typeof(ListRFIsRequestResultQuestion)
+                    if (args.CurrentObject?.GetType() == typeof(ListRFIsRequestResultQuestion)
                         && args.ErrorContext.Path.EndsWith("errors"))
                     {
                         args.ErrorContext.Handled = true;

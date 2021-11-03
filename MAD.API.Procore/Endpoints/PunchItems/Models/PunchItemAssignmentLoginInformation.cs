@@ -4,12 +4,17 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.PunchItems.Models {
-	public class CostCode {
+	public class PunchItemAssignmentLoginInformation {
 
 		/// <summary>
 		/// ID
 		/// </summary>
 		[JsonProperty("id")]	public  long Id { get ; set; }
+
+		/// <summary>
+		/// Email
+		/// </summary>
+		[JsonProperty("login")]	public  string Login { get ; set; }
 
 		/// <summary>
 		/// Name
