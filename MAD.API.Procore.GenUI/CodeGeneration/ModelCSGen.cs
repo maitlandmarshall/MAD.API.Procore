@@ -97,7 +97,8 @@ namespace MAD.API.Procore.Gen
                 if (p.Type.IsNullable
                     || p.Type.Name == "number"
                     || (p.Type.Name == "integer" && p.Field != "id")
-                    || (p.Format == "date-time" && (!p.Field.StartsWith("created") && !p.Field.StartsWith("updated"))))
+                    || p.Type.Name == "boolean"
+                    || p.Format == "date-time")
                     pm.IsNullable = true;
 
                 classModel.Properties.Add(pm);
