@@ -26,7 +26,7 @@ namespace MAD.API.Procore.Endpoints.DailyLogHeaders.Models {
 		/// </summary>
 		[JsonProperty("completed")]	public  bool Completed { get ; set; }
 
-		[JsonProperty("completed_by")]	public  CompletedBy CompletedBy { get ; set; }
+		[JsonProperty("completed_by")]	public  ADailyLogHeaderCompletedBy CompletedBy { get ; set; }
 
 		/// <summary>
 		/// Daily log header marked complete at
@@ -43,7 +43,7 @@ namespace MAD.API.Procore.Endpoints.DailyLogHeaders.Models {
 		/// </summary>
 		[JsonProperty("distributed")]	public  bool Distributed { get ; set; }
 
-		[JsonProperty("distributed_by")]	public  DistributedBy DistributedBy { get ; set; }
+		[JsonProperty("distributed_by")]	public  ADailyLogHeaderDistributedBy DistributedBy { get ; set; }
 
 		/// <summary>
 		/// Daily log header marked distributed at

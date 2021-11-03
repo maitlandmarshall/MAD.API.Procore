@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 namespace MAD.API.Procore.Endpoints.DailyLogHeaders.Models {
-	public class CompletedBy {
+	public class ADailyLogHeaderDistributedBy {
 
 		/// <summary>
 		/// ID
