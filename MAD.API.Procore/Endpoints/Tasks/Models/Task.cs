@@ -57,7 +57,7 @@ namespace MAD.API.Procore.Endpoints.Tasks.Models {
 		/// <summary>
 		/// True if one or more change requests are pending for this task.
 		/// </summary>
-		[JsonProperty("pending")]	public  bool Pending { get ; set; }
+		[JsonProperty("pending")]	public  bool? Pending { get ; set; }
 
 		/// <summary>
 		/// The external unique identifier for this task. Note that due to an
@@ -84,12 +84,12 @@ namespace MAD.API.Procore.Endpoints.Tasks.Models {
 		/// <summary>
 		/// True if this task is on the critical path.
 		/// </summary>
-		[JsonProperty("critical_path")]	public  bool CriticalPath { get ; set; }
+		[JsonProperty("critical_path")]	public  bool? CriticalPath { get ; set; }
 
 		/// <summary>
 		/// True if this task is a milestone.
 		/// </summary>
-		[JsonProperty("milestone")]	public  bool Milestone { get ; set; }
+		[JsonProperty("milestone")]	public  bool? Milestone { get ; set; }
 
 		/// <summary>
 		/// Actual start timestamp for this task.
@@ -110,7 +110,7 @@ namespace MAD.API.Procore.Endpoints.Tasks.Models {
 		/// <summary>
 		/// True if this is a summary task, i.e. this task has child tasks.
 		/// </summary>
-		[JsonProperty("has_children")]	public  bool HasChildren { get ; set; }
+		[JsonProperty("has_children")]	public  bool? HasChildren { get ; set; }
 
 		/// <summary>
 		/// Task full outline path
@@ -170,17 +170,17 @@ namespace MAD.API.Procore.Endpoints.Tasks.Models {
 		/// if the task was imported from an external schedule and has not been
 		/// modified in Procore.
 		/// </summary>
-		[JsonProperty("manually_edited")]	public  bool ManuallyEdited { get ; set; }
+		[JsonProperty("manually_edited")]	public  bool? ManuallyEdited { get ; set; }
 
 		/// <summary>
 		/// Date/time the Task was created.
 		/// </summary>
-		[JsonProperty("created_at")]	public  DateTimeOffset CreatedAt { get ; set; }
+		[JsonProperty("created_at")]	public  DateTimeOffset? CreatedAt { get ; set; }
 
 		/// <summary>
 		/// Date/time the Task was last updated.
 		/// </summary>
-		[JsonProperty("updated_at")]	public  DateTimeOffset UpdatedAt { get ; set; }
+		[JsonProperty("updated_at")]	public  DateTimeOffset? UpdatedAt { get ; set; }
 
 		[JsonProperty("created_by")]	public  TaskCreatedBy CreatedBy { get ; set; }
 
