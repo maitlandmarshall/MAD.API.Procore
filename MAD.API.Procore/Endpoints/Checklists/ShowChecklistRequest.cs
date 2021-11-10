@@ -8,7 +8,7 @@ using MAD.API.Procore;
 namespace MAD.API.Procore.Endpoints.Checklists {
 	public class ShowChecklistRequest : ProcoreRequest<Checklist> {
 
-		public override string Resource { get => $"/checklist/lists/{this.Id}";}
+		public override string Resource { get => $"/rest/v1.0/checklist/lists/{this.Id}";}
 
 		/// <summary>
 		/// Checklist ID
