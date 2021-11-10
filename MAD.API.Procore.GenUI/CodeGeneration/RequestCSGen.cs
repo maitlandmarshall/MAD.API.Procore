@@ -79,7 +79,7 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
             endpointRequestModel.Properties.Add(new PropertyModel
             {
                 Name = "Resource",
-                Getter = $"$\"{FormatResourceStringForCSharpStringInterop(endpoint.Path)}\";",
+                Getter = $"$\"{FormatResourceStringForCSharpStringInterop(endpoint)}\";",
                 Type = "string",
                 Override = true
             });
@@ -125,10 +125,11 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
             }
         }
 
-        private static string FormatResourceStringForCSharpStringInterop(string resource)
+        private static string FormatResourceStringForCSharpStringInterop(Endpoint endpoint)
         {
-            string[] endpointPathSegments = resource.Split("/");
-            List<string> newPathSegments = new List<string>();
+            var resource = endpoint.Path;
+            var endpointPathSegments = resource.Split("/");
+            var newPathSegments = new List<string>();
 
             foreach (string eps in endpointPathSegments)
             {
@@ -145,7 +146,9 @@ namespace MAD.API.Procore.GenUI.CodeGeneration
                 }
             }
 
-            return string.Join("/", newPathSegments);
+            var resourcePath = string.Join("/", newPathSegments);
+
+            return $"{endpoint.BasePath}{resourcePath}";
         }
 
         private static IEnumerable<ClassModel> GenerateModels(IEnumerable<Schema> schemas)

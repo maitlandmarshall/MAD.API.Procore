@@ -38,7 +38,18 @@ namespace MAD.API.Procore
             await Authenticate();
 
             var queryParams = querySegmentFactory.Create(request);
-            var query = $"{request.Resource.TrimStart('/')}?{string.Join("&", queryParams)}";
+            string query;
+            
+            if (request.Resource.StartsWith("/rest"))
+            {
+                query = $"{request.Resource.TrimStart('/')}?{string.Join("&", queryParams)}";
+            }
+            else
+            {
+                // Allow support for requests that haven't been generated with the version code in the url.
+                // They are all v1.0 requests
+                query = $"rest/v1.0/{request.Resource.TrimStart('/')}?{string.Join("&", queryParams)}";
+            }
 
             HttpResponseMessage httpResponse;
 
