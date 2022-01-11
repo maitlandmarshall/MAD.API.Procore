@@ -31,7 +31,7 @@ namespace MAD.API.Procore
             this.tokenExchange = tokenExchange;
         }
 
-        public event EventHandler<ApiClientOptionsChangedEventArgs> OptionsChanged;
+        public event EventHandler<ApiClientOptionsChangedEventArgs> OptionsChanged;        
 
         public async Task<ProcoreResponse<TResponse>> GetResponseAsync<TResponse>(ProcoreRequest<TResponse> request)
         {
@@ -99,15 +99,9 @@ namespace MAD.API.Procore
                 if (httpResponse.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
                 {
                     int unixTimeUntilRefresh = int.Parse(httpResponse.Headers.GetValues("X-Rate-Limit-Reset".ToLower()).First());
-                    DateTimeOffset refreshDate = DateTimeOffset.FromUnixTimeSeconds(unixTimeUntilRefresh);
-                    DateTimeOffset currentDate = DateTimeOffset.UtcNow;
+                    var refreshDate = DateTimeOffset.FromUnixTimeSeconds(unixTimeUntilRefresh);
 
-                    TimeSpan timeDifference = refreshDate - currentDate;
-                    int millisecondsToWait = (int)Math.Max(timeDifference.TotalMilliseconds, 0);
-
-                    await Task.Delay(millisecondsToWait);
-
-                    return await GetResponseAsync<TResponse>(request);
+                    throw new ProcoreRateLimitException(refreshDate);
                 }
 
                 throw new ProcoreApiException(httpResponse.ReasonPhrase, error, httpResponse.StatusCode);

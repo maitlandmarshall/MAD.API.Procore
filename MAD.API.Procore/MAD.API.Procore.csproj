@@ -1,20 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Authors>Maitland Marshall</Authors>
-    <Company>MAIT DEV</Company>
-    <PackageProjectUrl>https://github.com/maitlandmarshall/MAD.API.Procore</PackageProjectUrl>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Authors>Maitland Marshall</Authors>
+		<Company>MAIT DEV</Company>
+		<PackageProjectUrl>https://github.com/maitlandmarshall/MAD.API.Procore</PackageProjectUrl>
 
-    <Major>2</Major>
-    <Minor>0</Minor>
-    <Build>2</Build>
-    <Revision>$([System.DateTime]::UtcNow.ToString("yyMMddHHmm"))</Revision>
-    
-    <Version>$(Major).$(Minor).$(Build).$(Revision)</Version>
-    <AssemblyVersion>$(Major).$(Minor).$(Build)</AssemblyVersion>
-  </PropertyGroup>
+		<Major>2</Major>
+		<Minor>0</Minor>
+		<Build>2</Build>
+		<Revision>$([System.DateTime]::UtcNow.ToString("MddHHmmss"))</Revision>
+
+		<Version>$(Major).$(Minor).$(Build).$(Revision)</Version>
+		<AssemblyVersion>$(Major).$(Minor).$(Build)</AssemblyVersion>
+	</PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
