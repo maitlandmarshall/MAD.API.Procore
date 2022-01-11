@@ -8,8 +8,8 @@
 		<PackageProjectUrl>https://github.com/maitlandmarshall/MAD.API.Procore</PackageProjectUrl>
 
 		<Major>2</Major>
-		<Minor>2</Minor>
-		<Build>0</Build>
+		<Minor>0</Minor>
+		<Build>2</Build>
 		<Revision>$([System.DateTime]::UtcNow.ToString("MddHHmmss"))</Revision>
 
 		<Version>$(Major).$(Minor).$(Build).$(Revision)</Version>
