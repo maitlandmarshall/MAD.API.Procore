@@ -8,8 +8,7 @@ namespace MAD.API.Procore.GenUI.Endpoints
     {
         [JsonProperty("group")]
         public JToken GroupToken { get; set; }
-
-        public string Group
+public string Group
         {
             get
             {
@@ -27,6 +26,9 @@ namespace MAD.API.Procore.GenUI.Endpoints
         public string Path { get; set; }
         public string Summary { get; set; }
         public string Description { get; set; }
+
+        [JsonProperty("base_path")]
+        public string BasePath { get; set; }
 
         [JsonProperty("path_params")]
         public List<BaseParam> PathParams { get; set; }

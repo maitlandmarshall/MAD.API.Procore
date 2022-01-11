@@ -41,7 +41,14 @@ namespace MAD.API.Procore.Gen
                             pm.Type = "int";
                         }
 
-                        break;
+                        if (p.Field == "number_value"
+                            && p.Endpoint.Summary == "Show Checklist")
+                        {
+                            // TODO: The schema is broken on Procore's side. Waiting for them to fix. The checklist section item payload number_value can be a big int or a decimal currently, but is a string in the JSON response.
+                            pm.Type = "string";
+                        }
+
+                       break;
                     case "boolean":
                         pm.Type = "bool";
                         break;

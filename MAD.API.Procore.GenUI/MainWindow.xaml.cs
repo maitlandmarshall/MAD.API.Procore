@@ -64,7 +64,8 @@ namespace MAD.API.Procore.GenUI
                     grp.Name.Replace(" ", "-").ToLower();
 
                 var definition = await RemoteJsonFile.GetJsonFile<ApiDefinition>(gelatoGroup);
-                var endpoints = definition.Versions.First(y => y.Version == 1).Endpoints;
+                var version = definition.Versions.Last();
+                var endpoints = version.Endpoints;
 
                 foreach (var ep in endpoints)
                 {
