@@ -31,15 +31,7 @@ namespace MAD.API.Procore.Gen
                 switch (p.Type.Name)
                 {
                     case "integer":
-                        if (pm.Name == "Id"
-                            || pm.Name.EndsWith("Id"))
-                        {
-                            pm.Type = "long";
-                        }
-                        else
-                        {
-                            pm.Type = "int";
-                        }
+                        pm.Type = "long";
 
                         if (p.Field == "number_value"
                             && p.Endpoint.Summary == "Show Checklist")

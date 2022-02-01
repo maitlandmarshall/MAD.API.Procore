@@ -94,7 +94,7 @@ namespace MAD.API.Procore.Endpoints.Projects.Models {
 		/// <summary>
 		/// The total square footage for the Project
 		/// </summary>
-		[JsonProperty("square_feet")]	public  int? SquareFeet { get ; set; }
+		[JsonProperty("square_feet")]	public  long? SquareFeet { get ; set; }
 
 		/// <summary>
 		/// The date that the contract for the project is signed. Note: this field is a replacement to estimated_start_date and will mirror its value.
@@ -139,7 +139,7 @@ namespace MAD.API.Procore.Endpoints.Projects.Models {
 		/// <summary>
 		/// The active status for the Project
 		/// </summary>
-		[JsonProperty("active")]	public  bool Active { get ; set; }
+		[JsonProperty("active")]	public  bool? Active { get ; set; }
 
 		/// <summary>
 		/// The Project flag (Red, Yellow, or Green)
@@ -169,12 +169,12 @@ namespace MAD.API.Procore.Endpoints.Projects.Models {
 		/// <summary>
 		/// The date and time the Project was created
 		/// </summary>
-		[JsonProperty("created_at")]	public  DateTimeOffset CreatedAt { get ; set; }
+		[JsonProperty("created_at")]	public  DateTimeOffset? CreatedAt { get ; set; }
 
 		/// <summary>
 		/// The date and time the Project was last updated
 		/// </summary>
-		[JsonProperty("updated_at")]	public  DateTimeOffset UpdatedAt { get ; set; }
+		[JsonProperty("updated_at")]	public  DateTimeOffset? UpdatedAt { get ; set; }
 
 		/// <summary>
 		/// An external third-party identifier for the Project
@@ -196,7 +196,7 @@ namespace MAD.API.Procore.Endpoints.Projects.Models {
 		/// <summary>
 		/// True if project is ERP integrated
 		/// </summary>
-		[JsonProperty("is_erp_integrated")]	public  bool IsErpIntegrated { get ; set; }
+		[JsonProperty("is_erp_integrated")]	public  bool? IsErpIntegrated { get ; set; }
 
 		/// <summary>
 		/// A linked identifier for the Owner's Project

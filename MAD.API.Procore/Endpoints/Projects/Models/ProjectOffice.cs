@@ -56,6 +56,6 @@ namespace MAD.API.Procore.Endpoints.Projects.Models {
 		/// </summary>
 		[JsonProperty("division")]	public  string Division { get ; set; }
 
-		[JsonProperty("logo")]	public  Logo Logo { get ; set; }
+		[JsonProperty("logo")]	public  ProjectOfficeLogo Logo { get ; set; }
 	}
 }

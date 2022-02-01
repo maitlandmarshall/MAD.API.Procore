@@ -8,7 +8,7 @@ using MAD.API.Procore;
 namespace MAD.API.Procore.Endpoints.Projects {
 	public class ShowProjectRequest : ProcoreRequest<Project> {
 
-		public override string Resource { get => $"/projects/{this.Id}";}
+		public override string Resource { get => $"/rest/v1.0/projects/{this.Id}";}
 
 		/// <summary>
 		/// Unique identifier for the project.
