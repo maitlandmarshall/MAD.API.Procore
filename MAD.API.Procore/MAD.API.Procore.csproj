@@ -9,7 +9,7 @@
 
 		<Major>2</Major>
 		<Minor>0</Minor>
-		<Build>3</Build>
+		<Build>4</Build>
 		<Revision>$([System.DateTime]::UtcNow.ToString("MddHHmmss"))</Revision>
 
 		<Version>$(Major).$(Minor).$(Build).$(Revision)</Version>
