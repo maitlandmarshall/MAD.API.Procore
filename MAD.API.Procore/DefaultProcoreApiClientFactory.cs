@@ -18,7 +18,16 @@ namespace MAD.API.Procore
 
         public ProcoreApiClient Create(ProcoreApiClientOptions options)
         {
-            HttpClient httpClient = new HttpClient(
+            var httpClient = this.CreateHttpClient(options);
+
+            return new ProcoreApiClient(
+                httpClient: httpClient,
+                options: options);
+        }
+
+        public HttpClient CreateHttpClient(ProcoreApiClientOptions options)
+        {
+            var httpClient = new HttpClient(
                 handler: new HttpClientHandler
                 {
                     AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate | DecompressionMethods.None,
@@ -27,9 +36,7 @@ namespace MAD.API.Procore
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", options.AccessToken);
             httpClient.BaseAddress = GetBaseAddress(options.IsSandbox);
 
-            return new ProcoreApiClient(
-                httpClient: httpClient,
-                options: options);
+            return httpClient;
         }
     }
 }
