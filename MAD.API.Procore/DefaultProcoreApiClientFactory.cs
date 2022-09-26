@@ -29,9 +29,7 @@ namespace MAD.API.Procore
 
             return new ProcoreApiClient(
                 httpClient: httpClient,
-                options: options,
-                querySegmentFactory: new ProcoreRequestUriQuerySegmentFactory(),
-                tokenExchange: new OAuthTokenExchange());
+                options: options);
         }
     }
 }

@@ -23,12 +23,13 @@ namespace MAD.API.Procore
         private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1);
         private OAuthTokenExchange.OAuthTokenResponse currentOAuth;
 
-        internal ProcoreApiClient(HttpClient httpClient, ProcoreApiClientOptions options, ProcoreRequestUriQuerySegmentFactory querySegmentFactory, OAuthTokenExchange tokenExchange)
+        public ProcoreApiClient(HttpClient httpClient, ProcoreApiClientOptions options)
         {
             this.httpClient = httpClient;
             this.options = options;
-            this.querySegmentFactory = querySegmentFactory;
-            this.tokenExchange = tokenExchange;
+
+            this.querySegmentFactory = new ProcoreRequestUriQuerySegmentFactory();
+            this.tokenExchange = new OAuthTokenExchange();
         }
 
         public event EventHandler<ApiClientOptionsChangedEventArgs> OptionsChanged;        
